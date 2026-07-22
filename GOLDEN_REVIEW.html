@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset='utf-8'>
+<title>Golden Review — 22Jul2026/Client_Contract/R1_Non_stats/1756</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:24px;line-height:1.45;color:#222}
+h1,h2{margin:0 0 12px}
+.meta{background:#f4f6f8;padding:12px 16px;border-radius:8px;margin-bottom:20px}
+.case{border:1px solid #ddd;border-radius:8px;padding:16px;margin-bottom:20px}
+.pass{color:#0a7a2f;font-weight:bold}.fail{color:#b00020;font-weight:bold}
+.label{font-weight:bold;margin-top:10px;color:#444}
+pre{white-space:pre-wrap;background:#fafafa;border:1px solid #eee;padding:12px;border-radius:6px}
+table.scores{border-collapse:collapse;margin-top:8px}
+table.scores td,table.scores th{border:1px solid #ddd;padding:6px 10px}
+</style></head><body>
+<h1>Golden Review Report</h1>
+<div class='meta'>
+<div><b>Build:</b> 22Jul2026/Client_Contract/R1_Non_stats/1756</div>
+<div><b>Validation mode:</b> golden_v1</div>
+<div><b>Golden ID:</b> R1_Non_stats_failed_golden_v1</div>
+<div><b>Golden version:</b> v1</div>
+<div><b>Golden path:</b> golden\client_contract\R1_Non_stats\golden_v1.json</div>
+<div><b>Run stability:</b> 86.7% | drift: 0.1331</div>
+<div><b>Pass vs golden:</b> 9/11</div>
+<div><b>LLM pass/fail/not-run:</b> 9/2/-</div>
+<div><b>Drift over time:</b> see artifacts/drift/&lt;sheet&gt;/stability_history.json (not trend/ for golden stability)</div>
+</div>
+<div class='case'>
+<h2>TC_01 — <span class='pass'>PASS</span></h2>
+<div><b>Question:</b> Please give me link for MSA of AbbVie Inc.?</div>
+<div><b>Best semantic template:</b> golden_answer_2 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.9015 | LLM: PASS (0.9) | drift: 0.0985 (link_added)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>I found the MSA document for AbbVie Inc. titled &quot;AbbVie Inc.: MSA - Jun 17 - SYMPHONY&quot;. You can access the contract document using the following link:
+AbbVie_SHA_2017_CA_062317.pdf
+This document is active and executed, with an effective date of June 23, 2017, and an expiration date of October 31, 2028.
+Let me know if you need any more details!</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>I found the MSA for AbbVie Inc. titled &quot;AbbVie Inc.: MSA - Jun 17 - SYMPHONY&quot;. You can access the contract document using this link:
+AbbVie Inc.: MSA - Jun 17 - SYMPHONY Document
+Let me know if you need any more details or help!</pre>
+<div class='label'>LLM reason</div><pre>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer provides the same MSA document title and a direct link, with additional relevant details about the document&#x27;s status and dates.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_07 — <span class='pass'>PASS</span></h2>
+<div><b>Question:</b> What license rights did Symphony grant the client under section 2 of Abbott Laboratories: MSA - Dec 09 - SYMPHONY?</div>
+<div><b>Best semantic template:</b> golden_answer_1 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.8101 | LLM: PASS (0.9) | drift: 0.1899 (link_removed)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>I’d be happy to help with that! Based on the contract titled &quot;Abbott Laboratories: MSA - Dec 09 - SYMPHONY&quot;, here’s what Symphony granted the client under Section 2 regarding license rights:
+Symphony grants Abbott Laboratories a non-exclusive, non-sublicensable, non-transferable license to use the Software (called Synoma®) during the agreement term.
+The license is strictly for converting certain personal information elements into Tokens as described in the implementation documentation.
+Use of the Software is limited to the specified location and must be used as provided, including any updates or modifications from Symphony or its trusted third parties.
+Abbott may allow its IT support contractors access only if they need it, are bound by similar confidentiality terms, and Abbott remains responsible for their actions.
+Symphony may provide updates, bug fixes, or enhancements, which Abbott must implement within 60 days.
+Abbott is prohibited from copying, modifying, selling, distributing, reverse engineering, or creating derivative works of the Software.
+Symphony retains exclusive ownership of all rights and intellectual property in the Software and any modifications.
+Abbott must keep the Software confidential, restrict access, and notify Symphony immediately if confidentiality is compromised.
+Symphony has the right to audit Abbott’s compliance with these terms with prior notice.
+If you want, I can provide more details or help with other sections of the contract!</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>License Rights Granted by Symphony under Section 2 of the MSA &quot;Abbott Laboratories: MSA - Dec 09 - SYMPHONY&quot;
+Symphony grants Abbott Laboratories a non-exclusive, non-sublicensable, non-transferable license to use the proprietary software Synoma®.
+The license is valid during the term of the agreement and limited to use as required by Exhibit A, Implementation Requirements, at the Licensee&#x27;s specified location.
+If you&#x27;d like, I can share the full MSA document link for your detailed review.</pre>
+<div class='label'>LLM reason</div><pre>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves the expected meaning and adds relevant details about license scope, restrictions, and obligations without contradicting the expected facts.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_09 — <span class='pass'>PASS</span></h2>
+<div><b>Question:</b> What ICON services and Divisions are covered by Back to Mobility GmbH: MSA - Apr 25?</div>
+<div><b>Best semantic template:</b> golden_answer_1 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.9214 | LLM: PASS (1.0) | drift: 0.0786 (stable)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>I couldn&#x27;t find information about the ICON services and Divisions covered by the contract titled &quot;Back to Mobility GmbH: MSA - Apr 25&quot;. Could you please confirm if the contract name is correct or provide any additional details? That way, I can help you find the specific information you need.</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>I couldn&#x27;t find the Master Services Agreement titled &quot;Back to Mobility GmbH: MSA - Apr 25&quot; in the available documents. Could you please confirm if the contract name is correct or provide any additional details? This will help me locate the right document to provide you with detailed information about the ICON services and divisions covered.</pre>
+<div class='label'>LLM reason</div><pre>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). Both answers convey the same meaning: the document could not be found and a request for confirmation or additional details is made.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_16 — <span class='fail'>FAIL</span></h2>
+<div><b>Question:</b> What is the latest amendment of Boston Scientific Corporation: MSA - Sep-13 about?</div>
+<div><b>Best semantic template:</b> golden_answer_2 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.6772 | LLM: FAIL (1.0) | drift: 0.3228 (count_changed, fact_removed)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>Hi! I looked into the latest amendment for the contract titled &quot;Boston Scientific Corporation: MSA - Sep-13&quot;. While there are 5 amendments in total, the detailed content available is mainly for Amendment #2, which is an Amended &amp; Restated MSA.
+Here’s a concise summary of Amendment #2’s key points, scope, and purpose:
+Human Subject Research Guidance: Boston Scientific commits to responsible human subject research, ensuring legitimate scientific need, minimizing risks, and complying with ethical and regulatory standards like the Declaration of Helsinki, ICH GCP, HIPAA, and EU directives.
+Vendor Responsibilities: The vendor must comply with all applicable laws, maintain quality assurance, and ensure data integrity and security in electronic records per FDA regulations.
+Conflict of Interest and Transparency: The amendment addresses managing conflicts of interest in clinical research, ensuring transparency in study results, and proper compensation practices for investigators and subjects.
+Legal and Compliance Provisions: It includes clauses on assignment, governing law (Delaware), integration, modification, severability, and waiver.
+Data Privacy and Protection: Provisions related to HIPAA compliance, data breach notification, and protection of protected health information are incorporated.
+Unfortunately, the documents do not provide a clear summary or details specifically for Amendment #5, the latest amendment.
+If you want, I can help you explore Amendment #2 in more detail or assist in locating the full text of Amendment #5 for a precise summary.
+Here are the sources I used for this information:
+Boston Scientific Corporation: MSA - Sep-13 - Amendment # 2 (Amended &amp; Restated MSA)
+Sponsor MSA and Contract Repository - Boston Scientific Corporation: MSA - Sep-13
+Let me know if you&#x27;d like me to dig deeper or help with anything else!</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>Latest Amendment for Boston Scientific Corporation: MSA - Sep-13
+Amendment #5 (Amendment #3 to the Restated MSA) is the most recent and content is available.
+It focuses on Rate Card and contracting party changes that may impact tax costs, including Vendor may revise the Rate Card if a change in the contracting party results in additional tax costs such as withholding tax.
+It also documents regional rate-card inflation for North America, Latin America, Western Europe, Eastern Europe, Asia Pacific, and India, with work-order inflation ranging from 3.0% to 10.0%, covering roles such as Clinical Project Director, Project Manager, Clinical Trial Manager, Clinical Research Associate, Study Start Up Lead, Data Management, Biostatistics, Medical Writer.
+Document source: Boston Scientific Corporation: MSA - Sep-13 - Amendment # 5 (Am#3 to Restated MSA). Let me know if you want the amendment link or summaries of other amendments.</pre>
+<div class='label'>LLM reason</div><pre>LLM FAIL — no variant passed (checked 3 templates). The actual answer discusses Amendment #2 in detail and states that no clear summary or details are available for Amendment #5, which is the latest amendment asked about. This contradicts the expected answer that provides a detailed summary of Amendment #5.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_17 — <span class='pass'>PASS</span></h2>
+<div><b>Question:</b> What does Amendment 1 of Century Therapeutics November 2023 MSA state about data protection safeguarding?</div>
+<div><b>Best semantic template:</b> golden_answer_3 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.8225 | LLM: PASS (0.9) | drift: 0.1775 (wording_drift)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>I found detailed information about the data protection and privacy provisions in Amendment 1 of the contract titled &quot;Century Therapeutics November 2023 MSA.&quot; Here&#x27;s a summary focusing on the Data Protection Agreement (DPA), Data Privacy Exhibit, and related safeguards:
+Amendment Overview:
+Amendment 1, effective January 6, 2025, modifies the original MSA dated November 30, 2023.
+It specifically updates the data protection processing provisions.
+Data Protection Exhibit Update:
+Section (2) of Exhibit B - Data Protection is replaced to ensure compliance with Chapter V of the GDPR.
+The Parties agree to sign the EU Standard Contractual Clauses (SCCs) modules one and four to govern international transfers of personal data related to the services.
+New Annexes Added:
+Annex 2: Standard Contractual Clauses (SCCs)
+Annex 3: Technical and Organisational Measures (TOMs) These annexes are incorporated into Exhibit B - Data Protection.
+Key Data Protection Safeguards:
+The Parties commit to implementing appropriate technical and organizational measures to secure personal data, including during transmission, to prevent accidental or unlawful destruction, loss, alteration, unauthorized disclosure, or access.
+Security measures include encryption or pseudonymisation where feasible.
+The data exporter assists the data importer in ensuring security and must notify the importer promptly of any personal data breach.
+Persons authorized to process personal data must commit to confidentiality.
+Documentation and Compliance:
+Both Parties must demonstrate compliance with the Clauses.
+The data exporter must provide necessary information to the data importer to demonstrate compliance and allow audits.
+Data Subject Rights:
+The data importer must handle data subject requests (e.g., access, rectification, erasure) promptly and free of charge.
+Information to data subjects must be clear and accessible.
+Use of Sub-processors:
+Not applicable or not addressed in this amendment.
+Non-compliance and Termination:
+The data importer must inform the data exporter if unable to comply with the Clauses.
+The data exporter may suspend data transfers or terminate the contract if compliance is not restored within a reasonable time.
+Upon termination, personal data must be returned or deleted, with certification of deletion.
+Governing Law and Jurisdiction:
+The Clauses are governed by the law of Ireland.
+Disputes are to be resolved by courts in Ireland or the EU Member State where the data subject resides.
+Categories and Nature of Personal Data:
+Covers a wide range of personal data types including identification data, contact details, employment data, health data, genetic data, and sensitive personal data.
+Data subjects include employees, contractors, business partners, study team staff, and clinical trial participants.
+Data processing includes collection, storage, use, disclosure, and destruction as necessary for service provision.
+Technical and Organizational Measures (TOMs):
+Access control to premises, systems, and data.
+Disclosure control to secure data transfers.
+Input control with audit trails.
+Job control to ensure processing follows instructions.
+Availability control to prevent data loss.
+Segregation control to separate data for different purposes.
+Breach Notification:
+The data importer must notify the data exporter and supervisory authorities without undue delay in case of a personal data breach.
+If the breach poses a high risk, affected data subjects must also be notified.
+This amendment clearly strengthens and updates the data protection framework between Century Therapeutics and ICON Clinical Research Limited, ensuring GDPR compliance and robust safeguards for personal data involved in their services.
+You can access the full Amendment 1 document here for more details:
+Century Therapeutics November 2023 - Amendment # 1</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>Regarding data protection safeguarding in Amendment 1 of &quot;Century Therapeutics November 2023 MSA&quot;: parties commit to compliant transfers, implement SCCs and TOMs, maintain confidentiality, and handle breaches and data subject requests per GDPR-aligned terms (governing law: Ireland).</pre>
+<div class='label'>LLM reason</div><pre>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves all critical information from the expected answer, including GDPR Chapter V compliance, EU SCCs, TOMs, breach notification, data subject rights, and governing law (Ireland), while providing additional relevant details.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_22 — <span class='pass'>PASS</span></h2>
+<div><b>Question:</b> Within IPSEN PHARMA S.A.S Master Services Agreement, as amended (the â€œAgreementâ€) dated 28 August 2020 is there language included associated with a final reconciliation of the budget</div>
+<div><b>Best semantic template:</b> golden_answer_1 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.8626 | LLM: PASS (0.9) | drift: 0.1374 (count_changed, number_changed)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>Summary of Final Budget Reconciliation Provisions in IPSEN PHARMA S.A.S Master Services Agreement (MSA) as amended 28 August 2020
+I found detailed information about the budget reconciliation and related financial provisions in the IPSEN PHARMA S.A.S Master Services Agreement, including its amendments as of 28 August 2020. Here are the key relevant points:
+Budget Modifications and Amendments (Section 7.7):
+Budgets are agreed based on key study parameters such as number of investigators, centers, subjects, countries, protocol design, and calendar.
+Any changes to these key parameters may lead to amendments to the budget and/or calendar, which must be discussed in good faith.
+The Service Provider cannot request budget increases caused by delays or defaults attributable to itself.
+Budget modifications require formal amendment signatures unless otherwise agreed.
+Additional Services and Budget Supplements (Section 7.8):
+Additional services requested by IPSEN not covered in the original Work Order may result in budget supplements, subject to prior written agreement.
+Final Reconciliation upon Early Termination (Section 7.9):
+In case of early termination of a Work Order, a final reconciliation will be conducted after the full wind-down of services.
+Invoice Disputes and Reconciliation (Section 7.10):
+IPSEN must notify the Service Provider within 15 days of any invoice disputes.
+Both parties will use good faith efforts to reconcile disputed amounts promptly.
+Undisputed amounts must be paid according to terms.
+Quarterly Budget Reconciliation (Section 7.11):
+The Service Provider shall provide IPSEN with quarterly reconciliations of the study budget for direct fees, subcontractor fees, and pass-through expenses.
+This reconciliation includes variances between contractual and actual amounts, reasons for variances (e.g., timing, delays), and exchange rate impacts.
+Final Reconciliation after Study Completion (Section 7.9):
+A final reconciliation is explicitly stated to occur after the full wind-down of services following early termination or study completion.
+Additional Notes:
+The agreement includes detailed schedules for budgets, invoices, and payment milestones.
+The budget and reconciliation processes are designed to ensure transparency and good faith collaboration between IPSEN and the Service Provider.
+The contract and amendments provide mechanisms for managing budget changes, disputes, and final financial settlements.
+You can review the full contract document here for more details:
+Ipsen Master Study Services Agreement - Document (28 Aug 2020)
+If you want me to check any specific amendment or clause in more detail, just let me know!</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>Final Budget Reconciliation in IPSEN PHARMA S.A.S Master Services Agreement (2020-08-28)
+Section 7.9: final reconciliation after wind-down on early Work Order termination.
+Section 7.11: quarterly study budget reconciliation.
+Amendment #1: Direct Fees within 90 days; Pass-Through within 180 days after study close/termination.</pre>
+<div class='label'>LLM reason</div><pre>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer covers all key points from the expected answer including sections 7.9 and 7.11 and the amendment details on final reconciliation timing, with additional relevant context.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_31 — <span class='pass'>PASS</span></h2>
+<div><b>Question:</b> Is there any Change of Control Provisions in the AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY MSA</div>
+<div><b>Best semantic template:</b> golden_answer_2 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.9569 | LLM: PASS (1.0) | drift: 0.0431 (stable)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>I checked the &quot;AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY MSA&quot; and it does not include any Change of Control provisions. The contract metadata explicitly states that Change of Control provisions are not in place, and no related clauses were found in the contract documents.
+If you need details on other clauses or further assistance, just let me know!</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>I checked AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY and it does not contain Change of Control provisions. The contract explicitly states Change of Control provisions are not in place.
+If you&#x27;d like, I can help you look into other parts of this MSA.</pre>
+<div class='label'>LLM reason</div><pre>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer confirms the absence of Change of Control provisions as stated in the expected answer and adds no contradictory information.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_35 — <span class='fail'>FAIL</span></h2>
+<div><b>Question:</b> retainer provisions in Novo Nordisk MSA 292577 and amendments</div>
+<div><b>Best semantic template:</b> golden_answer_1 | <b>Best LLM template:</b> golden_answer_3 | semantic: 0.8661 | LLM: FAIL (1.0) | drift: 0.1339 (available_to_not_available, contradiction, fact_removed)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>I looked into the &quot;Novo Nordisk MSA 292577&quot; and its amendments, and I couldn&#x27;t find any explicit retainer provisions or clauses specifically addressing retainer fees or retainer-related terms in the main MSA or any of its amendments. The contract mainly covers other payment terms such as milestone-based invoicing and rate cards, but nothing explicitly labeled or functioning as a retainer.
+If you&#x27;d like, I can help explore related payment structures or other financial terms in this MSA or its amendments. Just let me know!</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>I found information about the retainer provisions in the Novo Nordisk MSA 292577 and its amendments. The main MSA specifies that Novo Nordisk will provide a retainer of 5% of the total estimated Pass-through Costs to ensure the supplier does not suffer cash-flow depletion from performing services. This retainer is payable immediately upon the Work Order and will be credited back to Novo Nordisk as agreed in the Work Order. This retainer also applies to fees paid on a unit-based payment schedule.
+The amendments do not appear to change the retainer provision directly but update insurance, data protection, and compliance.
+I can provide more details on any specific amendment or clause. Links available include Novo Nordisk A/S: MSA - Mar 21 and Amendment #4.</pre>
+<div class='label'>LLM reason</div><pre>LLM FAIL — no variant passed (checked 3 templates). The actual answer contradicts the expected answer by stating no retainer provisions exist, whereas the expected answer specifies a 5% retainer on Pass-through Costs and details about its application and amendments.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_36 — <span class='pass'>PASS</span></h2>
+<div><b>Question:</b> Float Positions in Novo Nordisk MSA 292577 and amendments</div>
+<div><b>Best semantic template:</b> golden_answer_1 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.9317 | LLM: PASS (0.9) | drift: 0.0683 (count_changed)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>I found information about Float Positions in the Novo Nordisk MSA 292577 and its amendments. Specifically, the MSA explicitly includes a float provision located in Section 6 of Appendix 3 of the main MSA document dated 15 March 2021. This float clause is recognized as a contractual element within the MSA and its amendments, including up to Amendment #5.
+If you&#x27;d like, I can provide the exact wording or more detailed excerpts from the float clause section.
+Here are links to the relevant documents for your reference:
+Novo Nordisk A/S: MSA - Mar 21
+Amendment #3
+Amendment #4
+Let me know if you want me to dig deeper or provide the specific clause text!</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>Float Positions in Novo Nordisk A/S: MSA - Mar 21 and Amendments
+The MSA includes a float provision referenced in Section 6 of Appendix 3. MSA effective 2021-03-15 with 5 amendments. Detailed clause text is in the referenced section.
+Let me know if you&#x27;d like the exact float clause text.</pre>
+<div class='label'>LLM reason</div><pre>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves all critical information about the float provision location, MSA date, and number of amendments, with additional helpful details and offers to provide exact clause text.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_38 — <span class='pass'>PASS</span></h2>
+<div><b>Question:</b> What is the retainer language</div>
+<div><b>Best semantic template:</b> golden_answer_1 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.9142 | LLM: PASS (0.9) | drift: 0.0858 (stable)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>I found the retainer language in the Novo Nordisk MSA 292577 and its amendments. The main MSA document includes a clause stating:
+Retainer
+To ensure the supplier does not suffer cash-flow depletion from performing services, Novo Nordisk will provide, at the Work Order level, a retainer of 5% of the total estimated Pass-through Costs. This retainer is payable in full immediately upon the Work Order and will be credited back to Novo Nordisk according to the agreed terms in the Work Order. This retainer requirement also applies to fees paid under a unit-based payment schedule.
+This means Novo Nordisk provides a 5% retainer on estimated pass-through costs to support supplier cash flow, payable immediately upon the Work Order, and credited back as agreed.
+If you want, I can share the exact document links or help with other provisions.</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>I see you&#x27;re asking about the retainer language, specifically in the context of the Novo Nordisk MSA 292577 and its amendments.
+The retainer provision in this MSA states that Novo Nordisk agrees to provide a retainer of 5% of the total estimated Pass-through Costs, which is payable immediately upon the Work Order. This retainer is credited back to Novo Nordisk as agreed in the Work Order. The retainer also applies to fees paid on a unit-based payment schedule.
+This retainer clause is part of the broader financial and operational framework of the MSA, which also includes provisions for float positions (noted in Section 6 of Appendix 3).
+If you&#x27;d like, I can provide the exact wording of the retainer clause or details from specific amendments.</pre>
+<div class='label'>LLM reason</div><pre>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer accurately captures the key details of the retainer language including the 5% retainer on estimated Pass-through Costs, immediate payment upon Work Order, credit back to Novo Nordisk, and applicability to unit-based payment schedules.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+<div class='case'>
+<h2>TC_41 — <span class='pass'>PASS</span></h2>
+<div><b>Question:</b> Please confirm the MSA payment terms (Credit Terms, Compensation Terms, Commercial Terms) for the following clients; Novo Nordisk, IPSEN and Regeneron</div>
+<div><b>Best semantic template:</b> golden_answer_1 | <b>Best LLM template:</b> golden_answer_1 | semantic: 0.8715 | LLM: PASS (0.9) | drift: 0.1285 (number_changed)</div>
+<div class='label'>Agent answer (actual)</div>
+<pre>I’d be happy to confirm the MSA payment terms for Novo Nordisk, IPSEN, and Regeneron. Here’s what I found based on their respective MSAs and amendments:
+Novo Nordisk A/S: MSA - Mar 21
+Credit Terms: Payment due within 60 days.
+Compensation Terms: Services invoiced on a milestone basis unless otherwise agreed in the Work Order. Rate cards with fixed rates through 31 Dec 2025, with inflation adjustments thereafter. Pass-through costs billed as incurred.
+Commercial Terms: Liability cap is twice the fees paid under the relevant Work Order. Governing law is Denmark. Rebates and discounts apply. Change order provisions and indemnification clauses are included. GDPR-compliant Data Protection Addendum (DPA) is in place.
+IPSEN: Ipsen-MSA_28 Aug 2020
+Credit Terms: Payment due within 90 days.
+Compensation Terms: Payments based on approved budgets in Work Orders. Rate card fixed for 3 years with inflation adjustments thereafter. Pass-through expenses billed monthly with no markup. Volume rebates and discounts apply.
+Commercial Terms: Liability cap is the greater of €3,000,000 or 3x fees payable under the SOW, higher for personal data breaches. Governing law is England &amp; Wales. Non-compete clause included. Indemnification and GDPR-compliant DPA are present.
+Regeneron Pharmaceuticals, Inc: MSA - Nov 1 2021
+Credit Terms: 90 days from invoice receipt for Direct Fees and Pass-Through Costs; 45 days for Investigator Fees.
+Compensation Terms: Fees as per Work Orders; invoices in USD. Rate cards with inflation adjustments based on Mercer index. Investigator payments managed with quarterly forecasts and monthly reporting. Pass-through costs billed monthly. Volume discounts apply.
+Commercial Terms: Liability cap is the greater of 3 times direct fees paid or $5 million; $8 million for data protection breaches. Governing law is New York. Penalty clauses, rebates, and volume discounts apply. Indemnification and GDPR-compliant DPA included.
+If you want, I can provide specific excerpts or direct links to the exact documents for any of these clients.</pre>
+<div class='label'>Golden expected (stitched best match)</div>
+<pre>MSA Payment Terms for Novo Nordisk, IPSEN, and Regeneron
+Novo Nordisk
+Credit Terms: Payment due 60 days from invoice date.
+Compensation Terms: Fees based on rate cards with Work Order budgets referencing the rate card; currency EUR; rate card effective February 1, 2021 through December 31, 2025, with inflation adjustments thereafter.
+Commercial Terms: Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented. Liability cap is two times the fees paid under Work Orders.
+IPSEN
+Credit Terms: Payment due 90 days from invoice date.
+Compensation Terms: Remuneration based on approved Work Order budgets; rate card fixed for three years from the MSA effective date, with inflation thereafter; volume rebates per Annex 1.2; Pass-Through Expenses invoiced monthly with no mark-up.
+Commercial Terms: Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented. Liability cap is the greater of €3,000,000 or three times the fees payable under the SOW.
+Regeneron
+Credit Terms: Projects awarded before June 28, 2024: 45 days from invoice receipt. Projects awarded after June 28, 2024: 90 days for Direct Fees and Pass-Through Costs, and 45 days for Investigator Fees.
+Compensation Terms: Fees per Work Orders; invoices in USD; inflation adjustments based on the Willis Towers Watson index; enterprise volume discounts may apply.
+Commercial Terms: Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented. Liability cap is the greater of three times direct fees or $5 million.
+I can provide specific excerpts or more detail from any MSA/amendment if needed.</pre>
+<div class='label'>LLM reason</div><pre>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). All critical payment terms (credit, compensation, commercial) for each client are present and consistent; additional correct details are included.</pre>
+<div><b>Excel legacy (audit only):</b> semantic=NOT_RUN | LLM=NOT_RUN | status_vs_excel=PASS</div>
+</div>
+</body></html>

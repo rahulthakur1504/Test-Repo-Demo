@@ -1,0 +1,2255 @@
+{
+  "run_id": "1756",
+  "build_id": "22Jul2026/Client_Contract/R1_Non_stats/1756",
+  "date_folder": "22Jul2026",
+  "sheet_name": "R1_Non_stats",
+  "run_time": "1756",
+  "run_type": "full_with_retry",
+  "orbis_chat": "ClientContract_NonStats_22Jul26_1756",
+  "business_agent": "Client_Contract_Agent",
+  "environment": "preprod",
+  "browser": "edge",
+  "finished_at": "2026-07-22 18:06:29",
+  "total": 11,
+  "passed": 9,
+  "failed": 2,
+  "review": 0,
+  "error": 0,
+  "not_run": 0,
+  "retry": {
+    "questions_retried": 0,
+    "retried_ids": [],
+    "flipped_to_pass": [],
+    "still_failed_after_retry": [],
+    "skipped_retry_route": []
+  },
+  "timing": {
+    "total_minutes": 9.6,
+    "main_run_minutes": 9.6,
+    "retry_minutes": 0.0,
+    "total_seconds": 575.2,
+    "retry_seconds": 0.0,
+    "agent_response_avg_seconds": 41.15,
+    "agent_response_p95_seconds": 54.49,
+    "agent_response_avg_minutes": 0.69,
+    "agent_response_p95_minutes": 0.91,
+    "agent_response_samples": 11
+  },
+  "results": [
+    {
+      "test_case_id": "TC_01",
+      "question": "Please give me link for MSA of AbbVie Inc.?",
+      "expected_answer_excel_legacy": "One of the Master Service Agreements (MSAs) for AbbVie Inc. is titled AbbVie Inc.: MSA - Jun 17 - SYMPHONY. However, the documents related to this MSA and its amendments are marked as missing or incomplete in the database.\n\nTherefore, I am unable to provide a direct link to the complete MSA document for AbbVie Inc. at this time.\n\nPlease review the information manually in Process Unity for the most accurate and complete details.\n\nThe MSA documents for AbbVie Inc. appear to be incomplete or missing in the system. For full access, please check Process Unity directly. If you have other questions or need assistance with different documents, feel free to ask.",
+      "expected_answer": "One of the Master Service Agreements (MSAs) for AbbVie Inc. is titled AbbVie Inc.: MSA - Jun 17 - SYMPHONY. However, the documents related to this MSA and its amendments are marked as missing or incomplete in the database.\n\nTherefore, I am unable to provide a direct link to the complete MSA document for AbbVie Inc. at this time.\n\nPlease review the information manually in Process Unity for the most accurate and complete details.\n\nThe MSA documents for AbbVie Inc. appear to be incomplete or missing in the system. For full access, please check Process Unity directly. If you have other questions or need assistance with different documents, feel free to ask.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "PASS",
+        "failure_bucket": null,
+        "failure_reason": null,
+        "actual_answer": "I found the MSA document for AbbVie Inc. titled \"AbbVie Inc.: MSA - Jun 17 - SYMPHONY\". You can access the contract document using the following link:\nAbbVie_SHA_2017_CA_062317.pdf\nThis document is active and executed, with an effective date of June 23, 2017, and an expiration date of October 31, 2028.\nLet me know if you need any more details!",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 17:56:53",
+        "end_time": "2026-07-22 17:57:29",
+        "duration_seconds": 35.38,
+        "agent_response_seconds": 34.62,
+        "agent_response_minutes": 0.58,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "PASS",
+          "failure_bucket": null,
+          "failure_reason": null,
+          "actual_answer": "I found the MSA document for AbbVie Inc. titled \"AbbVie Inc.: MSA - Jun 17 - SYMPHONY\". You can access the contract document using the following link:\nAbbVie_SHA_2017_CA_062317.pdf\nThis document is active and executed, with an effective date of June 23, 2017, and an expiration date of October 31, 2028.\nLet me know if you need any more details!",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 1",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 17:56:53",
+          "end_time": "2026-07-22 17:57:29",
+          "duration_seconds": 35.38,
+          "agent_response_seconds": 34.62,
+          "agent_response_minutes": 0.58,
+          "status_vs_golden": "PASS",
+          "golden_drift_score": 0.0985,
+          "golden_llm_status": "PASS"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_01",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "document_link",
+        "status_vs_golden": "PASS",
+        "best_match": "golden_answer_2",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.0985,
+        "drift_type": "link_added",
+        "drift_types": [
+          "link_added"
+        ],
+        "variables_bootstrap": {
+          "sponsor_name": "AbbVie Inc.",
+          "contract_title": "AbbVie Inc.: MSA - Jun 17 - SYMPHONY",
+          "link_label": "AbbVie Inc.: MSA - Jun 17 - SYMPHONY Document",
+          "document_link": "AbbVie_SHA_2017_CA_062317.pdf",
+          "repository_name": "AbbVie Inc. Sponsor MSA and Contract Repository",
+          "doc_status": "available"
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "I found the Master Service Agreement (MSA) for AbbVie Inc. titled \"AbbVie Inc.: MSA - Jun 17 - SYMPHONY\". You can access the MSA document directly using this link:\nAbbVie Inc.: MSA - Jun 17 - SYMPHONY Document\nLet me know if you need links to any specific amendments or further details!",
+          "golden_answer_2": "I found the MSA for AbbVie Inc. titled \"AbbVie Inc.: MSA - Jun 17 - SYMPHONY\". You can access the contract document using this link:\nAbbVie Inc.: MSA - Jun 17 - SYMPHONY Document\nLet me know if you need any more details or help!",
+          "golden_answer_3": "I found the Master Services Agreement (MSA) for AbbVie Inc. titled \"AbbVie Inc.: MSA - Jun 17 - SYMPHONY\". You can access the MSA document directly using this link:\nAbbVie Inc.: MSA - Jun 17 - SYMPHONY Document\nAdditionally, the MSA and its amendments are available in the AbbVie Inc. Sponsor MSA and Contract Repository.\nLet me know if you want links to any specific amendments or further details!"
+        },
+        "golden_resolved_best_answer": "I found the MSA for AbbVie Inc. titled \"AbbVie Inc.: MSA - Jun 17 - SYMPHONY\". You can access the contract document using this link:\nAbbVie Inc.: MSA - Jun 17 - SYMPHONY Document\nLet me know if you need any more details or help!",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.9015,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.7882,
+            "golden_answer_2": 0.9015,
+            "golden_answer_3": 0.7802
+          }
+        },
+        "llm": {
+          "status": "PASS",
+          "confidence": 0.9,
+          "reason": "LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer provides the same MSA document title and a direct link, with additional relevant details about the document's status and dates.",
+          "missing_facts": []
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer provides the same MSA document title and a direct link, with additional relevant details about the document's status and dates.",
+            "missing_facts": []
+          },
+          "golden_answer_2": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer preserves the expected meaning and provides additional relevant details about the document's status and dates.",
+            "missing_facts": []
+          },
+          "golden_answer_3": {
+            "status": "FAIL",
+            "confidence": 0.9,
+            "reason": "The actual answer misses the mention of the AbbVie Inc. Sponsor MSA and Contract Repository and does not provide the direct link as expected.",
+            "missing_facts": [
+              "MSA and its amendments are available in the AbbVie Inc. Sponsor MSA and Contract Repository",
+              "Direct access link to 'AbbVie Inc.: MSA - Jun 17 - SYMPHONY Document'"
+            ]
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.9015,
+        "scores_by_golden": {
+          "golden_answer_1": 0.7882,
+          "golden_answer_2": 0.9015,
+          "golden_answer_3": 0.7802
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_07",
+      "question": "What license rights did Symphony grant the client under section 2 of Abbott Laboratories: MSA - Dec 09 - SYMPHONY?",
+      "expected_answer_excel_legacy": "Regarding the query about whether the client can sign Statements of Work (SOWs) under the contract titled AstraZeneca: MSA - Aug-15, the documents available for AstraZeneca MSAs around that period (including MSA - Aug-12, MSA - Jul-19, and MSA - Nov-16) have significant data missing or incomplete for most except the MSA - Nov-16 document.\n\nBecause the key documents related to the MSA - Aug-15 are missing or incomplete, I am unable to confirm from the available data whether the client can sign SOWs under that specific MSA.",
+      "expected_answer": "Regarding the query about whether the client can sign Statements of Work (SOWs) under the contract titled AstraZeneca: MSA - Aug-15, the documents available for AstraZeneca MSAs around that period (including MSA - Aug-12, MSA - Jul-19, and MSA - Nov-16) have significant data missing or incomplete for most except the MSA - Nov-16 document.\n\nBecause the key documents related to the MSA - Aug-15 are missing or incomplete, I am unable to confirm from the available data whether the client can sign SOWs under that specific MSA.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "PASS",
+        "failure_bucket": null,
+        "failure_reason": null,
+        "actual_answer": "I’d be happy to help with that! Based on the contract titled \"Abbott Laboratories: MSA - Dec 09 - SYMPHONY\", here’s what Symphony granted the client under Section 2 regarding license rights:\nSymphony grants Abbott Laboratories a non-exclusive, non-sublicensable, non-transferable license to use the Software (called Synoma®) during the agreement term.\nThe license is strictly for converting certain personal information elements into Tokens as described in the implementation documentation.\nUse of the Software is limited to the specified location and must be used as provided, including any updates or modifications from Symphony or its trusted third parties.\nAbbott may allow its IT support contractors access only if they need it, are bound by similar confidentiality terms, and Abbott remains responsible for their actions.\nSymphony may provide updates, bug fixes, or enhancements, which Abbott must implement within 60 days.\nAbbott is prohibited from copying, modifying, selling, distributing, reverse engineering, or creating derivative works of the Software.\nSymphony retains exclusive ownership of all rights and intellectual property in the Software and any modifications.\nAbbott must keep the Software confidential, restrict access, and notify Symphony immediately if confidentiality is compromised.\nSymphony has the right to audit Abbott’s compliance with these terms with prior notice.\nIf you want, I can provide more details or help with other sections of the contract!",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 17:57:29",
+        "end_time": "2026-07-22 17:58:04",
+        "duration_seconds": 35.44,
+        "agent_response_seconds": 34.8,
+        "agent_response_minutes": 0.58,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "PASS",
+          "failure_bucket": null,
+          "failure_reason": null,
+          "actual_answer": "I’d be happy to help with that! Based on the contract titled \"Abbott Laboratories: MSA - Dec 09 - SYMPHONY\", here’s what Symphony granted the client under Section 2 regarding license rights:\nSymphony grants Abbott Laboratories a non-exclusive, non-sublicensable, non-transferable license to use the Software (called Synoma®) during the agreement term.\nThe license is strictly for converting certain personal information elements into Tokens as described in the implementation documentation.\nUse of the Software is limited to the specified location and must be used as provided, including any updates or modifications from Symphony or its trusted third parties.\nAbbott may allow its IT support contractors access only if they need it, are bound by similar confidentiality terms, and Abbott remains responsible for their actions.\nSymphony may provide updates, bug fixes, or enhancements, which Abbott must implement within 60 days.\nAbbott is prohibited from copying, modifying, selling, distributing, reverse engineering, or creating derivative works of the Software.\nSymphony retains exclusive ownership of all rights and intellectual property in the Software and any modifications.\nAbbott must keep the Software confidential, restrict access, and notify Symphony immediately if confidentiality is compromised.\nSymphony has the right to audit Abbott’s compliance with these terms with prior notice.\nIf you want, I can provide more details or help with other sections of the contract!",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 1",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 17:57:29",
+          "end_time": "2026-07-22 17:58:04",
+          "duration_seconds": 35.44,
+          "agent_response_seconds": 34.8,
+          "agent_response_minutes": 0.58,
+          "status_vs_golden": "PASS",
+          "golden_drift_score": 0.1899,
+          "golden_llm_status": "PASS"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_07",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "clause_extraction",
+        "status_vs_golden": "PASS",
+        "best_match": "golden_answer_1",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.1899,
+        "drift_type": "link_removed",
+        "drift_types": [
+          "link_removed"
+        ],
+        "variables_bootstrap": {
+          "contract_title": "Abbott Laboratories: MSA - Dec 09 - SYMPHONY",
+          "section_ref": "Section 2",
+          "licensor": "Symphony",
+          "licensee": "Abbott Laboratories",
+          "software_name": "Synoma®",
+          "license_type": "non-exclusive, non-sublicensable, non-transferable"
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "License Rights Granted by Symphony under Section 2 of the MSA \"Abbott Laboratories: MSA - Dec 09 - SYMPHONY\"\nSymphony grants Abbott Laboratories a non-exclusive, non-sublicensable, non-transferable license to use the proprietary software Synoma®.\nThe license is valid during the term of the agreement and limited to use as required by Exhibit A, Implementation Requirements, at the Licensee's specified location.\nIf you'd like, I can share the full MSA document link for your detailed review.",
+          "golden_answer_2": "I found detailed information about the license rights granted by Symphony to Abbott Laboratories under Section 2 of the Master Service Agreement titled \"Abbott Laboratories: MSA - Dec 09 - SYMPHONY\".\nSummary: limited license to Synoma® with restrictions on copy, transfer, reverse engineering, confidentiality, and audit rights.\nLet me know if you want the direct link to the full contract document.",
+          "golden_answer_3": "Regarding Section 2 of \"Abbott Laboratories: MSA - Dec 09 - SYMPHONY\":\nSymphony grants Abbott Laboratories a non-exclusive, non-sublicensable, non-transferable license to Synoma® during the agreement term, with contractor access conditions, update requirements, usage restrictions, and ownership retained by Symphony.\nI can provide the full contract document link if needed."
+        },
+        "golden_resolved_best_answer": "License Rights Granted by Symphony under Section 2 of the MSA \"Abbott Laboratories: MSA - Dec 09 - SYMPHONY\"\nSymphony grants Abbott Laboratories a non-exclusive, non-sublicensable, non-transferable license to use the proprietary software Synoma®.\nThe license is valid during the term of the agreement and limited to use as required by Exhibit A, Implementation Requirements, at the Licensee's specified location.\nIf you'd like, I can share the full MSA document link for your detailed review.",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.8101,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.8101,
+            "golden_answer_2": 0.8017,
+            "golden_answer_3": 0.8004
+          }
+        },
+        "llm": {
+          "status": "PASS",
+          "confidence": 0.9,
+          "reason": "LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves the expected meaning and adds relevant details about license scope, restrictions, and obligations without contradicting the expected facts.",
+          "missing_facts": []
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer preserves the expected meaning and adds relevant details about license scope, restrictions, and obligations without contradicting the expected facts.",
+            "missing_facts": []
+          },
+          "golden_answer_2": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer preserves the expected meaning by describing the limited license to Synoma® with restrictions on copying, transfer, reverse engineering, confidentiality, and audit rights, while providing additional relevant details.",
+            "missing_facts": []
+          },
+          "golden_answer_3": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer preserves all critical license rights granted under Section 2, including non-exclusive, non-sublicensable, non-transferable license, usage restrictions, contractor access, update requirements, and Symphony's ownership.",
+            "missing_facts": []
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.8101,
+        "scores_by_golden": {
+          "golden_answer_1": 0.8101,
+          "golden_answer_2": 0.8017,
+          "golden_answer_3": 0.8004
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_09",
+      "question": "What ICON services and Divisions are covered by Back to Mobility GmbH: MSA - Apr 25?",
+      "expected_answer_excel_legacy": "You asked about the ICON services and Divisions covered by Back to Mobility GmbH: MSA - Apr 25. Unfortunately, one of the documents related to this MSA is missing or incomplete. Therefore, I am unable to provide the specific details regarding the ICON services and Divisions covered under this agreement.\n\nPlease review the relevant documents directly in Process Unity for complete and accurate information.\n\nThe document for Back to Mobility GmbH: MSA - Apr 25 is incomplete or missing, so I could not provide the details on ICON services and Divisions covered. Please check Process Unity for the full information.",
+      "expected_answer": "You asked about the ICON services and Divisions covered by Back to Mobility GmbH: MSA - Apr 25. Unfortunately, one of the documents related to this MSA is missing or incomplete. Therefore, I am unable to provide the specific details regarding the ICON services and Divisions covered under this agreement.\n\nPlease review the relevant documents directly in Process Unity for complete and accurate information.\n\nThe document for Back to Mobility GmbH: MSA - Apr 25 is incomplete or missing, so I could not provide the details on ICON services and Divisions covered. Please check Process Unity for the full information.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "PASS",
+        "failure_bucket": null,
+        "failure_reason": null,
+        "actual_answer": "I couldn't find information about the ICON services and Divisions covered by the contract titled \"Back to Mobility GmbH: MSA - Apr 25\". Could you please confirm if the contract name is correct or provide any additional details? That way, I can help you find the specific information you need.",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "No internal agent captured from Thought Process or Reasoning panel (suite=R1_Non_stats). Route treated as PASS; answer quality still validated.",
+        "route_note": "No internal agent captured from Thought Process or Reasoning panel (suite=R1_Non_stats).",
+        "internal_agent": null,
+        "agent_capture_source": "not_captured",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 17:58:04",
+        "end_time": "2026-07-22 17:58:28",
+        "duration_seconds": 23.35,
+        "agent_response_seconds": 21.59,
+        "agent_response_minutes": 0.36,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "PASS",
+          "failure_bucket": null,
+          "failure_reason": null,
+          "actual_answer": "I couldn't find information about the ICON services and Divisions covered by the contract titled \"Back to Mobility GmbH: MSA - Apr 25\". Could you please confirm if the contract name is correct or provide any additional details? That way, I can help you find the specific information you need.",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 3"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": null,
+          "agent_capture_source": "not_captured",
+          "route_note": "No internal agent captured from Thought Process or Reasoning panel (suite=R1_Non_stats).",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "No internal agent captured from Thought Process or Reasoning panel (suite=R1_Non_stats). Route treated as PASS; answer quality still validated.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 17:58:04",
+          "end_time": "2026-07-22 17:58:28",
+          "duration_seconds": 23.35,
+          "agent_response_seconds": 21.59,
+          "agent_response_minutes": 0.36,
+          "status_vs_golden": "PASS",
+          "golden_drift_score": 0.0786,
+          "golden_llm_status": "PASS"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_09",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "document_not_found",
+        "status_vs_golden": "PASS",
+        "best_match": "golden_answer_1",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.0786,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "variables_bootstrap": {
+          "contract_title": "Back to Mobility GmbH: MSA - Apr 25",
+          "doc_status": "not_found"
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "I couldn't find the Master Services Agreement titled \"Back to Mobility GmbH: MSA - Apr 25\" in the available documents. Could you please confirm if the contract name is correct or provide any additional details? This will help me locate the right document to provide you with detailed information about the ICON services and divisions covered.",
+          "golden_answer_2": "I was unable to locate an MSA matching \"Back to Mobility GmbH: MSA - Apr 25\" in the available contract repository. Please verify the contract title or share additional identifiers so I can search again for ICON services and divisions covered.",
+          "golden_answer_3": "No Master Services Agreement titled \"Back to Mobility GmbH: MSA - Apr 25\" appears in the documents I can access. Please confirm the title or check Process Unity directly for ICON services and division coverage under this agreement."
+        },
+        "golden_resolved_best_answer": "I couldn't find the Master Services Agreement titled \"Back to Mobility GmbH: MSA - Apr 25\" in the available documents. Could you please confirm if the contract name is correct or provide any additional details? This will help me locate the right document to provide you with detailed information about the ICON services and divisions covered.",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.9214,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.9214,
+            "golden_answer_2": 0.9029,
+            "golden_answer_3": 0.815
+          }
+        },
+        "llm": {
+          "status": "PASS",
+          "confidence": 1.0,
+          "reason": "LLM PASS via golden_answer_1 (pass-if-any across 3 variants). Both answers convey the same meaning: the document could not be found and a request for confirmation or additional details is made.",
+          "missing_facts": []
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "PASS",
+            "confidence": 1.0,
+            "reason": "Both answers convey the same meaning: the document could not be found and a request for confirmation or additional details is made.",
+            "missing_facts": []
+          },
+          "golden_answer_2": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "Both answers indicate inability to find the contract and request confirmation or additional details.",
+            "missing_facts": []
+          },
+          "golden_answer_3": {
+            "status": "PASS",
+            "confidence": 1.0,
+            "reason": "Both answers indicate the absence of information about the specified MSA and request confirmation of the contract title.",
+            "missing_facts": []
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.9214,
+        "scores_by_golden": {
+          "golden_answer_1": 0.9214,
+          "golden_answer_2": 0.9029,
+          "golden_answer_3": 0.815
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_16",
+      "question": "What is the latest amendment of Boston Scientific Corporation: MSA - Sep-13 about?",
+      "expected_answer_excel_legacy": "The latest amendment to the Boston Scientific Corporation: MSA - Sep-13 is Amendment #5 (Am#3 to Restated MSA), executed on 20 November 2023.\n\nThis amendment extends the terms of the restated Master Services Agreement and includes provisions related to compliance with various regulations and standards governing medical device research and clinical investigations, such as the Declaration of Helsinki, HIPAA, EU Medical Device Directives, and Good Clinical Practice guidelines.\n\nIt emphasizes Boston Scientific's commitment to responsible human subject research, adherence to applicable laws, and ethical standards in clinical trials, including conflict of interest management and quality assurance.\n\nFor full details, please refer to the Amendment #5 document linked below.\n\nI have summarized the latest amendment for Boston Scientific Corporation: MSA - Sep-13 based on the available documents and metadata. Please review the linked Amendment #5 document for complete and detailed contractual information.",
+      "expected_answer": "The latest amendment to the Boston Scientific Corporation: MSA - Sep-13 is Amendment #5 (Am#3 to Restated MSA), executed on 20 November 2023.\n\nThis amendment extends the terms of the restated Master Services Agreement and includes provisions related to compliance with various regulations and standards governing medical device research and clinical investigations, such as the Declaration of Helsinki, HIPAA, EU Medical Device Directives, and Good Clinical Practice guidelines.\n\nIt emphasizes Boston Scientific's commitment to responsible human subject research, adherence to applicable laws, and ethical standards in clinical trials, including conflict of interest management and quality assurance.\n\nFor full details, please refer to the Amendment #5 document linked below.\n\nI have summarized the latest amendment for Boston Scientific Corporation: MSA - Sep-13 based on the available documents and metadata. Please review the linked Amendment #5 document for complete and detailed contractual information.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "FAIL",
+        "failure_bucket": "GOLDEN_DRIFT",
+        "failure_reason": "Golden FAIL drift=0.3228 type=count_changed semantic=FAIL llm=FAIL LLM FAIL — no variant passed (checked 3 templates). The actual answer discusses Amendment #2 in detail and states that no clear summary or details are available for Amendment #5, which is the latest a",
+        "actual_answer": "Hi! I looked into the latest amendment for the contract titled \"Boston Scientific Corporation: MSA - Sep-13\". While there are 5 amendments in total, the detailed content available is mainly for Amendment #2, which is an Amended & Restated MSA.\nHere’s a concise summary of Amendment #2’s key points, scope, and purpose:\nHuman Subject Research Guidance: Boston Scientific commits to responsible human subject research, ensuring legitimate scientific need, minimizing risks, and complying with ethical and regulatory standards like the Declaration of Helsinki, ICH GCP, HIPAA, and EU directives.\nVendor Responsibilities: The vendor must comply with all applicable laws, maintain quality assurance, and ensure data integrity and security in electronic records per FDA regulations.\nConflict of Interest and Transparency: The amendment addresses managing conflicts of interest in clinical research, ensuring transparency in study results, and proper compensation practices for investigators and subjects.\nLegal and Compliance Provisions: It includes clauses on assignment, governing law (Delaware), integration, modification, severability, and waiver.\nData Privacy and Protection: Provisions related to HIPAA compliance, data breach notification, and protection of protected health information are incorporated.\nUnfortunately, the documents do not provide a clear summary or details specifically for Amendment #5, the latest amendment.\nIf you want, I can help you explore Amendment #2 in more detail or assist in locating the full text of Amendment #5 for a precise summary.\nHere are the sources I used for this information:\nBoston Scientific Corporation: MSA - Sep-13 - Amendment # 2 (Amended & Restated MSA)\nSponsor MSA and Contract Repository - Boston Scientific Corporation: MSA - Sep-13\nLet me know if you'd like me to dig deeper or help with anything else!",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 17:58:28",
+        "end_time": "2026-07-22 17:59:07",
+        "duration_seconds": 39.43,
+        "agent_response_seconds": 38.68,
+        "agent_response_minutes": 0.64,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "FAIL",
+          "failure_bucket": "GOLDEN_DRIFT",
+          "failure_reason": "Golden FAIL drift=0.3228 type=count_changed semantic=FAIL llm=FAIL LLM FAIL — no variant passed (checked 3 templates). The actual answer discusses Amendment #2 in detail and states that no clear summary or details are available for Amendment #5, which is the latest a",
+          "actual_answer": "Hi! I looked into the latest amendment for the contract titled \"Boston Scientific Corporation: MSA - Sep-13\". While there are 5 amendments in total, the detailed content available is mainly for Amendment #2, which is an Amended & Restated MSA.\nHere’s a concise summary of Amendment #2’s key points, scope, and purpose:\nHuman Subject Research Guidance: Boston Scientific commits to responsible human subject research, ensuring legitimate scientific need, minimizing risks, and complying with ethical and regulatory standards like the Declaration of Helsinki, ICH GCP, HIPAA, and EU directives.\nVendor Responsibilities: The vendor must comply with all applicable laws, maintain quality assurance, and ensure data integrity and security in electronic records per FDA regulations.\nConflict of Interest and Transparency: The amendment addresses managing conflicts of interest in clinical research, ensuring transparency in study results, and proper compensation practices for investigators and subjects.\nLegal and Compliance Provisions: It includes clauses on assignment, governing law (Delaware), integration, modification, severability, and waiver.\nData Privacy and Protection: Provisions related to HIPAA compliance, data breach notification, and protection of protected health information are incorporated.\nUnfortunately, the documents do not provide a clear summary or details specifically for Amendment #5, the latest amendment.\nIf you want, I can help you explore Amendment #2 in more detail or assist in locating the full text of Amendment #5 for a precise summary.\nHere are the sources I used for this information:\nBoston Scientific Corporation: MSA - Sep-13 - Amendment # 2 (Amended & Restated MSA)\nSponsor MSA and Contract Repository - Boston Scientific Corporation: MSA - Sep-13\nLet me know if you'd like me to dig deeper or help with anything else!",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 1",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 17:58:28",
+          "end_time": "2026-07-22 17:59:07",
+          "duration_seconds": 39.43,
+          "agent_response_seconds": 38.68,
+          "agent_response_minutes": 0.64,
+          "status_vs_golden": "FAIL",
+          "golden_drift_score": 0.3228,
+          "golden_llm_status": "FAIL"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_16",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "amendment_summary",
+        "status_vs_golden": "FAIL",
+        "best_match": "golden_answer_2",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.3228,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed",
+          "fact_removed"
+        ],
+        "variables_bootstrap": {
+          "contract_title": "Boston Scientific Corporation: MSA - Sep-13",
+          "latest_amendment_number": "5",
+          "amendment_alt_label": "Amendment #3 to the Restated MSA",
+          "amendment_primary_topic": "Rate Card and contracting party changes that may impact tax costs",
+          "rate_card_revision_right": "Vendor may revise the Rate Card if a change in the contracting party results in additional tax costs such as withholding tax",
+          "work_order_inflation_range": "3.0% to 10.0%",
+          "regions_covered": "North America, Latin America, Western Europe, Eastern Europe, Asia Pacific, and India",
+          "example_roles": "Clinical Project Director, Project Manager, Clinical Trial Manager, Clinical Research Associate, Study Start Up Lead, Data Management, Biostatistics, Medical Writer",
+          "msa_effective_period": "September 2013",
+          "document_source_label": "Boston Scientific Corporation: MSA - Sep-13 - Amendment # 5 (Am#3 to Restated MSA)",
+          "amendment_content_available": true
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "Summary of the Latest Amendment (Amendment #5) to Boston Scientific Corporation: MSA - Sep-13\nI found detailed information about Amendment #5 (also referred to as Amendment #3 to the Restated MSA) of \"Boston Scientific Corporation: MSA - Sep-13\".\nPurpose:\nThe latest amendment primarily addresses Rate Card and contracting party changes that may impact tax costs.\nKey Changes:\nVendor may revise the Rate Card if a change in the contracting party results in additional tax costs such as withholding tax.\nRegional Rate Card Details: inflation percentages and rates for roles across North America, Latin America, Western Europe, Eastern Europe, Asia Pacific, and India. Example roles include Clinical Project Director, Project Manager, Clinical Trial Manager, Clinical Research Associate, Study Start Up Lead, Data Management, Biostatistics, Medical Writer.\nWork Order Inflation Rates: inflation rates for work orders are specified per region, ranging from 3.0% to 10.0%.\nRelevant Terms:\nThe amendment is part of the restated MSA framework and keeps tax implications from contracting-party changes transparent.\nAdditional Information:\nThe amendment was executed under the MSA effective from September 2013. Document source: Boston Scientific Corporation: MSA - Sep-13 - Amendment # 5 (Am#3 to Restated MSA).\nI can provide the direct amendment document link if needed.",
+          "golden_answer_2": "Latest Amendment for Boston Scientific Corporation: MSA - Sep-13\nAmendment #5 (Amendment #3 to the Restated MSA) is the most recent and content is available.\nIt focuses on Rate Card and contracting party changes that may impact tax costs, including Vendor may revise the Rate Card if a change in the contracting party results in additional tax costs such as withholding tax.\nIt also documents regional rate-card inflation for North America, Latin America, Western Europe, Eastern Europe, Asia Pacific, and India, with work-order inflation ranging from 3.0% to 10.0%, covering roles such as Clinical Project Director, Project Manager, Clinical Trial Manager, Clinical Research Associate, Study Start Up Lead, Data Management, Biostatistics, Medical Writer.\nDocument source: Boston Scientific Corporation: MSA - Sep-13 - Amendment # 5 (Am#3 to Restated MSA). Let me know if you want the amendment link or summaries of other amendments.",
+          "golden_answer_3": "For \"Boston Scientific Corporation: MSA - Sep-13\", Amendment #5 is the latest available amendment.\nMain purpose: Rate Card and contracting party changes that may impact tax costs.\nKey commercial impact: Vendor may revise the Rate Card if a change in the contracting party results in additional tax costs such as withholding tax; regional inflation 3.0% to 10.0% across North America, Latin America, Western Europe, Eastern Europe, Asia Pacific, and India.\nThe amendment sits in the restated MSA framework effective from September 2013. I can share Boston Scientific Corporation: MSA - Sep-13 - Amendment # 5 (Am#3 to Restated MSA) or more role-level rate detail on request."
+        },
+        "golden_resolved_best_answer": "Latest Amendment for Boston Scientific Corporation: MSA - Sep-13\nAmendment #5 (Amendment #3 to the Restated MSA) is the most recent and content is available.\nIt focuses on Rate Card and contracting party changes that may impact tax costs, including Vendor may revise the Rate Card if a change in the contracting party results in additional tax costs such as withholding tax.\nIt also documents regional rate-card inflation for North America, Latin America, Western Europe, Eastern Europe, Asia Pacific, and India, with work-order inflation ranging from 3.0% to 10.0%, covering roles such as Clinical Project Director, Project Manager, Clinical Trial Manager, Clinical Research Associate, Study Start Up Lead, Data Management, Biostatistics, Medical Writer.\nDocument source: Boston Scientific Corporation: MSA - Sep-13 - Amendment # 5 (Am#3 to Restated MSA). Let me know if you want the amendment link or summaries of other amendments.",
+        "semantic": {
+          "status": "FAIL",
+          "score": 0.6772,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.6544,
+            "golden_answer_2": 0.6772,
+            "golden_answer_3": 0.647
+          }
+        },
+        "llm": {
+          "status": "FAIL",
+          "confidence": 1.0,
+          "reason": "LLM FAIL — no variant passed (checked 3 templates). The actual answer discusses Amendment #2 in detail and states that no clear summary or details are available for Amendment #5, which is the latest amendment asked about. This contradicts the expected answer that provides a detailed summary of Amendment #5.",
+          "missing_facts": [
+            "Summary and details of Amendment #5 (Amendment #3 to Restated MSA)",
+            "Purpose addressing Rate Card and contracting party changes impacting tax costs",
+            "Regional Rate Card inflation percentages and role rates",
+            "Work Order inflation rates per region",
+            "Tax implications transparency related to contracting-party changes"
+          ]
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "FAIL",
+            "confidence": 1.0,
+            "reason": "The actual answer discusses Amendment #2 in detail and states that no clear summary or details are available for Amendment #5, which is the latest amendment asked about. This contradicts the expected answer that provides a detailed summary of Amendment #5.",
+            "missing_facts": [
+              "Summary and details of Amendment #5 (Amendment #3 to Restated MSA)",
+              "Purpose addressing Rate Card and contracting party changes impacting tax costs",
+              "Regional Rate Card inflation percentages and role rates",
+              "Work Order inflation rates per region",
+              "Tax implications transparency related to contracting-party changes"
+            ]
+          },
+          "golden_answer_2": {
+            "status": "FAIL",
+            "confidence": 0.9,
+            "reason": "The actual answer discusses Amendment #2 in detail but fails to provide any information about Amendment #5, which is the latest amendment per the expected answer.",
+            "missing_facts": [
+              "Amendment #5 is the latest amendment (Amendment #3 to the Restated MSA)",
+              "Focus on Rate Card and contracting party changes impacting tax costs",
+              "Vendor may revise Rate Card due to additional tax costs such as withholding tax",
+              "Regional rate-card inflation for multiple regions with specific inflation rates",
+              "Roles covered by the inflation adjustment (Clinical Project Director, Project Manager, etc.)"
+            ]
+          },
+          "golden_answer_3": {
+            "status": "FAIL",
+            "confidence": 1.0,
+            "reason": "The actual answer does not provide any information about Amendment #5, which is the latest amendment and the focus of the question. Instead, it discusses Amendment #2 in detail and states that no clear summary for Amendment #5 is available.",
+            "missing_facts": [
+              "Amendment #5 is the latest amendment for Boston Scientific Corporation: MSA - Sep-13",
+              "Amendment #5 addresses Rate Card and contracting party changes impacting tax costs",
+              "Vendor may revise Rate Card due to contracting party changes causing additional tax costs such as withholding tax",
+              "Regional inflation adjustments from 3.0% to 10.0% across multiple regions",
+              "Amendment #5 is part of the restated MSA framework effective from September 2013"
+            ]
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.6772,
+        "scores_by_golden": {
+          "golden_answer_1": 0.6544,
+          "golden_answer_2": 0.6772,
+          "golden_answer_3": 0.647
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_17",
+      "question": "What does Amendment 1 of Century Therapeutics November 2023 MSA state about data protection safeguarding?",
+      "expected_answer_excel_legacy": "Has to be the statements under data protection safeguarding but the actual is for general controls",
+      "expected_answer": "Has to be the statements under data protection safeguarding but the actual is for general controls",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "PASS",
+        "failure_bucket": null,
+        "failure_reason": null,
+        "actual_answer": "I found detailed information about the data protection and privacy provisions in Amendment 1 of the contract titled \"Century Therapeutics November 2023 MSA.\" Here's a summary focusing on the Data Protection Agreement (DPA), Data Privacy Exhibit, and related safeguards:\nAmendment Overview:\nAmendment 1, effective January 6, 2025, modifies the original MSA dated November 30, 2023.\nIt specifically updates the data protection processing provisions.\nData Protection Exhibit Update:\nSection (2) of Exhibit B - Data Protection is replaced to ensure compliance with Chapter V of the GDPR.\nThe Parties agree to sign the EU Standard Contractual Clauses (SCCs) modules one and four to govern international transfers of personal data related to the services.\nNew Annexes Added:\nAnnex 2: Standard Contractual Clauses (SCCs)\nAnnex 3: Technical and Organisational Measures (TOMs) These annexes are incorporated into Exhibit B - Data Protection.\nKey Data Protection Safeguards:\nThe Parties commit to implementing appropriate technical and organizational measures to secure personal data, including during transmission, to prevent accidental or unlawful destruction, loss, alteration, unauthorized disclosure, or access.\nSecurity measures include encryption or pseudonymisation where feasible.\nThe data exporter assists the data importer in ensuring security and must notify the importer promptly of any personal data breach.\nPersons authorized to process personal data must commit to confidentiality.\nDocumentation and Compliance:\nBoth Parties must demonstrate compliance with the Clauses.\nThe data exporter must provide necessary information to the data importer to demonstrate compliance and allow audits.\nData Subject Rights:\nThe data importer must handle data subject requests (e.g., access, rectification, erasure) promptly and free of charge.\nInformation to data subjects must be clear and accessible.\nUse of Sub-processors:\nNot applicable or not addressed in this amendment.\nNon-compliance and Termination:\nThe data importer must inform the data exporter if unable to comply with the Clauses.\nThe data exporter may suspend data transfers or terminate the contract if compliance is not restored within a reasonable time.\nUpon termination, personal data must be returned or deleted, with certification of deletion.\nGoverning Law and Jurisdiction:\nThe Clauses are governed by the law of Ireland.\nDisputes are to be resolved by courts in Ireland or the EU Member State where the data subject resides.\nCategories and Nature of Personal Data:\nCovers a wide range of personal data types including identification data, contact details, employment data, health data, genetic data, and sensitive personal data.\nData subjects include employees, contractors, business partners, study team staff, and clinical trial participants.\nData processing includes collection, storage, use, disclosure, and destruction as necessary for service provision.\nTechnical and Organizational Measures (TOMs):\nAccess control to premises, systems, and data.\nDisclosure control to secure data transfers.\nInput control with audit trails.\nJob control to ensure processing follows instructions.\nAvailability control to prevent data loss.\nSegregation control to separate data for different purposes.\nBreach Notification:\nThe data importer must notify the data exporter and supervisory authorities without undue delay in case of a personal data breach.\nIf the breach poses a high risk, affected data subjects must also be notified.\nThis amendment clearly strengthens and updates the data protection framework between Century Therapeutics and ICON Clinical Research Limited, ensuring GDPR compliance and robust safeguards for personal data involved in their services.\nYou can access the full Amendment 1 document here for more details:\nCentury Therapeutics November 2023 - Amendment # 1",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 17:59:07",
+        "end_time": "2026-07-22 18:00:02",
+        "duration_seconds": 55.25,
+        "agent_response_seconds": 54.49,
+        "agent_response_minutes": 0.91,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "PASS",
+          "failure_bucket": null,
+          "failure_reason": null,
+          "actual_answer": "I found detailed information about the data protection and privacy provisions in Amendment 1 of the contract titled \"Century Therapeutics November 2023 MSA.\" Here's a summary focusing on the Data Protection Agreement (DPA), Data Privacy Exhibit, and related safeguards:\nAmendment Overview:\nAmendment 1, effective January 6, 2025, modifies the original MSA dated November 30, 2023.\nIt specifically updates the data protection processing provisions.\nData Protection Exhibit Update:\nSection (2) of Exhibit B - Data Protection is replaced to ensure compliance with Chapter V of the GDPR.\nThe Parties agree to sign the EU Standard Contractual Clauses (SCCs) modules one and four to govern international transfers of personal data related to the services.\nNew Annexes Added:\nAnnex 2: Standard Contractual Clauses (SCCs)\nAnnex 3: Technical and Organisational Measures (TOMs) These annexes are incorporated into Exhibit B - Data Protection.\nKey Data Protection Safeguards:\nThe Parties commit to implementing appropriate technical and organizational measures to secure personal data, including during transmission, to prevent accidental or unlawful destruction, loss, alteration, unauthorized disclosure, or access.\nSecurity measures include encryption or pseudonymisation where feasible.\nThe data exporter assists the data importer in ensuring security and must notify the importer promptly of any personal data breach.\nPersons authorized to process personal data must commit to confidentiality.\nDocumentation and Compliance:\nBoth Parties must demonstrate compliance with the Clauses.\nThe data exporter must provide necessary information to the data importer to demonstrate compliance and allow audits.\nData Subject Rights:\nThe data importer must handle data subject requests (e.g., access, rectification, erasure) promptly and free of charge.\nInformation to data subjects must be clear and accessible.\nUse of Sub-processors:\nNot applicable or not addressed in this amendment.\nNon-compliance and Termination:\nThe data importer must inform the data exporter if unable to comply with the Clauses.\nThe data exporter may suspend data transfers or terminate the contract if compliance is not restored within a reasonable time.\nUpon termination, personal data must be returned or deleted, with certification of deletion.\nGoverning Law and Jurisdiction:\nThe Clauses are governed by the law of Ireland.\nDisputes are to be resolved by courts in Ireland or the EU Member State where the data subject resides.\nCategories and Nature of Personal Data:\nCovers a wide range of personal data types including identification data, contact details, employment data, health data, genetic data, and sensitive personal data.\nData subjects include employees, contractors, business partners, study team staff, and clinical trial participants.\nData processing includes collection, storage, use, disclosure, and destruction as necessary for service provision.\nTechnical and Organizational Measures (TOMs):\nAccess control to premises, systems, and data.\nDisclosure control to secure data transfers.\nInput control with audit trails.\nJob control to ensure processing follows instructions.\nAvailability control to prevent data loss.\nSegregation control to separate data for different purposes.\nBreach Notification:\nThe data importer must notify the data exporter and supervisory authorities without undue delay in case of a personal data breach.\nIf the breach poses a high risk, affected data subjects must also be notified.\nThis amendment clearly strengthens and updates the data protection framework between Century Therapeutics and ICON Clinical Research Limited, ensuring GDPR compliance and robust safeguards for personal data involved in their services.\nYou can access the full Amendment 1 document here for more details:\nCentury Therapeutics November 2023 - Amendment # 1",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 1",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 17:59:07",
+          "end_time": "2026-07-22 18:00:02",
+          "duration_seconds": 55.25,
+          "agent_response_seconds": 54.49,
+          "agent_response_minutes": 0.91,
+          "status_vs_golden": "PASS",
+          "golden_drift_score": 0.1775,
+          "golden_llm_status": "PASS"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_17",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "data_protection_clause",
+        "status_vs_golden": "PASS",
+        "best_match": "golden_answer_3",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.1775,
+        "drift_type": "wording_drift",
+        "drift_types": [
+          "wording_drift"
+        ],
+        "variables_bootstrap": {
+          "contract_title": "Century Therapeutics November 2023 MSA",
+          "amendment_number": "1",
+          "amendment_effective_date": "2026-01-06",
+          "exhibit_updated": "Exhibit B - Data Protection",
+          "governing_law": "Ireland"
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "I found detailed information about Amendment 1 of \"Century Therapeutics November 2023 MSA\" regarding Data Protection and Data Privacy provisions.\nAmendment 1, effective 2026-01-06, updates Exhibit B - Data Protection with GDPR Chapter V compliance, EU SCCs, TOMs, breach notification, data subject rights, and governing law (Ireland).\nFull amendment document available on request.",
+          "golden_answer_2": "Data Protection Safeguarding — Amendment 1 to \"Century Therapeutics November 2023 MSA\"\nReplaces data protection exhibit sections; adds SCC and TOM annexes covering access, disclosure, input, availability, and segregation controls.\nIncludes breach notification, audit rights, and termination/return or deletion obligations.",
+          "golden_answer_3": "Regarding data protection safeguarding in Amendment 1 of \"Century Therapeutics November 2023 MSA\": parties commit to compliant transfers, implement SCCs and TOMs, maintain confidentiality, and handle breaches and data subject requests per GDPR-aligned terms (governing law: Ireland)."
+        },
+        "golden_resolved_best_answer": "Regarding data protection safeguarding in Amendment 1 of \"Century Therapeutics November 2023 MSA\": parties commit to compliant transfers, implement SCCs and TOMs, maintain confidentiality, and handle breaches and data subject requests per GDPR-aligned terms (governing law: Ireland).",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.8225,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.8078,
+            "golden_answer_2": 0.7401,
+            "golden_answer_3": 0.8225
+          }
+        },
+        "llm": {
+          "status": "PASS",
+          "confidence": 0.9,
+          "reason": "LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves all critical information from the expected answer, including GDPR Chapter V compliance, EU SCCs, TOMs, breach notification, data subject rights, and governing law (Ireland), while providing additional relevant details.",
+          "missing_facts": []
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer preserves all critical information from the expected answer, including GDPR Chapter V compliance, EU SCCs, TOMs, breach notification, data subject rights, and governing law (Ireland), while providing additional relevant details.",
+            "missing_facts": []
+          },
+          "golden_answer_2": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "Actual answer covers all key points from the expected answer with detailed explanations and additional relevant information.",
+            "missing_facts": []
+          },
+          "golden_answer_3": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "Actual answer covers all key points from the expected answer with detailed elaboration and no contradictions.",
+            "missing_facts": []
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.8225,
+        "scores_by_golden": {
+          "golden_answer_1": 0.8078,
+          "golden_answer_2": 0.7401,
+          "golden_answer_3": 0.8225
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_22",
+      "question": "Within IPSEN PHARMA S.A.S Master Services Agreement, as amended (the â€œAgreementâ€) dated 28 August 2020 is there language included associated with a final reconciliation of the budget",
+      "expected_answer_excel_legacy": "One of the documents related to the IPSEN PHARMA S.A.S Master Services Agreement, as amended, dated 28 August 2020, is missing in the system. Therefore, I am unable to provide specific information about whether there is language included associated with a final reconciliation of the budget.\n\nPlease refer to Process Unity directly to review the Agreement and its amendments manually for the detailed language on final budget reconciliation.",
+      "expected_answer": "One of the documents related to the IPSEN PHARMA S.A.S Master Services Agreement, as amended, dated 28 August 2020, is missing in the system. Therefore, I am unable to provide specific information about whether there is language included associated with a final reconciliation of the budget.\n\nPlease refer to Process Unity directly to review the Agreement and its amendments manually for the detailed language on final budget reconciliation.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "PASS",
+        "failure_bucket": null,
+        "failure_reason": null,
+        "actual_answer": "Summary of Final Budget Reconciliation Provisions in IPSEN PHARMA S.A.S Master Services Agreement (MSA) as amended 28 August 2020\nI found detailed information about the budget reconciliation and related financial provisions in the IPSEN PHARMA S.A.S Master Services Agreement, including its amendments as of 28 August 2020. Here are the key relevant points:\nBudget Modifications and Amendments (Section 7.7):\nBudgets are agreed based on key study parameters such as number of investigators, centers, subjects, countries, protocol design, and calendar.\nAny changes to these key parameters may lead to amendments to the budget and/or calendar, which must be discussed in good faith.\nThe Service Provider cannot request budget increases caused by delays or defaults attributable to itself.\nBudget modifications require formal amendment signatures unless otherwise agreed.\nAdditional Services and Budget Supplements (Section 7.8):\nAdditional services requested by IPSEN not covered in the original Work Order may result in budget supplements, subject to prior written agreement.\nFinal Reconciliation upon Early Termination (Section 7.9):\nIn case of early termination of a Work Order, a final reconciliation will be conducted after the full wind-down of services.\nInvoice Disputes and Reconciliation (Section 7.10):\nIPSEN must notify the Service Provider within 15 days of any invoice disputes.\nBoth parties will use good faith efforts to reconcile disputed amounts promptly.\nUndisputed amounts must be paid according to terms.\nQuarterly Budget Reconciliation (Section 7.11):\nThe Service Provider shall provide IPSEN with quarterly reconciliations of the study budget for direct fees, subcontractor fees, and pass-through expenses.\nThis reconciliation includes variances between contractual and actual amounts, reasons for variances (e.g., timing, delays), and exchange rate impacts.\nFinal Reconciliation after Study Completion (Section 7.9):\nA final reconciliation is explicitly stated to occur after the full wind-down of services following early termination or study completion.\nAdditional Notes:\nThe agreement includes detailed schedules for budgets, invoices, and payment milestones.\nThe budget and reconciliation processes are designed to ensure transparency and good faith collaboration between IPSEN and the Service Provider.\nThe contract and amendments provide mechanisms for managing budget changes, disputes, and final financial settlements.\nYou can review the full contract document here for more details:\nIpsen Master Study Services Agreement - Document (28 Aug 2020)\nIf you want me to check any specific amendment or clause in more detail, just let me know!",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 18:00:02",
+        "end_time": "2026-07-22 18:00:50",
+        "duration_seconds": 47.29,
+        "agent_response_seconds": 45.54,
+        "agent_response_minutes": 0.76,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "PASS",
+          "failure_bucket": null,
+          "failure_reason": null,
+          "actual_answer": "Summary of Final Budget Reconciliation Provisions in IPSEN PHARMA S.A.S Master Services Agreement (MSA) as amended 28 August 2020\nI found detailed information about the budget reconciliation and related financial provisions in the IPSEN PHARMA S.A.S Master Services Agreement, including its amendments as of 28 August 2020. Here are the key relevant points:\nBudget Modifications and Amendments (Section 7.7):\nBudgets are agreed based on key study parameters such as number of investigators, centers, subjects, countries, protocol design, and calendar.\nAny changes to these key parameters may lead to amendments to the budget and/or calendar, which must be discussed in good faith.\nThe Service Provider cannot request budget increases caused by delays or defaults attributable to itself.\nBudget modifications require formal amendment signatures unless otherwise agreed.\nAdditional Services and Budget Supplements (Section 7.8):\nAdditional services requested by IPSEN not covered in the original Work Order may result in budget supplements, subject to prior written agreement.\nFinal Reconciliation upon Early Termination (Section 7.9):\nIn case of early termination of a Work Order, a final reconciliation will be conducted after the full wind-down of services.\nInvoice Disputes and Reconciliation (Section 7.10):\nIPSEN must notify the Service Provider within 15 days of any invoice disputes.\nBoth parties will use good faith efforts to reconcile disputed amounts promptly.\nUndisputed amounts must be paid according to terms.\nQuarterly Budget Reconciliation (Section 7.11):\nThe Service Provider shall provide IPSEN with quarterly reconciliations of the study budget for direct fees, subcontractor fees, and pass-through expenses.\nThis reconciliation includes variances between contractual and actual amounts, reasons for variances (e.g., timing, delays), and exchange rate impacts.\nFinal Reconciliation after Study Completion (Section 7.9):\nA final reconciliation is explicitly stated to occur after the full wind-down of services following early termination or study completion.\nAdditional Notes:\nThe agreement includes detailed schedules for budgets, invoices, and payment milestones.\nThe budget and reconciliation processes are designed to ensure transparency and good faith collaboration between IPSEN and the Service Provider.\nThe contract and amendments provide mechanisms for managing budget changes, disputes, and final financial settlements.\nYou can review the full contract document here for more details:\nIpsen Master Study Services Agreement - Document (28 Aug 2020)\nIf you want me to check any specific amendment or clause in more detail, just let me know!",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 3",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 18:00:02",
+          "end_time": "2026-07-22 18:00:50",
+          "duration_seconds": 47.29,
+          "agent_response_seconds": 45.54,
+          "agent_response_minutes": 0.76,
+          "status_vs_golden": "PASS",
+          "golden_drift_score": 0.1374,
+          "golden_llm_status": "PASS"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_22",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "clause_extraction",
+        "status_vs_golden": "PASS",
+        "best_match": "golden_answer_1",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.1374,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed",
+          "number_changed"
+        ],
+        "variables_bootstrap": {
+          "contract_title": "IPSEN PHARMA S.A.S Master Services Agreement",
+          "agreement_date": "2020-08-28",
+          "section_early_termination_reconciliation": "7.9",
+          "section_quarterly_reconciliation": "7.11",
+          "direct_fees_reconciliation_days": 90,
+          "pass_through_reconciliation_days": 180
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "Final Budget Reconciliation in IPSEN PHARMA S.A.S Master Services Agreement (2020-08-28)\nSection 7.9: final reconciliation after wind-down on early Work Order termination.\nSection 7.11: quarterly study budget reconciliation.\nAmendment #1: Direct Fees within 90 days; Pass-Through within 180 days after study close/termination.",
+          "golden_answer_2": "Yes — the Agreement dated 2020-08-28 includes final budget reconciliation language in Sections 7.9 and 7.11, with amendment timelines for Direct Fees (90 days) and Pass-Through Expenses (180 days).",
+          "golden_answer_3": "I found reconciliation provisions in the IPSEN MSA (2020-08-28): early termination final reconciliation (Sec 7.9), quarterly reconciliation (Sec 7.11), plus amendment windows of 90/180 days and dispute/budget-change sections."
+        },
+        "golden_resolved_best_answer": "Final Budget Reconciliation in IPSEN PHARMA S.A.S Master Services Agreement (2020-08-28)\nSection 7.9: final reconciliation after wind-down on early Work Order termination.\nSection 7.11: quarterly study budget reconciliation.\nAmendment #1: Direct Fees within 90 days; Pass-Through within 180 days after study close/termination.",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.8626,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.8626,
+            "golden_answer_2": 0.615,
+            "golden_answer_3": 0.7483
+          }
+        },
+        "llm": {
+          "status": "PASS",
+          "confidence": 0.9,
+          "reason": "LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer covers all key points from the expected answer including sections 7.9 and 7.11 and the amendment details on final reconciliation timing, with additional relevant context.",
+          "missing_facts": []
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer covers all key points from the expected answer including sections 7.9 and 7.11 and the amendment details on final reconciliation timing, with additional relevant context.",
+            "missing_facts": []
+          },
+          "golden_answer_2": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer confirms the presence of final budget reconciliation language in the Agreement dated 28 August 2020, specifically referencing Sections 7.9 and 7.11, and includes the amendment timelines for Direct Fees and Pass-Through Expenses as expected.",
+            "missing_facts": []
+          },
+          "golden_answer_3": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer includes all key reconciliation provisions mentioned in the expected answer (early termination final reconciliation in Sec 7.9, quarterly reconciliation in Sec 7.11, amendment windows, and dispute/budget-change sections) with additional relevant details.",
+            "missing_facts": []
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.8626,
+        "scores_by_golden": {
+          "golden_answer_1": 0.8626,
+          "golden_answer_2": 0.615,
+          "golden_answer_3": 0.7483
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_31",
+      "question": "Is there any Change of Control Provisions in the AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY MSA",
+      "expected_answer_excel_legacy": "Based on the retrieved contract metadata and document excerpts for the AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY MSA:\n\n- The MSA **does not contain Change of Control provisions**. It is explicitly stated in the metadata that \"Change of control provisions are not in place.\"\n- The MSA is active with an effective date of October 24, 2022, and an expiration date of July 24, 2026.\n- The governing law is New York.\n- The MSA includes standard clauses such as assignment restrictions, indemnification, liability caps, and compliance with applicable laws, but no specific Change of Control clause was found.\n- For full details, the executed MSA document is available here: \n  [AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY](https://app.processunity.net/icon-cm/download.aspx?name=AstraZeneca-MSA-1022-FullyExecuted.pdf&path=783464f8-fe46-4d0d-351d-c071d200018c)\n\n### Summary\n\n- **Change of Control Provisions:** Not present in this MSA.\n- **MSA Status:** Active.\n- **Governing Law:** New York.",
+      "expected_answer": "Based on the retrieved contract metadata and document excerpts for the AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY MSA:\n\n- The MSA **does not contain Change of Control provisions**. It is explicitly stated in the metadata that \"Change of control provisions are not in place.\"\n- The MSA is active with an effective date of October 24, 2022, and an expiration date of July 24, 2026.\n- The governing law is New York.\n- The MSA includes standard clauses such as assignment restrictions, indemnification, liability caps, and compliance with applicable laws, but no specific Change of Control clause was found.\n- For full details, the executed MSA document is available here: \n  [AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY](https://app.processunity.net/icon-cm/download.aspx?name=AstraZeneca-MSA-1022-FullyExecuted.pdf&path=783464f8-fe46-4d0d-351d-c071d200018c)\n\n### Summary\n\n- **Change of Control Provisions:** Not present in this MSA.\n- **MSA Status:** Active.\n- **Governing Law:** New York.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "PASS",
+        "failure_bucket": null,
+        "failure_reason": null,
+        "actual_answer": "I checked the \"AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY MSA\" and it does not include any Change of Control provisions. The contract metadata explicitly states that Change of Control provisions are not in place, and no related clauses were found in the contract documents.\nIf you need details on other clauses or further assistance, just let me know!",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 18:00:50",
+        "end_time": "2026-07-22 18:01:29",
+        "duration_seconds": 39.13,
+        "agent_response_seconds": 38.35,
+        "agent_response_minutes": 0.64,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "PASS",
+          "failure_bucket": null,
+          "failure_reason": null,
+          "actual_answer": "I checked the \"AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY MSA\" and it does not include any Change of Control provisions. The contract metadata explicitly states that Change of Control provisions are not in place, and no related clauses were found in the contract documents.\nIf you need details on other clauses or further assistance, just let me know!",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 1",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 18:00:50",
+          "end_time": "2026-07-22 18:01:29",
+          "duration_seconds": 39.13,
+          "agent_response_seconds": 38.35,
+          "agent_response_minutes": 0.64,
+          "status_vs_golden": "PASS",
+          "golden_drift_score": 0.0431,
+          "golden_llm_status": "PASS"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_31",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "change_of_control",
+        "status_vs_golden": "PASS",
+        "best_match": "golden_answer_2",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.0431,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "variables_bootstrap": {
+          "contract_title": "AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY",
+          "change_of_control_present": false,
+          "msa_status": "active",
+          "effective_date": "2022-10-24",
+          "expiration_date": "2026-07-24",
+          "governing_law": "New York"
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "Change of Control Provisions in AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY\nThe contract explicitly states that Change of Control provisions are not in place. No relevant Change of Control clauses were found.\nYou can review the full contract document on request.",
+          "golden_answer_2": "I checked AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY and it does not contain Change of Control provisions. The contract explicitly states Change of Control provisions are not in place.\nIf you'd like, I can help you look into other parts of this MSA.",
+          "golden_answer_3": "For \"AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY\": Change of Control provisions are **not present**. MSA status: active (effective 2022-10-24, expires 2026-07-24). Governing law: New York. Standard clauses apply; no Change of Control language."
+        },
+        "golden_resolved_best_answer": "I checked AstraZeneca Pharmaceuticals LP: MSA - Oct 22 - SYMPHONY and it does not contain Change of Control provisions. The contract explicitly states Change of Control provisions are not in place.\nIf you'd like, I can help you look into other parts of this MSA.",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.9569,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.9351,
+            "golden_answer_2": 0.9569,
+            "golden_answer_3": 0.8506
+          }
+        },
+        "llm": {
+          "status": "PASS",
+          "confidence": 1.0,
+          "reason": "LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer confirms the absence of Change of Control provisions as stated in the expected answer and adds no contradictory information.",
+          "missing_facts": []
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "PASS",
+            "confidence": 1.0,
+            "reason": "The actual answer confirms the absence of Change of Control provisions as stated in the expected answer and adds no contradictory information.",
+            "missing_facts": []
+          },
+          "golden_answer_2": {
+            "status": "PASS",
+            "confidence": 1.0,
+            "reason": "The actual answer confirms the absence of Change of Control provisions as stated in the expected answer and offers further assistance.",
+            "missing_facts": []
+          },
+          "golden_answer_3": {
+            "status": "PASS",
+            "confidence": 1.0,
+            "reason": "The actual answer confirms the absence of Change of Control provisions as expected, preserving the meaning.",
+            "missing_facts": [
+              "MSA status: active (effective 2022-10-24, expires 2026-07-24)",
+              "Governing law: New York",
+              "Standard clauses apply; no Change of Control language"
+            ]
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.9569,
+        "scores_by_golden": {
+          "golden_answer_1": 0.9351,
+          "golden_answer_2": 0.9569,
+          "golden_answer_3": 0.8506
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_35",
+      "question": "retainer provisions in Novo Nordisk MSA 292577 and amendments",
+      "expected_answer_excel_legacy": "## Retainer Provisions in Novo Nordisk MSA 292577 and Amendments\n\nBased on the retrieved contract documents and amendments for Novo Nordisk A/S: MSA - Mar 21 (ID 292577), here is a summary of the retainer-related provisions:\n\n### General Contract Context\n- The MSA is active, executed on 13 April 2021, effective from 15 March 2021, and expires on 15 March 2027.\n- The contract includes various provisions related to services, audits, regulatory compliance, insurance, and indemnification.\n- The contract and amendments include detailed operational and compliance clauses but do not explicitly label a section as \"retainer provisions.\"\n\n### Relevant Provisions Related to Retainer Concepts\n- **Non-Solicitation and Conversion Fees**: \n  - Novo Nordisk is allowed to solicit and hire Functional Service Provider (FSP) staff assigned under the Work Orders without a fee if the staff has provided services for at least 24 months. \n  - If Novo Nordisk hires FSP staff with less than 24 months of service, a conversion fee is payable to the Supplier Affiliate, calculated as a percentage of the staffâ€™s annual bill rate. \n  - The right to solicit and convert FSP staff is limited to 10% of all FSP staff performing functional services per calendar year unless otherwise approved in writing.\n\n- **Payment and Invoicing**: \n  - Services are generally invoiced on a milestone basis following performance unless otherwise agreed in the applicable Work Order. \n  - Credit terms/payment days are 60 days.\n\n- **Insurance and Liability**: \n  - The Supplier agrees to maintain insurance coverage including commercial general liability, professional liability, and umbrella liability with specified minimum limits. \n  - Novo Nordisk maintains clinical trial liability insurance and may self-insure.\n\n- **Audit and Compliance**: \n  - Novo Nordisk has rights to audit the Supplierâ€™s records and compliance with the agreement. \n  - The Supplier must cooperate with audits and provide documentation as reasonably requested.\n\n- **Data Protection and Reporting**: \n  - The Supplier must comply with data protection laws and provide information for transparency reporting related to payments to healthcare professionals (HCPs) and healthcare organizations (HCOs).\n\n### Summary\n- While there is no explicit \"retainer\" clause titled as such, the contract and amendments include provisions that govern ongoing service engagement, conversion fees for hiring staff, payment terms, and compliance obligations that collectively relate to the management of retained services.\n- The conversion fee and non-solicitation clauses are the closest provisions related to retainer arrangements, specifying conditions under which Novo Nordisk may hire staff and associated fees.\n- Payment terms and invoicing schedules are milestone-based with 60-day payment terms.\n\n### Document Links for Reference\n- [Novo Nordisk A/S: MSA - Mar 21](https://app.processunity.net/icon-cm/download.aspx?name=Novo%20Nordisk_ICON%20MSA%20FE%2015%20March%202021.pdf&path=7871ca25-13b4-4776-e83e-80459de0059e)\n- [Amendment #1](https://app.processunity.net/icon-cm/download.aspx?name=ICON_Master_2021_MSA_Amendment_1_2022%20%285%29.pdf&path=d4e27a49-d133-4eb3-0d04-f07a73f004c0)\n- [Amendment #2](https://app.processunity.net/icon-cm/download.aspx?name=ICON_Master_2021_MSA_Amendment_2_2024.pdf&path=533150d6-d4ab-45f4-06c8-c0601cd001ef)\n- [Amendment #3](https://app.processunity.net/icon-cm/download.aspx?name=Contract_484663_ICON_Master_2021_MSA_Amendm.pdf&path=23e645e9-0a7b-49b2-f8f4-a076a6c007c5)\n- [Amendment #4](https://app.processunity.net/icon-cm/download.aspx?name=Contract_501872_ICON_Master_2021_MSA_Amendment%20No.%204%20Fully%20Executed%20and%20Effective%2026%20Feb%202025.pdf&path=b97db155-b68c-4105-fc08-c08f8e900d40)\n\n---\n\nIf you need a more detailed extraction of specific retainer clauses or related financial terms, please let me know.",
+      "expected_answer": "## Retainer Provisions in Novo Nordisk MSA 292577 and Amendments\n\nBased on the retrieved contract documents and amendments for Novo Nordisk A/S: MSA - Mar 21 (ID 292577), here is a summary of the retainer-related provisions:\n\n### General Contract Context\n- The MSA is active, executed on 13 April 2021, effective from 15 March 2021, and expires on 15 March 2027.\n- The contract includes various provisions related to services, audits, regulatory compliance, insurance, and indemnification.\n- The contract and amendments include detailed operational and compliance clauses but do not explicitly label a section as \"retainer provisions.\"\n\n### Relevant Provisions Related to Retainer Concepts\n- **Non-Solicitation and Conversion Fees**: \n  - Novo Nordisk is allowed to solicit and hire Functional Service Provider (FSP) staff assigned under the Work Orders without a fee if the staff has provided services for at least 24 months. \n  - If Novo Nordisk hires FSP staff with less than 24 months of service, a conversion fee is payable to the Supplier Affiliate, calculated as a percentage of the staffâ€™s annual bill rate. \n  - The right to solicit and convert FSP staff is limited to 10% of all FSP staff performing functional services per calendar year unless otherwise approved in writing.\n\n- **Payment and Invoicing**: \n  - Services are generally invoiced on a milestone basis following performance unless otherwise agreed in the applicable Work Order. \n  - Credit terms/payment days are 60 days.\n\n- **Insurance and Liability**: \n  - The Supplier agrees to maintain insurance coverage including commercial general liability, professional liability, and umbrella liability with specified minimum limits. \n  - Novo Nordisk maintains clinical trial liability insurance and may self-insure.\n\n- **Audit and Compliance**: \n  - Novo Nordisk has rights to audit the Supplierâ€™s records and compliance with the agreement. \n  - The Supplier must cooperate with audits and provide documentation as reasonably requested.\n\n- **Data Protection and Reporting**: \n  - The Supplier must comply with data protection laws and provide information for transparency reporting related to payments to healthcare professionals (HCPs) and healthcare organizations (HCOs).\n\n### Summary\n- While there is no explicit \"retainer\" clause titled as such, the contract and amendments include provisions that govern ongoing service engagement, conversion fees for hiring staff, payment terms, and compliance obligations that collectively relate to the management of retained services.\n- The conversion fee and non-solicitation clauses are the closest provisions related to retainer arrangements, specifying conditions under which Novo Nordisk may hire staff and associated fees.\n- Payment terms and invoicing schedules are milestone-based with 60-day payment terms.\n\n### Document Links for Reference\n- [Novo Nordisk A/S: MSA - Mar 21](https://app.processunity.net/icon-cm/download.aspx?name=Novo%20Nordisk_ICON%20MSA%20FE%2015%20March%202021.pdf&path=7871ca25-13b4-4776-e83e-80459de0059e)\n- [Amendment #1](https://app.processunity.net/icon-cm/download.aspx?name=ICON_Master_2021_MSA_Amendment_1_2022%20%285%29.pdf&path=d4e27a49-d133-4eb3-0d04-f07a73f004c0)\n- [Amendment #2](https://app.processunity.net/icon-cm/download.aspx?name=ICON_Master_2021_MSA_Amendment_2_2024.pdf&path=533150d6-d4ab-45f4-06c8-c0601cd001ef)\n- [Amendment #3](https://app.processunity.net/icon-cm/download.aspx?name=Contract_484663_ICON_Master_2021_MSA_Amendm.pdf&path=23e645e9-0a7b-49b2-f8f4-a076a6c007c5)\n- [Amendment #4](https://app.processunity.net/icon-cm/download.aspx?name=Contract_501872_ICON_Master_2021_MSA_Amendment%20No.%204%20Fully%20Executed%20and%20Effective%2026%20Feb%202025.pdf&path=b97db155-b68c-4105-fc08-c08f8e900d40)\n\n---\n\nIf you need a more detailed extraction of specific retainer clauses or related financial terms, please let me know.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "FAIL",
+        "failure_bucket": "GOLDEN_DRIFT",
+        "failure_reason": "Golden FAIL drift=0.1339 type=available_to_not_available semantic=PASS llm=FAIL LLM FAIL — no variant passed (checked 3 templates). The actual answer contradicts the expected answer by stating no retainer provisions exist, whereas the expected answer specifies a 5% retainer on Pa",
+        "actual_answer": "I looked into the \"Novo Nordisk MSA 292577\" and its amendments, and I couldn't find any explicit retainer provisions or clauses specifically addressing retainer fees or retainer-related terms in the main MSA or any of its amendments. The contract mainly covers other payment terms such as milestone-based invoicing and rate cards, but nothing explicitly labeled or functioning as a retainer.\nIf you'd like, I can help explore related payment structures or other financial terms in this MSA or its amendments. Just let me know!",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 18:01:29",
+        "end_time": "2026-07-22 18:02:19",
+        "duration_seconds": 49.87,
+        "agent_response_seconds": 49.16,
+        "agent_response_minutes": 0.82,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "FAIL",
+          "failure_bucket": "GOLDEN_DRIFT",
+          "failure_reason": "Golden FAIL drift=0.1339 type=available_to_not_available semantic=PASS llm=FAIL LLM FAIL — no variant passed (checked 3 templates). The actual answer contradicts the expected answer by stating no retainer provisions exist, whereas the expected answer specifies a 5% retainer on Pa",
+          "actual_answer": "I looked into the \"Novo Nordisk MSA 292577\" and its amendments, and I couldn't find any explicit retainer provisions or clauses specifically addressing retainer fees or retainer-related terms in the main MSA or any of its amendments. The contract mainly covers other payment terms such as milestone-based invoicing and rate cards, but nothing explicitly labeled or functioning as a retainer.\nIf you'd like, I can help explore related payment structures or other financial terms in this MSA or its amendments. Just let me know!",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 3",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 18:01:29",
+          "end_time": "2026-07-22 18:02:19",
+          "duration_seconds": 49.87,
+          "agent_response_seconds": 49.16,
+          "agent_response_minutes": 0.82,
+          "status_vs_golden": "FAIL",
+          "golden_drift_score": 0.1339,
+          "golden_llm_status": "FAIL"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_35",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "retainer_provisions",
+        "status_vs_golden": "FAIL",
+        "best_match": "golden_answer_1",
+        "best_llm_match": "golden_answer_3",
+        "drift_score": 0.1339,
+        "drift_type": "available_to_not_available",
+        "drift_types": [
+          "available_to_not_available",
+          "contradiction",
+          "fact_removed"
+        ],
+        "variables_bootstrap": {
+          "contract_title": "Novo Nordisk A/S: MSA - Mar 21",
+          "contract_id": "292577",
+          "retainer_percent": "5%",
+          "retainer_base": "total estimated Pass-through Costs",
+          "retainer_purpose": "ensure the supplier does not suffer cash-flow depletion from performing services",
+          "retainer_payable_timing": "immediately upon the Work Order",
+          "retainer_credit_back": "credited back to Novo Nordisk as agreed in the Work Order",
+          "unit_based_application": "also applies to fees paid on a unit-based payment schedule",
+          "amendment_retainer_impact": "amendments do not appear to change the retainer provision directly but update insurance, data protection, and compliance",
+          "example_amendment_link_label": "Amendment #4"
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "I found information about the retainer provisions in the Novo Nordisk MSA 292577 and its amendments. The main MSA specifies that Novo Nordisk will provide a retainer of 5% of the total estimated Pass-through Costs to ensure the supplier does not suffer cash-flow depletion from performing services. This retainer is payable immediately upon the Work Order and will be credited back to Novo Nordisk as agreed in the Work Order. This retainer also applies to fees paid on a unit-based payment schedule.\nThe amendments do not appear to change the retainer provision directly but update insurance, data protection, and compliance.\nI can provide more details on any specific amendment or clause. Links available include Novo Nordisk A/S: MSA - Mar 21 and Amendment #4.",
+          "golden_answer_2": "Retainer Provisions in Novo Nordisk A/S: MSA - Mar 21 (ID 292577)\nRetainer amount: 5% of total estimated Pass-through Costs.\nPurpose: ensure the supplier does not suffer cash-flow depletion from performing services.\nPayment: payable immediately upon the Work Order; credited back to Novo Nordisk as agreed in the Work Order; also applies to fees paid on a unit-based payment schedule.\nAmendments: amendments do not appear to change the retainer provision directly but update insurance, data protection, and compliance.\nI can share the MSA/Amendment #4 links or deeper clause wording if needed.",
+          "golden_answer_3": "For Novo Nordisk MSA 292577 (Novo Nordisk A/S: MSA - Mar 21): a 5% retainer on total estimated Pass-through Costs is provided to ensure the supplier does not suffer cash-flow depletion from performing services. It is payable immediately upon the Work Order, credited back to Novo Nordisk as agreed in the Work Order, and also applies to fees paid on a unit-based payment schedule. amendments do not appear to change the retainer provision directly but update insurance, data protection, and compliance. Let me know if you want exact clause text or a specific amendment review."
+        },
+        "golden_resolved_best_answer": "I found information about the retainer provisions in the Novo Nordisk MSA 292577 and its amendments. The main MSA specifies that Novo Nordisk will provide a retainer of 5% of the total estimated Pass-through Costs to ensure the supplier does not suffer cash-flow depletion from performing services. This retainer is payable immediately upon the Work Order and will be credited back to Novo Nordisk as agreed in the Work Order. This retainer also applies to fees paid on a unit-based payment schedule.\nThe amendments do not appear to change the retainer provision directly but update insurance, data protection, and compliance.\nI can provide more details on any specific amendment or clause. Links available include Novo Nordisk A/S: MSA - Mar 21 and Amendment #4.",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.8661,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.8661,
+            "golden_answer_2": 0.8537,
+            "golden_answer_3": 0.8197
+          }
+        },
+        "llm": {
+          "status": "FAIL",
+          "confidence": 1.0,
+          "reason": "LLM FAIL — no variant passed (checked 3 templates). The actual answer contradicts the expected answer by stating no retainer provisions exist, whereas the expected answer specifies a 5% retainer on Pass-through Costs and details about its application and amendments.",
+          "missing_facts": [
+            "5% retainer on total estimated Pass-through Costs",
+            "retainer payable immediately upon the Work Order",
+            "retainer credited back to Novo Nordisk as agreed in the Work Order",
+            "retainer applies to fees on a unit-based payment schedule",
+            "amendments do not change retainer provisions but update insurance, data protection, and compliance"
+          ]
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "FAIL",
+            "confidence": 0.9,
+            "reason": "The actual answer contradicts the expected answer by stating no retainer provisions exist, while the expected answer specifies a 5% retainer provision and its details.",
+            "missing_facts": [
+              "Novo Nordisk provides a retainer of 5% of total estimated Pass-through Costs",
+              "Retainer is payable immediately upon the Work Order",
+              "Retainer is credited back to Novo Nordisk as agreed in the Work Order",
+              "Retainer applies to fees on a unit-based payment schedule",
+              "Amendments do not change retainer provisions but update insurance, data protection, and compliance"
+            ]
+          },
+          "golden_answer_2": {
+            "status": "FAIL",
+            "confidence": 0.9,
+            "reason": "The actual answer contradicts the expected answer by stating no retainer provisions exist, while the expected answer details specific retainer terms.",
+            "missing_facts": [
+              "Retainer amount: 5% of total estimated Pass-through Costs",
+              "Purpose: ensure the supplier does not suffer cash-flow depletion from performing services",
+              "Payment terms: payable immediately upon the Work Order; credited back to Novo Nordisk as agreed in the Work Order; applies to unit-based payment schedule fees",
+              "Amendments do not change retainer provisions but update insurance, data protection, and compliance"
+            ]
+          },
+          "golden_answer_3": {
+            "status": "FAIL",
+            "confidence": 1.0,
+            "reason": "The actual answer contradicts the expected answer by stating no retainer provisions exist, whereas the expected answer specifies a 5% retainer on Pass-through Costs and details about its application and amendments.",
+            "missing_facts": [
+              "5% retainer on total estimated Pass-through Costs",
+              "retainer payable immediately upon the Work Order",
+              "retainer credited back to Novo Nordisk as agreed in the Work Order",
+              "retainer applies to fees on a unit-based payment schedule",
+              "amendments do not change retainer provisions but update insurance, data protection, and compliance"
+            ]
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.8661,
+        "scores_by_golden": {
+          "golden_answer_1": 0.8661,
+          "golden_answer_2": 0.8537,
+          "golden_answer_3": 0.8197
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_36",
+      "question": "Float Positions in Novo Nordisk MSA 292577 and amendments",
+      "expected_answer_excel_legacy": "## Float Positions in Novo Nordisk MSA 292577 and Amendments\n\nBased on the retrieved contract documentation and amendments for Novo Nordisk A/S: MSA - Mar 21 (ID 292577), here is the detailed information regarding float positions:\n\n### Master Service Agreement (MSA) - Mar 21\n- The float clause is in place and referenced specifically in **Section 6 of Appendix 3** of the MSA.\n- The MSA is active, executed on 13 April 2021, effective from 15 March 2021, and expires on 15 March 2027.\n- The scope of services includes a wide range of clinical research, laboratory, pharmacovigilance, and other support services.\n- The float positions are acknowledged but the MSA document itself does not explicitly list the detailed float positions.\n\n### Amendments to MSA - Mar 21\n- There are 5 amendments to this MSA.\n- The amendments include detailed roles and job titles related to float positions, with specific counts and regional breakdowns.\n- Examples of float positions mentioned in the amendments include:\n  - TMF (Trial Master File) Manager, Lead, Specialist\n  - Investigator Payments Coordinator\n  - Project Associate (Central Support Services)\n  - Pharmacovigilance Associate, Assistant, Manager, Director\n  - Clinical Data Coordinator, Lead, Programmer\n  - Clinical System Lead\n  - Biostatistician and Statistical Programmer\n  - Clinical Trial Manager, Clinical Research Associate, Clinical Trial Assistant\n  - Study Start Up Site Activation Lead, SSU Associate, SSU Specialist, Site Identification Specialist\n  - Medical Affairs roles including Clinical Research Physician, Manager, Specialist, Administrative Assistant, Medical Writer, Medical Editor\n  - Clinical Trial Transparency Associate\n- The amendments provide regional and currency-specific details for these positions.\n- The amendments also include provisions related to conversion fees for hiring float staff, non-solicitation clauses, and other operational details.\n\n### Summary\n- The MSA contains the float clause and references the float positions in Appendix 3.\n- The amendments provide detailed listings of float positions, including job titles and some numeric data.\n- For full details, the contract documents and amendments should be reviewed directly.\n\n### Document Links for Reference\n- [Novo Nordisk A/S: MSA - Mar 21](https://app.processunity.net/icon-cm/download.aspx?name=Novo%20Nordisk_ICON%20MSA%20FE%2015%20March%202021.pdf&path=7871ca25-13b4-4776-e83e-80459de0059e)\n- [Amendment #1](https://app.processunity.net/icon-cm/download.aspx?name=ICON_Master_2021_MSA_Amendment_1_2022%20%285%29.pdf&path=d4e27a49-d133-4eb3-0d04-f07a73f004c0)\n- [Amendment #3](https://app.processunity.net/icon-cm/download.aspx?name=Contract_484663_ICON_Master_2021_MSA_Amendm.pdf&path=23e645e9-0a7b-49b2-f8f4-a076a6c007c5)\n- [Amendment #4](https://app.processunity.net/icon-cm/download.aspx?name=Contract_501872_ICON_Master_2021_MSA_Amendment%20No.%204%20Fully%20Executed%20and%20Effective%2026%20Feb%202025.pdf&path=b97db155-b68c-4105-fc08-c08f8e900d40)\n\n---\n\nIf you need a more detailed extraction or summary of specific float positions or numeric data from the amendments, please let me know.",
+      "expected_answer": "## Float Positions in Novo Nordisk MSA 292577 and Amendments\n\nBased on the retrieved contract documentation and amendments for Novo Nordisk A/S: MSA - Mar 21 (ID 292577), here is the detailed information regarding float positions:\n\n### Master Service Agreement (MSA) - Mar 21\n- The float clause is in place and referenced specifically in **Section 6 of Appendix 3** of the MSA.\n- The MSA is active, executed on 13 April 2021, effective from 15 March 2021, and expires on 15 March 2027.\n- The scope of services includes a wide range of clinical research, laboratory, pharmacovigilance, and other support services.\n- The float positions are acknowledged but the MSA document itself does not explicitly list the detailed float positions.\n\n### Amendments to MSA - Mar 21\n- There are 5 amendments to this MSA.\n- The amendments include detailed roles and job titles related to float positions, with specific counts and regional breakdowns.\n- Examples of float positions mentioned in the amendments include:\n  - TMF (Trial Master File) Manager, Lead, Specialist\n  - Investigator Payments Coordinator\n  - Project Associate (Central Support Services)\n  - Pharmacovigilance Associate, Assistant, Manager, Director\n  - Clinical Data Coordinator, Lead, Programmer\n  - Clinical System Lead\n  - Biostatistician and Statistical Programmer\n  - Clinical Trial Manager, Clinical Research Associate, Clinical Trial Assistant\n  - Study Start Up Site Activation Lead, SSU Associate, SSU Specialist, Site Identification Specialist\n  - Medical Affairs roles including Clinical Research Physician, Manager, Specialist, Administrative Assistant, Medical Writer, Medical Editor\n  - Clinical Trial Transparency Associate\n- The amendments provide regional and currency-specific details for these positions.\n- The amendments also include provisions related to conversion fees for hiring float staff, non-solicitation clauses, and other operational details.\n\n### Summary\n- The MSA contains the float clause and references the float positions in Appendix 3.\n- The amendments provide detailed listings of float positions, including job titles and some numeric data.\n- For full details, the contract documents and amendments should be reviewed directly.\n\n### Document Links for Reference\n- [Novo Nordisk A/S: MSA - Mar 21](https://app.processunity.net/icon-cm/download.aspx?name=Novo%20Nordisk_ICON%20MSA%20FE%2015%20March%202021.pdf&path=7871ca25-13b4-4776-e83e-80459de0059e)\n- [Amendment #1](https://app.processunity.net/icon-cm/download.aspx?name=ICON_Master_2021_MSA_Amendment_1_2022%20%285%29.pdf&path=d4e27a49-d133-4eb3-0d04-f07a73f004c0)\n- [Amendment #3](https://app.processunity.net/icon-cm/download.aspx?name=Contract_484663_ICON_Master_2021_MSA_Amendm.pdf&path=23e645e9-0a7b-49b2-f8f4-a076a6c007c5)\n- [Amendment #4](https://app.processunity.net/icon-cm/download.aspx?name=Contract_501872_ICON_Master_2021_MSA_Amendment%20No.%204%20Fully%20Executed%20and%20Effective%2026%20Feb%202025.pdf&path=b97db155-b68c-4105-fc08-c08f8e900d40)\n\n---\n\nIf you need a more detailed extraction or summary of specific float positions or numeric data from the amendments, please let me know.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "PASS",
+        "failure_bucket": null,
+        "failure_reason": null,
+        "actual_answer": "I found information about Float Positions in the Novo Nordisk MSA 292577 and its amendments. Specifically, the MSA explicitly includes a float provision located in Section 6 of Appendix 3 of the main MSA document dated 15 March 2021. This float clause is recognized as a contractual element within the MSA and its amendments, including up to Amendment #5.\nIf you'd like, I can provide the exact wording or more detailed excerpts from the float clause section.\nHere are links to the relevant documents for your reference:\nNovo Nordisk A/S: MSA - Mar 21\nAmendment #3\nAmendment #4\nLet me know if you want me to dig deeper or provide the specific clause text!",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 18:02:19",
+        "end_time": "2026-07-22 18:03:07",
+        "duration_seconds": 47.81,
+        "agent_response_seconds": 47.24,
+        "agent_response_minutes": 0.79,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "PASS",
+          "failure_bucket": null,
+          "failure_reason": null,
+          "actual_answer": "I found information about Float Positions in the Novo Nordisk MSA 292577 and its amendments. Specifically, the MSA explicitly includes a float provision located in Section 6 of Appendix 3 of the main MSA document dated 15 March 2021. This float clause is recognized as a contractual element within the MSA and its amendments, including up to Amendment #5.\nIf you'd like, I can provide the exact wording or more detailed excerpts from the float clause section.\nHere are links to the relevant documents for your reference:\nNovo Nordisk A/S: MSA - Mar 21\nAmendment #3\nAmendment #4\nLet me know if you want me to dig deeper or provide the specific clause text!",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 3",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 18:02:19",
+          "end_time": "2026-07-22 18:03:07",
+          "duration_seconds": 47.81,
+          "agent_response_seconds": 47.24,
+          "agent_response_minutes": 0.79,
+          "status_vs_golden": "PASS",
+          "golden_drift_score": 0.0683,
+          "golden_llm_status": "PASS"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_36",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "float_positions",
+        "status_vs_golden": "PASS",
+        "best_match": "golden_answer_1",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.0683,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed"
+        ],
+        "variables_bootstrap": {
+          "contract_title": "Novo Nordisk A/S: MSA - Mar 21",
+          "contract_id": "292577",
+          "float_clause_reference": "Section 6 of Appendix 3",
+          "msa_effective_date": "2021-03-15",
+          "amendment_count": 5
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "Float Positions in Novo Nordisk A/S: MSA - Mar 21 and Amendments\nThe MSA includes a float provision referenced in Section 6 of Appendix 3. MSA effective 2021-03-15 with 5 amendments. Detailed clause text is in the referenced section.\nLet me know if you'd like the exact float clause text.",
+          "golden_answer_2": "Summary of Float Positions in Novo Nordisk A/S: MSA - Mar 21 (ID 292577)\nFloat clause confirmed in Section 6 of Appendix 3. Amendments may detail float roles and regional rates; review amendment schedules for full job-title listings.",
+          "golden_answer_3": "Float positions under Novo Nordisk A/S: MSA - Mar 21: provision in Section 6 of Appendix 3; 5 amendments may list roles (TMF, PV, CRA, biostatistics, etc.) and related conversion/non-solicitation terms."
+        },
+        "golden_resolved_best_answer": "Float Positions in Novo Nordisk A/S: MSA - Mar 21 and Amendments\nThe MSA includes a float provision referenced in Section 6 of Appendix 3. MSA effective 2021-03-15 with 5 amendments. Detailed clause text is in the referenced section.\nLet me know if you'd like the exact float clause text.",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.9317,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.9317,
+            "golden_answer_2": 0.8594,
+            "golden_answer_3": 0.7963
+          }
+        },
+        "llm": {
+          "status": "PASS",
+          "confidence": 0.9,
+          "reason": "LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves all critical information about the float provision location, MSA date, and number of amendments, with additional helpful details and offers to provide exact clause text.",
+          "missing_facts": []
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer preserves all critical information about the float provision location, MSA date, and number of amendments, with additional helpful details and offers to provide exact clause text.",
+            "missing_facts": []
+          },
+          "golden_answer_2": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "Actual answer confirms float clause location and references amendments as expected, preserving meaning.",
+            "missing_facts": [
+              "Amendments may detail float roles and regional rates; review amendment schedules for full job-title listings"
+            ]
+          },
+          "golden_answer_3": {
+            "status": "FAIL",
+            "confidence": 0.9,
+            "reason": "Actual answer misses listing roles and related conversion/non-solicitation terms mentioned in expected answer.",
+            "missing_facts": [
+              "5 amendments may list roles (TMF, PV, CRA, biostatistics, etc.)",
+              "related conversion/non-solicitation terms"
+            ]
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.9317,
+        "scores_by_golden": {
+          "golden_answer_1": 0.9317,
+          "golden_answer_2": 0.8594,
+          "golden_answer_3": 0.7963
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_38",
+      "question": "What is the retainer language",
+      "expected_answer_excel_legacy": "## Retainer Language in Novartis MSA dated 02 January 2023 (Affiliate Agreement under 2023 GMSA dated 25 January 2023)\n\nThe specific Novartis MSA dated 02 January 2023 is not directly available, but the **Affiliate Agreement under the 2023 Global MSA (GMSA) dated 25 January 2023** for Novartis Korea references the Global MSA dated 02 January 2023. The retainer language is embedded within this Affiliate Agreement and its incorporated terms.\n\n### Key Points Regarding Retainer Language and Related Terms:\n\n- The Affiliate Agreement is subject to the terms of the Global MSA dated 02 January 2023 between Novartis Pharma AG and ICON Clinical Research Limited.\n- The agreement allows ICON affiliates to sign Statements of Work (SOWs) under the terms of the Global MSA.\n- The MSA expressly continues to apply to SOWs post termination or expiry.\n- The agreement includes detailed service descriptions, roles, and responsibilities for clinical trial associates, project leaders, patient safety coordinators, and other roles.\n- The governing law is Korea.\n- The Affiliate Agreement includes provisions for billing rates, service descriptions, and operational responsibilities but does not explicitly specify a \"retainer\" fee or retainer-specific language in the retrieved documents.\n- Credit terms, payment days, and other commercial terms including retainer fees are generally unknown or unspecified in the metadata and documents reviewed.\n\n### Additional Notes:\n\n- The Affiliate Agreement and related amendments (such as Amendment No. 2 effective 1 January 2023) clarify terms including agreement duration and fees but do not explicitly detail retainer language.\n- The detailed contract documents can be accessed via the following link for authorized users: \n  [Novartis Korea: Affiliate Agreement under 2023 GMSA - Jan 25 - Document](https://app.processunity.net/icon-cm/download.aspx?name=Novartis%20KR%20Affiliate%20Agreement%20to%20ICON%20MSA%20-%20Module%206%20-%20010125_FE.pdf&path=c68530d8-ddcf-46d7-ab9e-c07142c00697)\n\n### Summary\n\n**The retrieved documents do not explicitly contain retainer language for the Novartis MSA dated 02 January 2023 or its related Affiliate Agreement dated 25 January 2023.** The available documents focus on service descriptions, billing rates, roles, and operational responsibilities, with no clear mention of retainer fees or retainer-specific contractual language.\n\nTo obtain precise retainer language, reviewing the full executed MSA or related commercial terms documents would be necessary.",
+      "expected_answer": "## Retainer Language in Novartis MSA dated 02 January 2023 (Affiliate Agreement under 2023 GMSA dated 25 January 2023)\n\nThe specific Novartis MSA dated 02 January 2023 is not directly available, but the **Affiliate Agreement under the 2023 Global MSA (GMSA) dated 25 January 2023** for Novartis Korea references the Global MSA dated 02 January 2023. The retainer language is embedded within this Affiliate Agreement and its incorporated terms.\n\n### Key Points Regarding Retainer Language and Related Terms:\n\n- The Affiliate Agreement is subject to the terms of the Global MSA dated 02 January 2023 between Novartis Pharma AG and ICON Clinical Research Limited.\n- The agreement allows ICON affiliates to sign Statements of Work (SOWs) under the terms of the Global MSA.\n- The MSA expressly continues to apply to SOWs post termination or expiry.\n- The agreement includes detailed service descriptions, roles, and responsibilities for clinical trial associates, project leaders, patient safety coordinators, and other roles.\n- The governing law is Korea.\n- The Affiliate Agreement includes provisions for billing rates, service descriptions, and operational responsibilities but does not explicitly specify a \"retainer\" fee or retainer-specific language in the retrieved documents.\n- Credit terms, payment days, and other commercial terms including retainer fees are generally unknown or unspecified in the metadata and documents reviewed.\n\n### Additional Notes:\n\n- The Affiliate Agreement and related amendments (such as Amendment No. 2 effective 1 January 2023) clarify terms including agreement duration and fees but do not explicitly detail retainer language.\n- The detailed contract documents can be accessed via the following link for authorized users: \n  [Novartis Korea: Affiliate Agreement under 2023 GMSA - Jan 25 - Document](https://app.processunity.net/icon-cm/download.aspx?name=Novartis%20KR%20Affiliate%20Agreement%20to%20ICON%20MSA%20-%20Module%206%20-%20010125_FE.pdf&path=c68530d8-ddcf-46d7-ab9e-c07142c00697)\n\n### Summary\n\n**The retrieved documents do not explicitly contain retainer language for the Novartis MSA dated 02 January 2023 or its related Affiliate Agreement dated 25 January 2023.** The available documents focus on service descriptions, billing rates, roles, and operational responsibilities, with no clear mention of retainer fees or retainer-specific contractual language.\n\nTo obtain precise retainer language, reviewing the full executed MSA or related commercial terms documents would be necessary.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "PASS",
+        "failure_bucket": null,
+        "failure_reason": null,
+        "actual_answer": "I found the retainer language in the Novo Nordisk MSA 292577 and its amendments. The main MSA document includes a clause stating:\nRetainer\nTo ensure the supplier does not suffer cash-flow depletion from performing services, Novo Nordisk will provide, at the Work Order level, a retainer of 5% of the total estimated Pass-through Costs. This retainer is payable in full immediately upon the Work Order and will be credited back to Novo Nordisk according to the agreed terms in the Work Order. This retainer requirement also applies to fees paid under a unit-based payment schedule.\nThis means Novo Nordisk provides a 5% retainer on estimated pass-through costs to support supplier cash flow, payable immediately upon the Work Order, and credited back as agreed.\nIf you want, I can share the exact document links or help with other provisions.",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 18:03:07",
+        "end_time": "2026-07-22 18:03:44",
+        "duration_seconds": 37.36,
+        "agent_response_seconds": 36.54,
+        "agent_response_minutes": 0.61,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "PASS",
+          "failure_bucket": null,
+          "failure_reason": null,
+          "actual_answer": "I found the retainer language in the Novo Nordisk MSA 292577 and its amendments. The main MSA document includes a clause stating:\nRetainer\nTo ensure the supplier does not suffer cash-flow depletion from performing services, Novo Nordisk will provide, at the Work Order level, a retainer of 5% of the total estimated Pass-through Costs. This retainer is payable in full immediately upon the Work Order and will be credited back to Novo Nordisk according to the agreed terms in the Work Order. This retainer requirement also applies to fees paid under a unit-based payment schedule.\nThis means Novo Nordisk provides a 5% retainer on estimated pass-through costs to support supplier cash flow, payable immediately upon the Work Order, and credited back as agreed.\nIf you want, I can share the exact document links or help with other provisions.",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 3",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 18:03:07",
+          "end_time": "2026-07-22 18:03:44",
+          "duration_seconds": 37.36,
+          "agent_response_seconds": 36.54,
+          "agent_response_minutes": 0.61,
+          "status_vs_golden": "PASS",
+          "golden_drift_score": 0.0858,
+          "golden_llm_status": "PASS"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_38",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "retainer_language_ambiguous",
+        "status_vs_golden": "PASS",
+        "best_match": "golden_answer_1",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.0858,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "variables_bootstrap": {
+          "assumed_context_contract_id": "292577",
+          "assumed_context_contract_title": "Novo Nordisk MSA 292577",
+          "retainer_percent": "5%",
+          "retainer_base": "total estimated Pass-through Costs",
+          "retainer_payable_timing": "immediately upon the Work Order",
+          "retainer_credit_back": "credited back to Novo Nordisk as agreed in the Work Order",
+          "unit_based_application": "also applies to fees paid on a unit-based payment schedule",
+          "related_float_reference": "Section 6 of Appendix 3"
+        },
+        "bands": {},
+        "golden_resolved_answers": {
+          "golden_answer_1": "I see you're asking about the retainer language, specifically in the context of the Novo Nordisk MSA 292577 and its amendments.\nThe retainer provision in this MSA states that Novo Nordisk agrees to provide a retainer of 5% of the total estimated Pass-through Costs, which is payable immediately upon the Work Order. This retainer is credited back to Novo Nordisk as agreed in the Work Order. The retainer also applies to fees paid on a unit-based payment schedule.\nThis retainer clause is part of the broader financial and operational framework of the MSA, which also includes provisions for float positions (noted in Section 6 of Appendix 3).\nIf you'd like, I can provide the exact wording of the retainer clause or details from specific amendments.",
+          "golden_answer_2": "Retainer Language — answered in context of Novo Nordisk MSA 292577 (ID 292577).\nKey terms: 5% retainer on total estimated Pass-through Costs; payable immediately upon the Work Order; credited back to Novo Nordisk as agreed in the Work Order; also applies to fees paid on a unit-based payment schedule.\nRelated framework also references float positions in Section 6 of Appendix 3. I can pull exact clause wording if needed.",
+          "golden_answer_3": "For retainer language under Novo Nordisk MSA 292577: Novo Nordisk provides a 5% retainer of total estimated Pass-through Costs, payable immediately upon the Work Order, credited back to Novo Nordisk as agreed in the Work Order, and also applies to fees paid on a unit-based payment schedule. The MSA financial framework also includes float language in Section 6 of Appendix 3. Please confirm if another sponsor/MSA was intended."
+        },
+        "golden_resolved_best_answer": "I see you're asking about the retainer language, specifically in the context of the Novo Nordisk MSA 292577 and its amendments.\nThe retainer provision in this MSA states that Novo Nordisk agrees to provide a retainer of 5% of the total estimated Pass-through Costs, which is payable immediately upon the Work Order. This retainer is credited back to Novo Nordisk as agreed in the Work Order. The retainer also applies to fees paid on a unit-based payment schedule.\nThis retainer clause is part of the broader financial and operational framework of the MSA, which also includes provisions for float positions (noted in Section 6 of Appendix 3).\nIf you'd like, I can provide the exact wording of the retainer clause or details from specific amendments.",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.9142,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.9142,
+            "golden_answer_2": 0.8978,
+            "golden_answer_3": 0.871
+          }
+        },
+        "llm": {
+          "status": "PASS",
+          "confidence": 0.9,
+          "reason": "LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer accurately captures the key details of the retainer language including the 5% retainer on estimated Pass-through Costs, immediate payment upon Work Order, credit back to Novo Nordisk, and applicability to unit-based payment schedules.",
+          "missing_facts": []
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer accurately captures the key details of the retainer language including the 5% retainer on estimated Pass-through Costs, immediate payment upon Work Order, credit back to Novo Nordisk, and applicability to unit-based payment schedules.",
+            "missing_facts": []
+          },
+          "golden_answer_2": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer preserves all key points about the 5% retainer on estimated Pass-through Costs, payment timing, crediting back, and applicability to unit-based fees, matching the expected answer's meaning.",
+            "missing_facts": [
+              "Reference to float positions in Section 6 of Appendix 3"
+            ]
+          },
+          "golden_answer_3": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "The actual answer accurately captures the key details of the retainer language including the 5% retainer on estimated Pass-through Costs, immediate payment upon Work Order, credit back to Novo Nordisk, and applicability to unit-based payment schedules. The mention of float language in Section 6 of Appendix 3 is missing but not critical to the core retainer explanation.",
+            "missing_facts": [
+              "The MSA financial framework also includes float language in Section 6 of Appendix 3",
+              "Please confirm if another sponsor/MSA was intended"
+            ]
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.9142,
+        "scores_by_golden": {
+          "golden_answer_1": 0.9142,
+          "golden_answer_2": 0.8978,
+          "golden_answer_3": 0.871
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    },
+    {
+      "test_case_id": "TC_41",
+      "question": "Please confirm the MSA payment terms (Credit Terms, Compensation Terms, Commercial Terms) for the following clients; Novo Nordisk, IPSEN and Regeneron",
+      "expected_answer_excel_legacy": "## MSA Payment Terms Summary for Novo Nordisk, IPSEN, and Regeneron\n\n### Novo Nordisk (Novo Nordisk A/S: MSA - Mar 21)\n- **Credit Terms:** Payment due 60 days after receipt of correct invoice.\n- **Compensation Terms:** Payments by bank transfer to supplier/supplier affiliate as per Work Order; disputes notified 20 days prior to due date.\n- **Commercial Terms:** Rate card applies prospectively; currency EUR; MSA effective 15 Mar 2021, expires 15 Mar 2027.\n- **Additional:** Includes indemnification, liability caps, and invoicing procedures.\n- [Contract Document](https://app.processunity.net/icon-cm/download.aspx?name=Novo%20Nordisk_ICON%20MSA%20FE%2015%20March%202021.pdf&path=7871ca25-13b4-4776-e83e-80459de0059e)\n\n### IPSEN (Ipsen Bioscience, Inc.: MSA - Aug 09 - SYMPHONY)\n- **Credit Terms:** Payment due 30 days from invoice receipt.\n- **Compensation Terms:** Quarterly payments in advance; fees fixed unless data acquisition costs increase >6%.\n- **Commercial Terms:** Effective 1 Aug 2009; undefined expiry; currency per SOW; no rebates or rate cards.\n- **Additional:** Includes indemnification, liability limits, confidentiality.\n- [Contract Document](https://app.processunity.net/icon-cm/download.aspx?name=Tercica%20SHA%20CA%20080109.pdf&path=4be7d623-80c8-499d-31e4-b08054b005b4)\n\n### Regeneron (Regeneron Pharmaceuticals: MSA - Jan 23 - SYMPHONY)\n- **Credit Terms:** Payment due 60 days from invoice receipt.\n- **Compensation Terms:** Invoices must reference PO number and line; overdue payments incur 1% monthly interest.\n- **Commercial Terms:** Effective 31 Jan 2023; undefined expiry; currency USD; no rebates or rate cards.\n- **Additional:** Includes indemnification, liability caps, invoicing requirements.\n- [Contract Document](https://app.processunity.net/icon-cm/download.aspx?name=RegeneronHealthcareSolutions-MSA-0123-FullyExecuted.pdf&path=1636acfd-d84f-4d07-9688-30769a000ae6)\n\n### Note:\nOne Novo Nordisk MSA document had missing data and requires manual review in Process Unity.\n\nPlease let me know if you need more detailed clauses or other information.",
+      "expected_answer": "## MSA Payment Terms Summary for Novo Nordisk, IPSEN, and Regeneron\n\n### Novo Nordisk (Novo Nordisk A/S: MSA - Mar 21)\n- **Credit Terms:** Payment due 60 days after receipt of correct invoice.\n- **Compensation Terms:** Payments by bank transfer to supplier/supplier affiliate as per Work Order; disputes notified 20 days prior to due date.\n- **Commercial Terms:** Rate card applies prospectively; currency EUR; MSA effective 15 Mar 2021, expires 15 Mar 2027.\n- **Additional:** Includes indemnification, liability caps, and invoicing procedures.\n- [Contract Document](https://app.processunity.net/icon-cm/download.aspx?name=Novo%20Nordisk_ICON%20MSA%20FE%2015%20March%202021.pdf&path=7871ca25-13b4-4776-e83e-80459de0059e)\n\n### IPSEN (Ipsen Bioscience, Inc.: MSA - Aug 09 - SYMPHONY)\n- **Credit Terms:** Payment due 30 days from invoice receipt.\n- **Compensation Terms:** Quarterly payments in advance; fees fixed unless data acquisition costs increase >6%.\n- **Commercial Terms:** Effective 1 Aug 2009; undefined expiry; currency per SOW; no rebates or rate cards.\n- **Additional:** Includes indemnification, liability limits, confidentiality.\n- [Contract Document](https://app.processunity.net/icon-cm/download.aspx?name=Tercica%20SHA%20CA%20080109.pdf&path=4be7d623-80c8-499d-31e4-b08054b005b4)\n\n### Regeneron (Regeneron Pharmaceuticals: MSA - Jan 23 - SYMPHONY)\n- **Credit Terms:** Payment due 60 days from invoice receipt.\n- **Compensation Terms:** Invoices must reference PO number and line; overdue payments incur 1% monthly interest.\n- **Commercial Terms:** Effective 31 Jan 2023; undefined expiry; currency USD; no rebates or rate cards.\n- **Additional:** Includes indemnification, liability caps, invoicing requirements.\n- [Contract Document](https://app.processunity.net/icon-cm/download.aspx?name=RegeneronHealthcareSolutions-MSA-0123-FullyExecuted.pdf&path=1636acfd-d84f-4d07-9688-30769a000ae6)\n\n### Note:\nOne Novo Nordisk MSA document had missing data and requires manual review in Process Unity.\n\nPlease let me know if you need more detailed clauses or other information.",
+      "expected_agent": "Client Contract Agent",
+      "business_agent": "Client_Contract_Agent",
+      "environment": "preprod",
+      "browser": "edge",
+      "suite_name": "R1_Non_stats",
+      "final": {
+        "status": "PASS",
+        "failure_bucket": null,
+        "failure_reason": null,
+        "actual_answer": "I’d be happy to confirm the MSA payment terms for Novo Nordisk, IPSEN, and Regeneron. Here’s what I found based on their respective MSAs and amendments:\nNovo Nordisk A/S: MSA - Mar 21\nCredit Terms: Payment due within 60 days.\nCompensation Terms: Services invoiced on a milestone basis unless otherwise agreed in the Work Order. Rate cards with fixed rates through 31 Dec 2025, with inflation adjustments thereafter. Pass-through costs billed as incurred.\nCommercial Terms: Liability cap is twice the fees paid under the relevant Work Order. Governing law is Denmark. Rebates and discounts apply. Change order provisions and indemnification clauses are included. GDPR-compliant Data Protection Addendum (DPA) is in place.\nIPSEN: Ipsen-MSA_28 Aug 2020\nCredit Terms: Payment due within 90 days.\nCompensation Terms: Payments based on approved budgets in Work Orders. Rate card fixed for 3 years with inflation adjustments thereafter. Pass-through expenses billed monthly with no markup. Volume rebates and discounts apply.\nCommercial Terms: Liability cap is the greater of €3,000,000 or 3x fees payable under the SOW, higher for personal data breaches. Governing law is England & Wales. Non-compete clause included. Indemnification and GDPR-compliant DPA are present.\nRegeneron Pharmaceuticals, Inc: MSA - Nov 1 2021\nCredit Terms: 90 days from invoice receipt for Direct Fees and Pass-Through Costs; 45 days for Investigator Fees.\nCompensation Terms: Fees as per Work Orders; invoices in USD. Rate cards with inflation adjustments based on Mercer index. Investigator payments managed with quarterly forecasts and monthly reporting. Pass-through costs billed monthly. Volume discounts apply.\nCommercial Terms: Liability cap is the greater of 3 times direct fees paid or $5 million; $8 million for data protection breaches. Governing law is New York. Penalty clauses, rebates, and volume discounts apply. Indemnification and GDPR-compliant DPA included.\nIf you want, I can provide specific excerpts or direct links to the exact documents for any of these clients.",
+        "ui_status": "PASS",
+        "route_status": "PASS",
+        "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+        "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+        "internal_agent": "search_legal_database_tool_sponsor",
+        "agent_capture_source": "status_ticker",
+        "semantic_score": null,
+        "semantic_status": null,
+        "llm_judge_status": null,
+        "llm_judge_reason": null,
+        "llm_confidence": null,
+        "fact_check_status": null,
+        "missing_facts": [],
+        "attempt_used": 1,
+        "auto_retry_ran": false,
+        "start_time": "2026-07-22 18:03:44",
+        "end_time": "2026-07-22 18:04:36",
+        "duration_seconds": 52.25,
+        "agent_response_seconds": 51.59,
+        "agent_response_minutes": 0.86,
+        "validation_baseline": "R1_Non_stats_failed_golden_v1"
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "status": "PASS",
+          "failure_bucket": null,
+          "failure_reason": null,
+          "actual_answer": "I’d be happy to confirm the MSA payment terms for Novo Nordisk, IPSEN, and Regeneron. Here’s what I found based on their respective MSAs and amendments:\nNovo Nordisk A/S: MSA - Mar 21\nCredit Terms: Payment due within 60 days.\nCompensation Terms: Services invoiced on a milestone basis unless otherwise agreed in the Work Order. Rate cards with fixed rates through 31 Dec 2025, with inflation adjustments thereafter. Pass-through costs billed as incurred.\nCommercial Terms: Liability cap is twice the fees paid under the relevant Work Order. Governing law is Denmark. Rebates and discounts apply. Change order provisions and indemnification clauses are included. GDPR-compliant Data Protection Addendum (DPA) is in place.\nIPSEN: Ipsen-MSA_28 Aug 2020\nCredit Terms: Payment due within 90 days.\nCompensation Terms: Payments based on approved budgets in Work Orders. Rate card fixed for 3 years with inflation adjustments thereafter. Pass-through expenses billed monthly with no markup. Volume rebates and discounts apply.\nCommercial Terms: Liability cap is the greater of €3,000,000 or 3x fees payable under the SOW, higher for personal data breaches. Governing law is England & Wales. Non-compete clause included. Indemnification and GDPR-compliant DPA are present.\nRegeneron Pharmaceuticals, Inc: MSA - Nov 1 2021\nCredit Terms: 90 days from invoice receipt for Direct Fees and Pass-Through Costs; 45 days for Investigator Fees.\nCompensation Terms: Fees as per Work Orders; invoices in USD. Rate cards with inflation adjustments based on Mercer index. Investigator payments managed with quarterly forecasts and monthly reporting. Pass-through costs billed monthly. Volume discounts apply.\nCommercial Terms: Liability cap is the greater of 3 times direct fees paid or $5 million; $8 million for data protection breaches. Governing law is New York. Penalty clauses, rebates, and volume discounts apply. Indemnification and GDPR-compliant DPA included.\nIf you want, I can provide specific excerpts or direct links to the exact documents for any of these clients.",
+          "streaming_messages": [
+            "• Starting stream...",
+            "• Finding MSA and Amendments",
+            "• Finding MSA and amendments completed. Total records found: 3",
+            "• Finding MSA and amendments completed. Total records found: 2",
+            "• Legal Database search for Sponsor completed - found 13 documents"
+          ],
+          "sources": [
+            "Sources"
+          ],
+          "internal_agent": "search_legal_database_tool_sponsor",
+          "agent_capture_source": "status_ticker",
+          "route_note": "Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent.",
+          "ui_status": "PASS",
+          "route_status": "PASS",
+          "route_reason": "Captured internal agent(s): search_legal_database_tool_sponsor. Internal agent used does not match expected primary routing for R1_Non_stats: captured search_legal_database_tool_sponsor; expected primary client_contract_agent. Source: status_ticker.",
+          "semantic_score": null,
+          "semantic_status": null,
+          "semantic_reason": null,
+          "llm_judge_status": null,
+          "llm_judge_reason": null,
+          "llm_confidence": null,
+          "fact_check_status": null,
+          "missing_facts": [],
+          "start_time": "2026-07-22 18:03:44",
+          "end_time": "2026-07-22 18:04:36",
+          "duration_seconds": 52.25,
+          "agent_response_seconds": 51.59,
+          "agent_response_minutes": 0.86,
+          "status_vs_golden": "PASS",
+          "golden_drift_score": 0.1285,
+          "golden_llm_status": "PASS"
+        }
+      ],
+      "golden": {
+        "test_case_id": "TC_41",
+        "golden_version": "v1",
+        "golden_id": "R1_Non_stats_failed_golden_v1",
+        "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+        "sme_approved": false,
+        "question_type": "payment_terms_multi_client",
+        "status_vs_golden": "PASS",
+        "best_match": "golden_answer_1",
+        "best_llm_match": "golden_answer_1",
+        "drift_score": 0.1285,
+        "drift_type": "number_changed",
+        "drift_types": [
+          "number_changed"
+        ],
+        "variables_bootstrap": {
+          "novo_credit_days": "60",
+          "novo_currency": "EUR",
+          "novo_rate_card_effective": "February 1, 2021",
+          "novo_rate_card_expiry": "December 31, 2025",
+          "novo_compensation_basis": "rate cards with Work Order budgets referencing the rate card",
+          "novo_liability_cap": "two times the fees paid under Work Orders",
+          "ipsen_credit_days": "90",
+          "ipsen_rate_card_fixed_years": "three years from the MSA effective date",
+          "ipsen_pass_through_invoicing": "invoiced monthly with no mark-up",
+          "ipsen_volume_rebates_ref": "Annex 1.2",
+          "ipsen_liability_cap": "greater of €3,000,000 or three times the fees payable under the SOW",
+          "regeneron_pre_cutoff_date": "June 28, 2024",
+          "regeneron_credit_days_before_cutoff": "45",
+          "regeneron_direct_passthrough_days_after_cutoff": "90",
+          "regeneron_investigator_days_after_cutoff": "45",
+          "regeneron_currency": "USD",
+          "regeneron_inflation_index": "Willis Towers Watson index",
+          "regeneron_liability_cap": "greater of three times direct fees or $5 million",
+          "common_commercial_notes": "Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented"
+        },
+        "bands": {
+          "payment_days_tolerance": 10
+        },
+        "golden_resolved_answers": {
+          "golden_answer_1": "MSA Payment Terms for Novo Nordisk, IPSEN, and Regeneron\nNovo Nordisk\nCredit Terms: Payment due 60 days from invoice date.\nCompensation Terms: Fees based on rate cards with Work Order budgets referencing the rate card; currency EUR; rate card effective February 1, 2021 through December 31, 2025, with inflation adjustments thereafter.\nCommercial Terms: Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented. Liability cap is two times the fees paid under Work Orders.\nIPSEN\nCredit Terms: Payment due 90 days from invoice date.\nCompensation Terms: Remuneration based on approved Work Order budgets; rate card fixed for three years from the MSA effective date, with inflation thereafter; volume rebates per Annex 1.2; Pass-Through Expenses invoiced monthly with no mark-up.\nCommercial Terms: Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented. Liability cap is the greater of €3,000,000 or three times the fees payable under the SOW.\nRegeneron\nCredit Terms: Projects awarded before June 28, 2024: 45 days from invoice receipt. Projects awarded after June 28, 2024: 90 days for Direct Fees and Pass-Through Costs, and 45 days for Investigator Fees.\nCompensation Terms: Fees per Work Orders; invoices in USD; inflation adjustments based on the Willis Towers Watson index; enterprise volume discounts may apply.\nCommercial Terms: Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented. Liability cap is the greater of three times direct fees or $5 million.\nI can provide specific excerpts or more detail from any MSA/amendment if needed.",
+          "golden_answer_2": "Confirmed MSA payment terms (Credit, Compensation, Commercial) for Novo Nordisk, IPSEN, and Regeneron:\n- Novo Nordisk: credit 60 days; EUR; rate cards with Work Order budgets referencing the rate card; rate card February 1, 2021 to December 31, 2025; liability cap two times the fees paid under Work Orders.\n- IPSEN: credit 90 days; rate card fixed three years from the MSA effective date; rebates per Annex 1.2; Pass-Through invoiced monthly with no mark-up; liability cap greater of €3,000,000 or three times the fees payable under the SOW.\n- Regeneron: before June 28, 2024 credit 45 days; after cutoff Direct/Pass-Through 90 days and Investigator 45 days; currency USD; inflation via Willis Towers Watson index; liability cap greater of three times direct fees or $5 million.\nClient and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented.",
+          "golden_answer_3": "Payment terms confirmation for three clients:\nNovo Nordisk — Credit 60 days (EUR); compensation via rate cards with Work Order budgets referencing the rate card; commercial terms include affiliate SOW signing and liability capped at two times the fees paid under Work Orders.\nIPSEN — Credit 90 days; compensation via Work Order budgets with three years from the MSA effective date fixed rate card, Annex 1.2 rebates, and Pass-Through invoiced monthly with no mark-up; liability capped at greater of €3,000,000 or three times the fees payable under the SOW.\nRegeneron — Credit terms split by June 28, 2024 (45 days before; 90/45 days after); invoices in USD; inflation per Willis Towers Watson index; liability capped at greater of three times direct fees or $5 million.\nClient and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented."
+        },
+        "golden_resolved_best_answer": "MSA Payment Terms for Novo Nordisk, IPSEN, and Regeneron\nNovo Nordisk\nCredit Terms: Payment due 60 days from invoice date.\nCompensation Terms: Fees based on rate cards with Work Order budgets referencing the rate card; currency EUR; rate card effective February 1, 2021 through December 31, 2025, with inflation adjustments thereafter.\nCommercial Terms: Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented. Liability cap is two times the fees paid under Work Orders.\nIPSEN\nCredit Terms: Payment due 90 days from invoice date.\nCompensation Terms: Remuneration based on approved Work Order budgets; rate card fixed for three years from the MSA effective date, with inflation thereafter; volume rebates per Annex 1.2; Pass-Through Expenses invoiced monthly with no mark-up.\nCommercial Terms: Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented. Liability cap is the greater of €3,000,000 or three times the fees payable under the SOW.\nRegeneron\nCredit Terms: Projects awarded before June 28, 2024: 45 days from invoice receipt. Projects awarded after June 28, 2024: 90 days for Direct Fees and Pass-Through Costs, and 45 days for Investigator Fees.\nCompensation Terms: Fees per Work Orders; invoices in USD; inflation adjustments based on the Willis Towers Watson index; enterprise volume discounts may apply.\nCommercial Terms: Client and ICON affiliates can sign SOWs; indemnification, float, and FX language included where documented. Liability cap is the greater of three times direct fees or $5 million.\nI can provide specific excerpts or more detail from any MSA/amendment if needed.",
+        "semantic": {
+          "status": "PASS",
+          "score": 0.8715,
+          "threshold": 0.75,
+          "scores_by_template": {
+            "golden_answer_1": 0.8715,
+            "golden_answer_2": 0.8592,
+            "golden_answer_3": 0.8023
+          }
+        },
+        "llm": {
+          "status": "PASS",
+          "confidence": 0.9,
+          "reason": "LLM PASS via golden_answer_1 (pass-if-any across 3 variants). All critical payment terms (credit, compensation, commercial) for each client are present and consistent; additional correct details are included.",
+          "missing_facts": []
+        },
+        "llm_by_template": {
+          "golden_answer_1": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "All critical payment terms (credit, compensation, commercial) for each client are present and consistent; additional correct details are included.",
+            "missing_facts": []
+          },
+          "golden_answer_2": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "All critical payment terms (credit, compensation, commercial) for all three clients are confirmed and consistent with expected details, with additional relevant information provided.",
+            "missing_facts": []
+          },
+          "golden_answer_3": {
+            "status": "PASS",
+            "confidence": 0.9,
+            "reason": "All critical payment terms (credit, compensation, commercial) are confirmed with consistent details; additional legal and governance info is provided but does not contradict expected answer.",
+            "missing_facts": []
+          }
+        },
+        "excel_legacy": {
+          "note": "Excel expected_answer is NOT used for PASS/FAIL in golden mode. Question text only comes from Excel.",
+          "compared_to_excel": false,
+          "status_vs_excel": "PASS",
+          "semantic_status": "NOT_RUN",
+          "semantic_score": null,
+          "llm_judge_status": "NOT_RUN",
+          "llm_confidence": null,
+          "llm_judge_reason": "Skipped — golden mode does not judge against Excel expected.",
+          "fact_check_status": "NOT_RUN",
+          "missing_facts": []
+        },
+        "comparison": {
+          "baseline": "R1_Non_stats_failed_golden_v1",
+          "actual_field": "final.actual_answer",
+          "expected_golden_field": "golden.golden_resolved_best_answer",
+          "excel_legacy_field": "expected_answer_excel_legacy"
+        },
+        "best_semantic_score": 0.8715,
+        "scores_by_golden": {
+          "golden_answer_1": 0.8715,
+          "golden_answer_2": 0.8592,
+          "golden_answer_3": 0.8023
+        }
+      },
+      "comparison": {
+        "baseline": "R1_Non_stats_failed_golden_v1",
+        "actual_field": "final.actual_answer",
+        "expected_golden_field": "golden.golden_resolved_best_answer",
+        "excel_legacy_field": "expected_answer_excel_legacy"
+      }
+    }
+  ],
+  "validation_mode": "golden_v1",
+  "golden": {
+    "questions_with_golden": 11,
+    "passed_vs_golden": 9,
+    "failed_vs_golden": 2,
+    "passed_vs_golden_llm": 9,
+    "failed_vs_golden_llm": 2,
+    "llm_not_run_count": 0,
+    "run_drift": 0.1331,
+    "run_stability": 86.7,
+    "questions_high_drift": 0,
+    "drift_type_counts": {
+      "link_added": 1,
+      "link_removed": 1,
+      "stable": 3,
+      "count_changed": 3,
+      "fact_removed": 2,
+      "wording_drift": 1,
+      "number_changed": 2,
+      "available_to_not_available": 1,
+      "contradiction": 1
+    },
+    "per_test_drift": [
+      {
+        "test_case_id": "TC_16",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.3228,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed",
+          "fact_removed"
+        ],
+        "semantic_score": 0.6772,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_07",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1899,
+        "drift_type": "link_removed",
+        "drift_types": [
+          "link_removed"
+        ],
+        "semantic_score": 0.8101,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_17",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1775,
+        "drift_type": "wording_drift",
+        "drift_types": [
+          "wording_drift"
+        ],
+        "semantic_score": 0.8225,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_22",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1374,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed",
+          "number_changed"
+        ],
+        "semantic_score": 0.8626,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_35",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.1339,
+        "drift_type": "available_to_not_available",
+        "drift_types": [
+          "available_to_not_available",
+          "contradiction",
+          "fact_removed"
+        ],
+        "semantic_score": 0.8661,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_41",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1285,
+        "drift_type": "number_changed",
+        "drift_types": [
+          "number_changed"
+        ],
+        "semantic_score": 0.8715,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_01",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0985,
+        "drift_type": "link_added",
+        "drift_types": [
+          "link_added"
+        ],
+        "semantic_score": 0.9015,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_38",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0858,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "semantic_score": 0.9142,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_09",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0786,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "semantic_score": 0.9214,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_36",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0683,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed"
+        ],
+        "semantic_score": 0.9317,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_31",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0431,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "semantic_score": 0.9569,
+        "llm_status": "PASS"
+      }
+    ],
+    "top_drift_tests": [
+      {
+        "test_case_id": "TC_16",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.3228,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed",
+          "fact_removed"
+        ],
+        "semantic_score": 0.6772,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_07",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1899,
+        "drift_type": "link_removed",
+        "drift_types": [
+          "link_removed"
+        ],
+        "semantic_score": 0.8101,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_17",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1775,
+        "drift_type": "wording_drift",
+        "drift_types": [
+          "wording_drift"
+        ],
+        "semantic_score": 0.8225,
+        "llm_status": "PASS"
+      }
+    ],
+    "golden_version": "v1",
+    "golden_id": "R1_Non_stats_failed_golden_v1",
+    "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+    "sme_approved": false,
+    "build_id": "22Jul2026/Client_Contract/R1_Non_stats/1756",
+    "retried_vs_golden": [],
+    "flipped_to_pass_vs_golden": []
+  },
+  "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+  "review_paths": {
+    "suite_results": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\22Jul2026\\Client_Contract\\R1_Non_stats\\1756\\suite_results.json",
+    "suite_summary": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\22Jul2026\\Client_Contract\\R1_Non_stats\\1756\\suite_summary.json",
+    "run_summary_txt": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\22Jul2026\\Client_Contract\\R1_Non_stats\\1756\\RUN_SUMMARY.txt",
+    "golden_review_html": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\22Jul2026\\Client_Contract\\R1_Non_stats\\1756\\GOLDEN_REVIEW.html",
+    "drift_history": "",
+    "trend_note": "Golden stability: artifacts/drift/Client_Contract/R1_Non_stats/stability_history.json"
+  }
+}
