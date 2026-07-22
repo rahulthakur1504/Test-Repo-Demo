@@ -1,0 +1,267 @@
+{
+  "run_id": "1830",
+  "build_id": "22Jul2026/Client_Contract/R1_Non_stats/1830",
+  "date_folder": "22Jul2026",
+  "sheet_name": "R1_Non_stats",
+  "run_time": "1830",
+  "run_type": "full_with_retry",
+  "orbis_chat": "ClientContract_NonStats_22Jul26_1830",
+  "business_agent": "Client_Contract_Agent",
+  "results_folder": "Client_Contract/R1_Non_stats",
+  "finished_at": "2026-07-22 18:45:32",
+  "total": 11,
+  "passed": 10,
+  "failed": 1,
+  "review": 0,
+  "error": 0,
+  "retry": {
+    "questions_retried": 2,
+    "retried_ids": [
+      "TC_16",
+      "TC_38"
+    ],
+    "flipped_to_pass": [
+      "TC_16"
+    ],
+    "still_failed_after_retry": [
+      "TC_38"
+    ],
+    "skipped_retry_route": []
+  },
+  "failed_ids": [
+    "TC_38"
+  ],
+  "failure_buckets": {
+    "GOLDEN_DRIFT": 1
+  },
+  "timing": {
+    "total_minutes": 15.3,
+    "main_run_minutes": 13.8,
+    "retry_minutes": 1.5,
+    "total_seconds": 915.5,
+    "retry_seconds": 90.9,
+    "agent_response_avg_seconds": 54.86,
+    "agent_response_p95_seconds": 76.18,
+    "agent_response_avg_minutes": 0.91,
+    "agent_response_p95_minutes": 1.27,
+    "agent_response_samples": 11
+  },
+  "results_file": "suite_results.json",
+  "validation_mode": "golden_v1",
+  "golden": {
+    "questions_with_golden": 11,
+    "passed_vs_golden": 10,
+    "failed_vs_golden": 1,
+    "passed_vs_golden_llm": 10,
+    "failed_vs_golden_llm": 1,
+    "llm_not_run_count": 0,
+    "run_drift": 0.1381,
+    "run_stability": 86.2,
+    "questions_high_drift": 1,
+    "drift_type_counts": {
+      "link_changed": 1,
+      "link_removed": 1,
+      "wording_drift": 2,
+      "link_added": 1,
+      "number_changed": 2,
+      "stable": 2,
+      "count_changed": 2,
+      "fact_removed": 1,
+      "fact_added": 1
+    },
+    "per_test_drift": [
+      {
+        "test_case_id": "TC_38",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.3619,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed",
+          "fact_removed",
+          "fact_added"
+        ],
+        "semantic_score": 0.6381,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_07",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.2251,
+        "drift_type": "link_removed",
+        "drift_types": [
+          "link_removed"
+        ],
+        "semantic_score": 0.7749,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_09",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.2093,
+        "drift_type": "wording_drift",
+        "drift_types": [
+          "wording_drift"
+        ],
+        "semantic_score": 0.7907,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_17",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1858,
+        "drift_type": "wording_drift",
+        "drift_types": [
+          "wording_drift"
+        ],
+        "semantic_score": 0.8142,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_16",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1218,
+        "drift_type": "link_added",
+        "drift_types": [
+          "link_added"
+        ],
+        "semantic_score": 0.8782,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_22",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1201,
+        "drift_type": "number_changed",
+        "drift_types": [
+          "number_changed"
+        ],
+        "semantic_score": 0.8799,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_41",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0988,
+        "drift_type": "number_changed",
+        "drift_types": [
+          "number_changed"
+        ],
+        "semantic_score": 0.9012,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_36",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0816,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed"
+        ],
+        "semantic_score": 0.9184,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_35",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.064,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "semantic_score": 0.936,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_31",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0397,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "semantic_score": 0.9603,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_01",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.011,
+        "drift_type": "link_changed",
+        "drift_types": [
+          "link_changed"
+        ],
+        "semantic_score": 0.989,
+        "llm_status": "PASS"
+      }
+    ],
+    "top_drift_tests": [
+      {
+        "test_case_id": "TC_38",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.3619,
+        "drift_type": "count_changed",
+        "drift_types": [
+          "count_changed",
+          "fact_removed",
+          "fact_added"
+        ],
+        "semantic_score": 0.6381,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_07",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.2251,
+        "drift_type": "link_removed",
+        "drift_types": [
+          "link_removed"
+        ],
+        "semantic_score": 0.7749,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_09",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.2093,
+        "drift_type": "wording_drift",
+        "drift_types": [
+          "wording_drift"
+        ],
+        "semantic_score": 0.7907,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_17",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1858,
+        "drift_type": "wording_drift",
+        "drift_types": [
+          "wording_drift"
+        ],
+        "semantic_score": 0.8142,
+        "llm_status": "PASS"
+      }
+    ],
+    "golden_version": "v1",
+    "golden_id": "R1_Non_stats_failed_golden_v1",
+    "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+    "sme_approved": false,
+    "build_id": "22Jul2026/Client_Contract/R1_Non_stats/1830",
+    "retried_vs_golden": [
+      "TC_16",
+      "TC_38"
+    ],
+    "flipped_to_pass_vs_golden": [
+      "TC_16"
+    ]
+  },
+  "golden_path": "golden\\client_contract\\R1_Non_stats\\golden_v1.json",
+  "review_paths": {
+    "suite_results": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\22Jul2026\\Client_Contract\\R1_Non_stats\\1830\\suite_results.json",
+    "suite_summary": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\22Jul2026\\Client_Contract\\R1_Non_stats\\1830\\suite_summary.json",
+    "run_summary_txt": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\22Jul2026\\Client_Contract\\R1_Non_stats\\1830\\RUN_SUMMARY.txt",
+    "golden_review_html": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\22Jul2026\\Client_Contract\\R1_Non_stats\\1830\\GOLDEN_REVIEW.html",
+    "drift_history": "",
+    "trend_note": "Golden stability: artifacts/drift/Client_Contract/R1_Non_stats/stability_history.json"
+  }
+}
