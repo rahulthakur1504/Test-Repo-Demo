@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suite Dashboard — QA &amp; Management</title>
+<style>
+:root {
+  --ink:#12233a; --muted:#5b6b7c; --card:#fff; --line:#d9e2ec; --bg:#eef3f8;
+  --accent:#1b4f72; --good:#0f7a3a; --warn:#9a3412; --red:#dc2626;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; color:var(--ink); font-family:"Segoe UI",system-ui,sans-serif;
+  background: radial-gradient(900px 320px at 80% -10%, #d5e7f8 0%, transparent 55%),
+              linear-gradient(180deg,#e8eef5,var(--bg));
+}
+.wrap { max-width:1180px; margin:0 auto; padding:28px 24px 48px; }
+.eyebrow { margin:0; text-transform:uppercase; letter-spacing:.08em; font-size:12px; font-weight:700; color:var(--accent); }
+h1 { margin:6px 0 4px; font-size:30px; }
+.sub { color:var(--muted); margin:0 0 14px; }
+.tag { display:inline-block; background:#7c2d12; color:#fff; padding:3px 8px; border-radius:6px; font-size:11px; font-weight:700; margin-left:8px; }
+.kpis { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+.kpi { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; min-width:120px; }
+.kpi-val { display:block; font-size:22px; font-weight:700; }
+.kpi-label { color:var(--muted); font-size:12px; }
+.banner { background:#fff8e7; border:1px solid #efd59a; border-radius:12px; padding:12px 14px; color:#5c4300; margin-bottom:14px; }
+.attn-bar {
+  display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:10px; margin-bottom:16px;
+}
+@media (max-width:900px) { .attn-bar { grid-template-columns:1fr; } }
+.attn-card {
+  background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px;
+}
+.attn-card.watch { border-color:#fca5a5; background:#fff5f5; }
+.attn-card.ok { border-color:#86efac; background:#f0fdf4; }
+.attn-card h3 { margin:0 0 4px; font-size:14px; }
+.attn-card p { margin:0; font-size:13px; color:#334155; }
+.links { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.btn { display:inline-block; text-decoration:none; background:#1e293b; color:#fff; border-radius:8px; padding:8px 12px; font-size:12px; font-weight:700; }
+.btn.sec { background:#fff; color:#1e293b; border:1px solid var(--line); }
+.grid { display:grid; grid-template-columns:1.45fr 1fr; gap:14px; }
+@media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+.panel { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px 16px; }
+.panel h2 { margin:0 0 6px; font-size:17px; }
+.panel .subh { color:var(--muted); font-size:13px; margin:0 0 12px; }
+.agent-block { border:1px solid var(--line); border-radius:14px; padding:14px; background:#fbfdff; margin-bottom:12px; cursor:pointer; transition:box-shadow .15s; }
+.agent-block:hover, .agent-block.active { box-shadow:0 0 0 2px #93c5fd; }
+.agent-head { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:10px; }
+.agent-head h3 { margin:0 0 4px; font-size:18px; }
+.runs-badge { background:#e8f1fa; border:1px solid #bcd0e6; border-radius:12px; padding:8px 12px; text-align:center; min-width:110px; }
+.runs-badge b { display:block; font-size:22px; color:var(--accent); }
+.runs-badge span { font-size:11px; color:var(--muted); }
+.agent-kpis { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:10px; }
+.big { display:block; font-size:20px; font-weight:700; }
+.muted { color:var(--muted); font-size:12px; }
+.failc { color:var(--warn); }
+.trend-block { background:#fff; border:1px solid var(--line); border-radius:12px; padding:10px 12px; margin-bottom:10px; }
+.trend-wrap { position:relative; }
+.trend-chart { width:100%; height:auto; display:block; }
+.gridline { stroke:#c9d5e2; stroke-width:1; }
+.axis { font-size:10px; fill:var(--muted); }
+.line { fill:none; stroke:#1b4f72; stroke-width:2.5; }
+.pt { fill:#1b4f72; stroke:#fff; stroke-width:2; cursor:pointer; }
+.hover-card {
+  position:absolute; left:12px; top:8px; z-index:5;
+  background:#0f172a; color:#f8fafc; border-radius:10px;
+  padding:10px 12px; font-size:12px; line-height:1.45;
+  box-shadow:0 8px 24px rgba(15,23,42,.25); max-width:280px;
+  white-space:pre-line; pointer-events:none;
+}
+.behavior { font-size:13px; color:#243447; background:#f4f7fb; border-radius:10px; padding:10px 12px; }
+.type-runs { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+.pill { background:#eef4fa; color:var(--accent); border-radius:999px; padding:3px 10px; font-size:12px; }
+.tiny { margin-top:4px; }
+.barrow { display:grid; grid-template-columns:150px 1fr 36px; gap:8px; align-items:center; margin:6px 0; font-size:13px; cursor:pointer; padding:4px 6px; border-radius:8px; }
+.barrow:hover, .barrow.active { background:#f1f5f9; }
+.bar { background:#e8eef5; border-radius:6px; height:14px; }
+.bar i { display:block; height:14px; background:#2d6a9f; border-radius:6px; }
+.wide { grid-column:1 / -1; }
+ol { margin:0; padding-left:18px; color:#243447; font-size:14px; }
+.filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; align-items:center; }
+.chip { border:1px solid var(--line); background:#fff; border-radius:999px; padding:5px 12px; font-size:12px; font-weight:600; cursor:pointer; color:#334155; }
+.chip:hover, .chip.on { background:#1e293b; color:#fff; border-color:#1e293b; }
+.case { border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:8px 0; background:#fafcff; }
+.case:hover { border-color:#93c5fd; }
+.case .top { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:8px; }
+.tagp { font-size:11px; font-weight:700; border-radius:999px; padding:2px 8px; }
+.tagp.fail { background:#fee2e2; color:#991b1b; }
+.tagp.new { background:#ffedd5; color:#9a3412; }
+.tagp.chronic { background:#e2e8f0; color:#334155; }
+.tagp.flaky { background:#fef3c7; color:#92400e; }
+.tagp.agent { background:#e0e7ff; color:#3730a3; }
+.q { font-weight:600; margin:0 0 8px; font-size:14px; }
+.cmp { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media (max-width:700px) { .cmp { grid-template-columns:1fr; } }
+.box { background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px; font-size:12px; }
+.box .k { color:var(--muted); font-size:11px; text-transform:uppercase; font-weight:700; margin-bottom:4px; }
+.box.exp { border-left:3px solid #16a34a; }
+.box.got { border-left:3px solid #dc2626; }
+.actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.empty { color:var(--muted); font-size:13px; padding:12px 0; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; background:#f8fafc; color:#334155; padding:10px; border-bottom:1px solid var(--line); text-transform:uppercase; font-size:11px; }
+td { padding:10px; border-bottom:1px solid var(--line); vertical-align:top; }
+.badge { display:inline-block; border-radius:999px; padding:2px 8px; font-size:11px; font-weight:700; }
+.badge.up { background:#dcfce7; color:#166534; }
+.badge.down { background:#fee2e2; color:#991b1b; }
+.badge.flat { background:#e2e8f0; color:#334155; }
+.meta-row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; color:var(--muted); font-size:12px; margin-bottom:10px; }
+</style></head><body>
+<div class="wrap">
+  <p class="eyebrow">Suite dashboard · QA + managers <span class="tag">PREVIEW</span></p>
+  <h1>Orbis Suite — All Agents</h1>
+  <p class="sub">Ops health board. Click an agent → open fails below (same golden drill-down as Drift). Last refresh: <b>22 Jul 2026 · 18:30 IST</b></p>
+
+  <div class="kpis">
+    <div class="kpi"><span class="kpi-val">4</span><span class="kpi-label">Business agents</span></div>
+    <div class="kpi"><span class="kpi-val">39</span><span class="kpi-label">Runs (30 days)</span></div>
+    <div class="kpi"><span class="kpi-val" style="color:#9a3412">Watch</span><span class="kpi-label">Release readiness</span></div>
+    <div class="kpi"><span class="kpi-val">48s</span><span class="kpi-label">Suite avg latency / Q</span></div>
+    <div class="kpi"><span class="kpi-val" style="color:#9a3412">61s</span><span class="kpi-label">Slowest (Core)</span></div>
+    <div class="kpi"><span class="kpi-val">3</span><span class="kpi-label">Flaky TCs (14d)</span></div>
+    <div class="kpi"><span class="kpi-val">9</span><span class="kpi-label">Open golden fails</span></div>
+  </div>
+
+  <div class="attn-bar">
+    <div class="attn-card watch">
+      <h3>Needs attention (QA)</h3>
+      <p>Orbis Core wrong-answer volume + latency rising (61s). Triage Web sheet first. Client Contract: TC_38 flaky after retry.</p>
+    </div>
+    <div class="attn-card">
+      <h3>Manager snapshot</h3>
+      <p>1 of 4 agents worsening. Suite not “green” for expand-coverage decisions until Core wrong-answer trend turns.</p>
+    </div>
+    <div class="attn-card ok">
+      <h3>Stable enough</h3>
+      <p>Procurement &amp; IOD improving/stable; latency flat. Keep 30-day run cadence.</p>
+    </div>
+  </div>
+
+  <div class="links">
+    <a class="btn" href="DRIFT_DASHBOARD.html">Open Drift (product story)</a>
+    <a class="btn sec" href="ANSWER_REVIEW.html">Latest Answer Review</a>
+    <a class="btn sec" href="#golden">Jump to golden fails</a>
+    <a class="btn sec" href="#flaky">Jump to flaky list</a>
+  </div>
+
+  <div class="banner">
+    <b>How to use:</b> QA — click agent or fail category → golden expected vs agent (no digging). Manager — scan attention cards + readiness KPI. Drift board = quality/product story from the same suite data.
+  </div>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>Per-agent health + trend (last 30 days)</h2>
+      <p class="subh">Click an agent block to filter golden fails below.</p>
+
+      <div class="agent-block" data-agent="Client Contract" onclick="setAgent('Client Contract', this)">
+        <div class="agent-head">
+          <div>
+            <h3>Client Contract Agent</h3>
+            <div class="muted">Types: R1 Non-stats · R1 Stats · Edge · Main</div>
+          </div>
+          <div class="runs-badge"><b>16</b><span>runs in last 30 days</span></div>
+        </div>
+        <div class="agent-kpis">
+          <div><span class="big">88.1%</span><span class="muted">latest stability</span></div>
+          <div><span class="big">44/49</span><span class="muted">latest pass</span></div>
+          <div><span class="big failc">5</span><span class="muted">fails</span></div>
+          <div><span class="big">42s</span><span class="muted">avg response / Q</span></div>
+          <div><span class="big" style="font-size:14px;padding-top:6px">Missing facts</span><span class="muted">top signal</span></div>
+        </div>
+        <div class="trend-block">
+          <div class="muted" style="margin-bottom:6px;font-weight:600">Stability (hover)</div>
+          <div class="trend-wrap">
+            <svg viewBox="0 0 420 110" class="trend-chart">
+              <line x1="36" y1="12" x2="36" y2="82" class="gridline"/><line x1="36" y1="82" x2="408" y2="82" class="gridline"/>
+              <polyline class="line" points="36,41 110,82 185,12 259,15 334,27 408,31"/>
+              <circle class="pt" cx="36" cy="41" r="5" data-tip="20Jul Stats&#10;Stability 85% · 10/13 · 44s/Q"></circle>
+              <circle class="pt" cx="110" cy="82" r="5" data-tip="21Jul Edge&#10;Stability 80% · 7/10 · 45s/Q"></circle>
+              <circle class="pt" cx="185" cy="12" r="5" data-tip="21Jul Stats&#10;Stability 88.5% · 11/13 · 41s/Q"></circle>
+              <circle class="pt" cx="259" cy="15" r="5" data-tip="22Jul 1612 Non-stats&#10;88.1% · 7/11 · 40s/Q"></circle>
+              <circle class="pt" cx="334" cy="27" r="5" data-tip="22Jul 1756&#10;86.7% · 9/11 · 43s/Q"></circle>
+              <circle class="pt" cx="408" cy="31" r="5" data-tip="22Jul 1830&#10;86.2% · 10/11 · 42s/Q · retry flipped TC_16"></circle>
+            </svg>
+            <div class="hover-card" hidden></div>
+          </div>
+        </div>
+        <div class="trend-block">
+          <div class="muted" style="margin-bottom:6px;font-weight:600">Avg response time / Q (hover)</div>
+          <div class="trend-wrap">
+            <svg viewBox="0 0 420 110" class="trend-chart">
+              <line x1="36" y1="12" x2="36" y2="82" class="gridline"/><line x1="36" y1="82" x2="408" y2="82" class="gridline"/>
+              <polyline class="line" style="stroke:#0ea5e9" points="36,40 110,30 185,58 259,66 334,46 408,52"/>
+              <circle class="pt" style="fill:#0ea5e9" cx="36" cy="40" r="5" data-tip="20Jul · 44s/Q"></circle>
+              <circle class="pt" style="fill:#0ea5e9" cx="110" cy="30" r="5" data-tip="21Jul · 45s/Q"></circle>
+              <circle class="pt" style="fill:#0ea5e9" cx="185" cy="58" r="5" data-tip="21Jul · 41s/Q"></circle>
+              <circle class="pt" style="fill:#0ea5e9" cx="259" cy="66" r="5" data-tip="22Jul · 40s/Q"></circle>
+              <circle class="pt" style="fill:#0ea5e9" cx="334" cy="46" r="5" data-tip="22Jul · 43s/Q"></circle>
+              <circle class="pt" style="fill:#0ea5e9" cx="408" cy="52" r="5" data-tip="22Jul · 42s/Q · stable"></circle>
+            </svg>
+            <div class="hover-card" hidden></div>
+          </div>
+        </div>
+        <div class="behavior"><b>How behaving:</b> Improving — Non-stats still flaky on retainer Qs · latency stable</div>
+        <div class="type-runs"><span class="pill">R1_Non_stats: <b>6</b></span><span class="pill">R1_Stats: <b>5</b></span><span class="pill">Edge: <b>3</b></span><span class="pill">Main: <b>2</b></span></div>
+      </div>
+
+      <div class="agent-block" data-agent="Orbis Core" onclick="setAgent('Orbis Core', this)">
+        <div class="agent-head">
+          <div>
+            <h3>Orbis Core</h3>
+            <div class="muted">Types: Handler · Process · Web · …</div>
+          </div>
+          <div class="runs-badge"><b>11</b><span>runs in last 30 days</span></div>
+        </div>
+        <div class="agent-kpis">
+          <div><span class="big">72.4%</span><span class="muted">latest stability</span></div>
+          <div><span class="big">59/133</span><span class="muted">latest pass</span></div>
+          <div><span class="big failc">74</span><span class="muted">fails</span></div>
+          <div><span class="big failc">61s</span><span class="muted">avg response / Q ↑</span></div>
+          <div><span class="big" style="font-size:14px;padding-top:6px">Wrong Answer</span><span class="muted">top signal</span></div>
+        </div>
+        <div class="trend-block">
+          <div class="muted" style="margin-bottom:6px;font-weight:600">Stability (hover)</div>
+          <div class="trend-wrap">
+            <svg viewBox="0 0 420 110" class="trend-chart">
+              <line x1="36" y1="12" x2="36" y2="82" class="gridline"/><line x1="36" y1="82" x2="408" y2="82" class="gridline"/>
+              <polyline class="line" style="stroke:#7c3aed" points="36,55 129,82 222,37 315,69 408,12"/>
+              <circle class="pt" style="fill:#7c3aed" cx="36" cy="55" r="5" data-tip="06Jul · 70% · 48s/Q"></circle>
+              <circle class="pt" style="fill:#7c3aed" cx="129" cy="82" r="5" data-tip="06Jul · 68.5% · 50s/Q"></circle>
+              <circle class="pt" style="fill:#7c3aed" cx="222" cy="37" r="5" data-tip="07Jul · 71% · 54s/Q"></circle>
+              <circle class="pt" style="fill:#7c3aed" cx="315" cy="69" r="5" data-tip="07Jul · 69.2% · wrong-answer spike · 58s/Q"></circle>
+              <circle class="pt" style="fill:#7c3aed" cx="408" cy="12" r="5" data-tip="07Jul build_40 · 72.4% · 61s/Q slower"></circle>
+            </svg>
+            <div class="hover-card" hidden></div>
+          </div>
+        </div>
+        <div class="trend-block">
+          <div class="muted" style="margin-bottom:6px;font-weight:600">Avg response time / Q (hover) — rising = slower</div>
+          <div class="trend-wrap">
+            <svg viewBox="0 0 420 110" class="trend-chart">
+              <line x1="36" y1="12" x2="36" y2="82" class="gridline"/><line x1="36" y1="82" x2="408" y2="82" class="gridline"/>
+              <polyline class="line" style="stroke:#dc2626" points="36,72 129,64 222,50 315,36 408,26"/>
+              <circle class="pt" style="fill:#dc2626" cx="36" cy="72" r="5" data-tip="06Jul · 48s/Q"></circle>
+              <circle class="pt" style="fill:#dc2626" cx="129" cy="64" r="5" data-tip="06Jul · 50s/Q"></circle>
+              <circle class="pt" style="fill:#dc2626" cx="222" cy="50" r="5" data-tip="07Jul · 54s/Q"></circle>
+              <circle class="pt" style="fill:#dc2626" cx="315" cy="36" r="5" data-tip="07Jul · 58s/Q"></circle>
+              <circle class="pt" style="fill:#dc2626" cx="408" cy="26" r="5" data-tip="07Jul · 61s/Q · getting slower"></circle>
+            </svg>
+            <div class="hover-card" hidden></div>
+          </div>
+        </div>
+        <div class="behavior"><b>How behaving:</b> Weak — wrong answers + latency rising; Web weaker than Handler</div>
+        <div class="type-runs"><span class="pill">Handler: <b>4</b></span><span class="pill">Process: <b>3</b></span><span class="pill">Web: <b>2</b></span><span class="pill">Others: <b>2</b></span></div>
+      </div>
+
+      <div class="agent-block" data-agent="Procurement" onclick="setAgent('Procurement', this)">
+        <div class="agent-head">
+          <div><h3>Procurement Agent</h3><div class="muted">Types: NA / procurement scripts</div></div>
+          <div class="runs-badge"><b>7</b><span>runs in last 30 days</span></div>
+        </div>
+        <div class="agent-kpis">
+          <div><span class="big">81.0%</span><span class="muted">latest stability</span></div>
+          <div><span class="big">40/55</span><span class="muted">latest pass</span></div>
+          <div><span class="big failc">15</span><span class="muted">fails</span></div>
+          <div><span class="big">38s</span><span class="muted">avg response / Q</span></div>
+        </div>
+        <div class="behavior"><b>How behaving:</b> Slightly improving · latency stable ~38s</div>
+        <div class="type-runs"><span class="pill">NA: <b>7</b></span></div>
+      </div>
+
+      <div class="agent-block" data-agent="IOD" onclick="setAgent('IOD', this)">
+        <div class="agent-head">
+          <div><h3>IOD</h3><div class="muted">Types: Automated</div></div>
+          <div class="runs-badge"><b>5</b><span>runs in last 30 days</span></div>
+        </div>
+        <div class="agent-kpis">
+          <div><span class="big">84.5%</span><span class="muted">latest stability</span></div>
+          <div><span class="big">30/42</span><span class="muted">latest pass</span></div>
+          <div><span class="big failc">12</span><span class="muted">fails</span></div>
+          <div><span class="big">35s</span><span class="muted">avg response / Q</span></div>
+        </div>
+        <div class="behavior"><b>How behaving:</b> Stable · low volume · slightly faster</div>
+        <div class="type-runs"><span class="pill">Automated: <b>5</b></span></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Fail signals across suite</h2>
+      <p class="subh">Click a bar → filter golden fails (same as Drift).</p>
+      <div class="barrow" data-cat="wrong" onclick="setCat('wrong', this)"><span>Wrong Answer</span><div class="bar"><i style="width:92%"></i></div><b>58</b></div>
+      <div class="barrow" data-cat="missing" onclick="setCat('missing', this)"><span>Missing facts</span><div class="bar"><i style="width:55%"></i></div><b>22</b></div>
+      <div class="barrow" data-cat="wrongfacts" onclick="setCat('wrongfacts', this)"><span>Wrong facts</span><div class="bar"><i style="width:45%"></i></div><b>18</b></div>
+      <div class="barrow" data-cat="wording" onclick="setCat('wording', this)"><span>Wording only</span><div class="bar"><i style="width:35%"></i></div><b>14</b></div>
+      <div class="barrow" data-cat="context" onclick="setCat('context', this)"><span>Wrong context</span><div class="bar"><i style="width:30%"></i></div><b>12</b></div>
+      <div class="barrow" data-cat="numbers" onclick="setCat('numbers', this)"><span>Numbers changed</span><div class="bar"><i style="width:28%"></i></div><b>11</b></div>
+      <p class="muted" style="margin-top:12px">For category <b>trends</b> (worse/better over time), open <a href="DRIFT_DASHBOARD.html">Drift</a>.</p>
+
+      <h2 style="margin-top:20px" id="flaky">Top flaky (QA triage)</h2>
+      <p class="subh">Industry pattern: flaky list so QA doesn’t chase ghosts.</p>
+      <table>
+        <thead><tr><th>Case</th><th>Agent</th><th>14d pattern</th><th></th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>TC_38</b></td><td>Client Contract</td><td>P F P F P · retry flipped once</td>
+            <td><button class="chip" type="button" onclick="focusCase('TC_38')">Open</button></td>
+          </tr>
+          <tr>
+            <td><b>TC_16</b></td><td>Client Contract</td><td>F F P (retry helped)</td>
+            <td><button class="chip" type="button" onclick="focusCase('TC_16')">Open</button></td>
+          </tr>
+          <tr>
+            <td><b>PR_11</b></td><td>Procurement</td><td>wording-only flips</td>
+            <td><button class="chip" type="button" onclick="focusCase('PR_11')">Open</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- GOLDEN — same idea as Drift -->
+    <section class="panel wide" id="golden">
+      <h2>Golden set — open fails (suite drill-down)</h2>
+      <p class="subh">Same pattern as Drift: expected vs agent on this board. Answer Review only if you need the full run.</p>
+      <div class="filters">
+        <button type="button" class="chip on" data-f="all" onclick="setFilter('all', this)">All open fails</button>
+        <button type="button" class="chip" data-f="new" onclick="setFilter('new', this)">New regressions</button>
+        <button type="button" class="chip" data-f="chronic" onclick="setFilter('chronic', this)">Chronic fails</button>
+        <button type="button" class="chip" data-f="flaky" onclick="setFilter('flaky', this)">Flaky</button>
+        <button type="button" class="chip" data-f="clear" onclick="clearFilters(this)">Clear agent/cat</button>
+        <span class="muted" id="filterLabel">Showing: all · any agent</span>
+      </div>
+      <div id="caseList"></div>
+    </section>
+
+    <section class="panel wide">
+      <h2>Roles — what to look at</h2>
+      <table>
+        <thead><tr><th>Role</th><th>Use this suite for</th><th>Then go to</th></tr></thead>
+        <tbody>
+          <tr><td><b>QA</b></td><td>Agent health, flaky list, golden expected vs got, latency spikes</td><td>Answer Review for one TC</td></tr>
+          <tr><td><b>Manager</b></td><td>Attention cards, readiness KPI, which agent is blocking</td><td>Drift for product quality story</td></tr>
+          <tr><td><b>Product</b></td><td>Quick scan only</td><td>Drift board (primary)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel wide">
+      <h2>How this updates</h2>
+      <ol>
+        <li>Any individual agent/sheet run appends trend points (stability + latency) and refreshes golden fails for that agent.</li>
+        <li>Other agents keep last known points until they run again.</li>
+        <li>Full suite job refreshes every agent that executed → regenerates this board + Drift from the same data.</li>
+      </ol>
+    </section>
+  </div>
+</div>
+
+<script>
+const CASES = [
+  {id:'TC_38', agent:'Client Contract', sheet:'R1_Non_stats', cat:'missing', kind:'flaky',
+   q:'What is the retainer amount for this contract?',
+   exp:'Retainer is $X as stated in schedule…', got:'Mentions fees but omits retainer figure.',
+   review:'ANSWER_REVIEW.html#TC_38'},
+  {id:'TC_16', agent:'Client Contract', sheet:'R1_Non_stats', cat:'missing', kind:'new',
+   q:'List all clients covered under the agreement.',
+   exp:'Client A, Client B, Client C', got:'Client A and Client B only.',
+   review:'ANSWER_REVIEW.html#TC_16'},
+  {id:'TC_07', agent:'Client Contract', sheet:'R1_Non_stats', cat:'context', kind:'chronic',
+   q:'Summarize termination notice period.',
+   exp:'30 days written notice (Clause 12)', got:'Answers a different MSA notice period.',
+   review:'ANSWER_REVIEW.html#TC_07'},
+  {id:'WEB_12', agent:'Orbis Core', sheet:'Web', cat:'wrong', kind:'new',
+   q:'What is the published filing deadline?',
+   exp:'15 March (official calendar)', got:'Claims 1 April with wrong source.',
+   review:'ANSWER_REVIEW.html#WEB_12'},
+  {id:'WEB_04', agent:'Orbis Core', sheet:'Web', cat:'wrong', kind:'chronic',
+   q:'Name the regulatory body for this product.',
+   exp:'FCA', got:'Names a related but incorrect body.',
+   review:'ANSWER_REVIEW.html#WEB_04'},
+  {id:'CORE_19', agent:'Orbis Core', sheet:'Core_stats', cat:'wrongfacts', kind:'new',
+   q:'What is the YoY growth %?',
+   exp:'12.4%', got:'14.1% (misread table)',
+   review:'ANSWER_REVIEW.html#CORE_19'},
+  {id:'PR_03', agent:'Procurement', sheet:'Proc_main', cat:'missing', kind:'chronic',
+   q:'Which vendors are on the preferred list?',
+   exp:'Vendor A, B, C', got:'Vendor A only.',
+   review:'ANSWER_REVIEW.html#PR_03'},
+  {id:'PR_11', agent:'Procurement', sheet:'Proc_main', cat:'wording', kind:'flaky',
+   q:'Describe the RFP timeline.',
+   exp:'Kickoff → submit → award (dates…)', got:'Same facts, different phrasing.',
+   review:'ANSWER_REVIEW.html#PR_11'},
+  {id:'IOD_02', agent:'IOD', sheet:'IOD_q', cat:'missing', kind:'new',
+   q:'What data fields are required for onboarding?',
+   exp:'Name, LEI, jurisdiction', got:'Name and LEI only.',
+   review:'ANSWER_REVIEW.html#IOD_02'}
+];
+
+let state = {cat:null, agent:null, filter:'all', focus:null};
+
+function setAgent(agent, el){
+  document.querySelectorAll('.agent-block').forEach(r => r.classList.remove('active'));
+  if (state.agent === agent) { state.agent = null; }
+  else { state.agent = agent; el.classList.add('active'); }
+  state.focus = null; render();
+  document.getElementById('golden').scrollIntoView({behavior:'smooth', block:'start'});
+}
+function setCat(cat, el){
+  document.querySelectorAll('.barrow').forEach(b => b.classList.remove('active'));
+  if (state.cat === cat) { state.cat = null; }
+  else { state.cat = cat; el.classList.add('active'); }
+  state.focus = null; render();
+  document.getElementById('golden').scrollIntoView({behavior:'smooth', block:'start'});
+}
+function setFilter(f, el){
+  document.querySelectorAll('.chip[data-f]').forEach(c => c.classList.remove('on'));
+  el.classList.add('on'); state.filter = f; state.focus = null; render();
+}
+function clearFilters(el){
+  state.agent = null; state.cat = null; state.focus = null;
+  document.querySelectorAll('.agent-block').forEach(r => r.classList.remove('active'));
+  document.querySelectorAll('.barrow').forEach(b => b.classList.remove('active'));
+  render();
+}
+function focusCase(id){
+  state.focus = id; state.filter = 'all';
+  document.querySelectorAll('.chip[data-f]').forEach(c => c.classList.toggle('on', c.getAttribute('data-f')==='all'));
+  render();
+  document.getElementById('golden').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function render(){
+  const list = document.getElementById('caseList');
+  let rows = CASES.slice();
+  if (state.focus) rows = rows.filter(c => c.id === state.focus);
+  else {
+    if (state.cat) rows = rows.filter(c => c.cat === state.cat);
+    if (state.agent) rows = rows.filter(c => c.agent === state.agent);
+    if (state.filter === 'new') rows = rows.filter(c => c.kind === 'new');
+    if (state.filter === 'chronic') rows = rows.filter(c => c.kind === 'chronic');
+    if (state.filter === 'flaky') rows = rows.filter(c => c.kind === 'flaky');
+  }
+  document.getElementById('filterLabel').textContent =
+    'Showing: ' + [state.focus || state.filter, state.agent || 'any agent', state.cat ? ('cat='+state.cat) : 'any category'].join(' · ');
+  if (!rows.length) { list.innerHTML = '<div class="empty">No golden fails for this filter. Clear filters or pick another agent.</div>'; return; }
+  list.innerHTML = rows.map(c => `
+    <div class="case" id="case-${c.id}">
+      <div class="top">
+        <span class="tagp fail">${c.id}</span>
+        <span class="tagp agent">${c.agent} · ${c.sheet}</span>
+        <span class="tagp ${c.kind}">${c.kind === 'new' ? 'New regression' : c.kind === 'chronic' ? 'Chronic' : 'Flaky'}</span>
+      </div>
+      <p class="q">${c.q}</p>
+      <div class="cmp">
+        <div class="box exp"><div class="k">Golden / expected</div>${c.exp}</div>
+        <div class="box got"><div class="k">Agent answer</div>${c.got}</div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="${c.review}">Open in Answer Review</a>
+        <a class="btn sec" href="DRIFT_DASHBOARD.html">View on Drift</a>
+      </div>
+    </div>`).join('');
+}
+render();
+
+document.querySelectorAll('.trend-wrap').forEach(wrap => {
+  const card = wrap.querySelector('.hover-card');
+  wrap.querySelectorAll('.pt').forEach(pt => {
+    pt.addEventListener('mouseenter', () => {
+      card.textContent = (pt.getAttribute('data-tip') || '').replace(/&#10;/g, '\n');
+      card.hidden = false;
+    });
+    pt.addEventListener('mouseleave', () => { card.hidden = true; });
+  });
+});
+</script>
+</body></html>
