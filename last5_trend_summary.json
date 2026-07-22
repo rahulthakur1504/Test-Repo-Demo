@@ -1,0 +1,82 @@
+{
+  "sheet_name": "Client_Contract/R1_Non_stats",
+  "date_folder": "22Jul2026",
+  "scope": "last_n_runs_across_days",
+  "runs_included": [
+    "21Jul2026/2056",
+    "22Jul2026/1147",
+    "22Jul2026/1338",
+    "22Jul2026/1532",
+    "22Jul2026/1612"
+  ],
+  "latest_run": "22Jul2026/1612",
+  "total_tests_tracked": 11,
+  "suite_pass_rate_last5": [
+    55,
+    73,
+    64,
+    64,
+    64
+  ],
+  "agent_response_avg_seconds_last_n": [
+    39.72,
+    69.12,
+    46.0,
+    45.57,
+    47.49
+  ],
+  "agent_response_p95_seconds_last_n": [
+    62.06,
+    212.29,
+    79.39,
+    63.72,
+    114.16
+  ],
+  "agent_response_avg_minutes_last_n": [
+    0.7,
+    1.2,
+    0.8,
+    0.8,
+    0.8
+  ],
+  "agent_response_p95_minutes_last_n": [
+    1.0,
+    3.5,
+    1.3,
+    1.1,
+    1.9
+  ],
+  "stable_pass": [
+    "TC_07",
+    "TC_09",
+    "TC_31"
+  ],
+  "stable_fail": [],
+  "flaky": [
+    "TC_17",
+    "TC_35"
+  ],
+  "improving": [
+    "TC_01",
+    "TC_22",
+    "TC_36"
+  ],
+  "degrading": [
+    "TC_16",
+    "TC_38",
+    "TC_41"
+  ],
+  "insufficient_data": [],
+  "generated_at": "2026-07-22 16:23:55",
+  "validation_mode": "golden_v1",
+  "golden_stability_note": "Golden runs: use artifacts/drift/<sheet>/stability_history.json for answer stability over time. trend/ pass rates use final status (golden when enabled).",
+  "golden_stability_last_run": 88.1,
+  "golden_drift_last_run": 0.1192,
+  "golden_stability_last_n": [
+    86.7,
+    71.4,
+    88.1,
+    85.6,
+    88.1
+  ]
+}

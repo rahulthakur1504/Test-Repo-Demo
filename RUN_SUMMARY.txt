@@ -1,0 +1,47 @@
+============================================================
+ORBIS UI AUTOMATION — RUN SUMMARY
+============================================================
+Sheet       : R1_Non_stats
+Business    : Client_Contract_Agent
+Results path: Client_Contract/R1_Non_stats
+Run folder  : 1612
+Chat rename : ClientContract_NonStats_22Jul26_1612
+Finished    : 2026-07-22 16:23:54
+------------------------------------------------------------
+GOLDEN VALIDATION (baseline for PASS/FAIL)
+Mode        : golden_v1
+Golden ID   : R1_Non_stats_failed_golden_v1
+Version     : v1
+Golden file : golden\client_contract\R1_Non_stats\golden_v1.json
+SME approved: False
+Pass/Fail   : 7 PASS / 4 FAIL (of 11)
+Stability   : 88.1% | drift: 0.1192
+LLM vs gold : pass=7 fail=4 not_run=0
+Excel expected_answer = NOT used for PASS/FAIL (questions only from Excel).
+Compare: final.actual_answer vs golden.golden_resolved_best_answer
+Drift history: artifacts/drift/<sheet>/stability_history.json
+Top drift tests:
+  TC_16: drift=0.2305 type=fact_removed semantic=0.7695
+  TC_38: drift=0.1712 type=contradiction semantic=0.8288
+  TC_35: drift=0.1583 type=contradiction semantic=0.8417
+  TC_22: drift=0.1509 type=count_changed semantic=0.8491
+------------------------------------------------------------
+TOTAL=11  PASS=7  FAIL=4  ERROR=0
+RETRY: asked=0  flipped_to_pass=-  still_failed=-
+Failed IDs  : TC_16, TC_35, TC_38, TC_41
+Buckets     : {'GOLDEN_DRIFT': 4}
+------------------------------------------------------------
+REVIEW FILES
+  Detail JSON : C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\22Jul2026\Client_Contract\R1_Non_stats\1612\suite_results.json
+  Summary JSON: C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\22Jul2026\Client_Contract\R1_Non_stats\1612\suite_summary.json
+  This file   : RUN_SUMMARY.txt
+  HTML review : C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\22Jul2026\Client_Contract\R1_Non_stats\1612\GOLDEN_REVIEW.html
+  Trend note  : Golden stability: artifacts/drift/Client_Contract/R1_Non_stats/stability_history.json
+------------------------------------------------------------
+TIME (minutes)
+  Total suite          : 11.7 min
+  Main run             : 11.7 min
+  Retry (fails)        : 0.0 min
+  Agent response avg   : 0.79 min (47.49s)
+  Agent response p95   : 1.9 min (114.16s)
+============================================================
