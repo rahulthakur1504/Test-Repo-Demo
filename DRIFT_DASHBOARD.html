@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer Quality Drift — Suite</title>
+<style>
+:root{
+  --ink:#172033;--muted:#64748b;--card:#fff;--line:#dbe4ef;--bg:#f4f7fb;
+  --blue:#2563eb;--green:#16a34a;--red:#dc2626;--amber:#d97706;--teal:#0891b2;
+  --shadow:0 1px 2px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif}
+.page{max-width:1200px;margin:0 auto;padding:24px}
+.hero{background:linear-gradient(90deg,#e8fbf7,#eef6ff);border:1px solid #b7d9ff;border-radius:10px;padding:22px 24px;margin-bottom:16px}
+.hero h1{margin:0 0 6px;font-size:28px}
+.meta{color:var(--muted);font-size:14px}
+.tag{display:inline-block;background:#7c2d12;color:#fff;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;margin-left:8px}
+.cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-height:92px;box-shadow:var(--shadow)}
+.label{color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:700}
+.value{font-size:26px;font-weight:800;margin-top:8px}
+.small{color:var(--muted);font-size:12px;margin-top:6px}
+.good{color:var(--green)}.bad{color:var(--red)}.warn{color:var(--amber)}
+.note{margin-top:14px;background:#fff8e7;border:1px solid #efd59a;border-radius:8px;padding:12px 14px;color:#5c4300;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.wide{grid-column:1/-1}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow)}
+.panel h2{margin:0 0 6px;font-size:18px}
+.panel .subh{color:var(--muted);font-size:13px;margin:0 0 14px}
+@media(max-width:980px){.cards{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+.agent-row{display:grid;grid-template-columns:140px 1fr 1fr 70px 90px 120px 100px;gap:8px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
+.agent-row.clickable{cursor:pointer;border-radius:8px;margin:0 -8px;padding-left:8px;padding-right:8px}
+.agent-row.clickable:hover,.agent-row.clickable.active{background:#f1f5f9}
+.agent-row:last-child{border-bottom:0}
+.agent-row .name{font-weight:700}
+.spark{width:100%;height:36px}
+.badge{display:inline-block;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700}
+.badge.up{background:#dcfce7;color:#166534}
+.badge.flat{background:#e2e8f0;color:#334155}
+.badge.down{background:#fee2e2;color:#991b1b}
+.catrow{display:grid;grid-template-columns:1fr 70px 90px;gap:8px;align-items:center;margin:6px 0;font-size:13px;cursor:pointer;padding:8px;border-radius:8px;border:1px solid transparent}
+.catrow:hover,.catrow.active{background:#f8fafc;border-color:var(--line)}
+.attn{border:1px solid #fecaca;background:#fff5f5;border-radius:10px;padding:12px 14px;margin:8px 0}
+.attn.ok{border-color:#bbf7d0;background:#f0fdf4}
+.attn h3{margin:0 0 4px;font-size:14px}
+.attn p{margin:0;font-size:13px;color:#334155}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;font-size:12px;color:var(--muted)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;background:#f8fafc;color:#334155;padding:10px;border-bottom:1px solid var(--line);text-transform:uppercase;font-size:11px}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;color:#334155}
+.chip:hover,.chip.on{background:#1e293b;color:#fff;border-color:#1e293b}
+.case{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fafcff}
+.case:hover{border-color:#93c5fd;box-shadow:0 0 0 2px #dbeafe}
+.case .top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.pill{font-size:11px;font-weight:700;border-radius:999px;padding:2px 8px}
+.pill.fail{background:#fee2e2;color:#991b1b}
+.pill.new{background:#ffedd5;color:#9a3412}
+.pill.chronic{background:#e2e8f0;color:#334155}
+.pill.agent{background:#e0e7ff;color:#3730a3}
+.q{font-weight:600;margin:0 0 8px;font-size:14px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.box{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px}
+.box .k{color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.box.exp{border-left:3px solid #16a34a}
+.box.got{border-left:3px solid #dc2626}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn{display:inline-block;text-decoration:none;background:#1e293b;color:#fff;border-radius:8px;padding:7px 12px;font-size:12px;font-weight:700}
+.btn.sec{background:#fff;color:#1e293b;border:1px solid var(--line)}
+.empty{color:var(--muted);font-size:13px;padding:12px 0}
+.hint{font-size:12px;color:var(--muted);margin-top:8px}
+</style>
+</head><body>
+<main class="page">
+<section class="hero">
+  <h1>Answer quality drift <span class="tag">PREVIEW</span></h1>
+  <div class="meta">Product view · Fed from <b>Suite Dashboard</b> · Quality + latency from same suite runs</div>
+  <div class="cards">
+    <div class="card"><div class="label">Suite health</div><div class="value warn">Watch</div><div class="small">1 of 4 agents worsening</div></div>
+    <div class="card"><div class="label">Pass rate (latest)</div><div class="value">61%</div><div class="small">Across agents last run each</div></div>
+    <div class="card"><div class="label">Runs (30 days)</div><div class="value">39</div><div class="small">All agents combined</div></div>
+    <div class="card"><div class="label">Biggest risk</div><div class="value" style="font-size:16px;margin-top:14px;color:var(--red)">Orbis Core</div><div class="small">Wrong answers rising</div></div>
+    <div class="card"><div class="label">Avg latency (suite)</div><div class="value" style="font-size:22px">48s</div><div class="small">Per-question avg · rising on Core</div></div>
+    <div class="card"><div class="label">Golden fails open</div><div class="value">9</div><div class="small">Click below — no digging</div></div>
+  </div>
+  <div class="note">
+    <b>What this answers:</b> Quality drift <b>and</b> whether agents are getting slower.
+    Drift-type trends (right) show if wrong/missing/context issues are rising or falling — same idea as agent stability (left).
+  </div>
+</section>
+
+<section class="grid">
+  <div class="panel">
+    <h2>Are agents getting better or worse?</h2>
+    <p class="subh">Stability % over recent suite-fed runs. Hover for detail.</p>
+    <div id="multi" style="width:100%;height:280px"></div>
+    <div class="legend">
+      <span><i class="dot" style="background:#2563eb"></i>Client Contract</span>
+      <span><i class="dot" style="background:#7c3aed"></i>Orbis Core</span>
+      <span><i class="dot" style="background:#0891b2"></i>Procurement</span>
+      <span><i class="dot" style="background:#d97706"></i>IOD</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>What kind of drift? (trend)</h2>
+    <p class="subh">Count of each drift type over recent suite runs — rising = getting worse. Click legend/row → golden cases.</p>
+    <div id="catTrend" style="width:100%;height:220px"></div>
+    <div class="catrow" data-cat="wrong" onclick="setCat('wrong', this)">
+      <span><i class="dot" style="background:#dc2626"></i>Wrong answers / facts</span>
+      <b>58</b><span class="badge down">Worse</span>
+    </div>
+    <div class="catrow" data-cat="missing" onclick="setCat('missing', this)">
+      <span><i class="dot" style="background:#d97706"></i>Missing facts</span>
+      <b>22</b><span class="badge up">Better</span>
+    </div>
+    <div class="catrow" data-cat="context" onclick="setCat('context', this)">
+      <span><i class="dot" style="background:#7c3aed"></i>Wrong context</span>
+      <b>12</b><span class="badge flat">Flat</span>
+    </div>
+    <div class="catrow" data-cat="wording" onclick="setCat('wording', this)">
+      <span><i class="dot" style="background:#64748b"></i>Wording only</span>
+      <b>14</b><span class="badge flat">Flat</span>
+    </div>
+    <p class="hint">Same pattern as left chart: direction over time, not a single snapshot.</p>
+  </div>
+
+  <div class="panel wide">
+    <h2>Agent avg response time (latency trend)</h2>
+    <p class="subh">Avg seconds per question per agent run — from suite. Rising line = slower. Hover for run detail.</p>
+    <div id="latency" style="width:100%;height:280px"></div>
+    <div class="legend">
+      <span><i class="dot" style="background:#2563eb"></i>Client Contract · latest ~42s</span>
+      <span><i class="dot" style="background:#7c3aed"></i>Orbis Core · latest ~61s ↑</span>
+      <span><i class="dot" style="background:#0891b2"></i>Procurement · latest ~38s</span>
+      <span><i class="dot" style="background:#d97706"></i>IOD · latest ~35s</span>
+    </div>
+  </div>
+
+  <div class="panel wide">
+    <h2>Per agent — quality + time snapshot</h2>
+    <p class="subh">Click agent → golden fails. Quality spark + latency spark side by side.</p>
+    <div class="agent-row" style="font-size:10px;color:var(--muted);text-transform:uppercase;font-weight:700">
+      <div>Agent</div><div>Quality trend</div><div>Latency trend (s)</div><div>30d</div><div>Quality</div><div>Avg time</div><div></div>
+    </div>
+
+    <div class="agent-row clickable" data-agent="Client Contract" onclick="setAgent('Client Contract', this)">
+      <div class="name">Client Contract</div>
+      <div><svg viewBox="0 0 200 36" class="spark"><polyline fill="none" stroke="#2563eb" stroke-width="2" points="4,22 40,26 76,10 112,8 148,14 196,16"/>
+        <circle cx="196" cy="16" r="3" fill="#2563eb"><title>86.2%</title></circle></svg></div>
+      <div><svg viewBox="0 0 200 36" class="spark"><polyline fill="none" stroke="#0ea5e9" stroke-width="2" points="4,18 40,20 76,16 112,14 148,18 196,16"/>
+        <circle cx="196" cy="16" r="3" fill="#0ea5e9"><title>42s avg</title></circle></svg></div>
+      <div><b>16</b></div>
+      <div><span class="badge up">Improving</span></div>
+      <div><b>42s</b> <span class="badge flat">Stable</span></div>
+      <div><a class="btn sec" href="ANSWER_REVIEW.html" onclick="event.stopPropagation()">Answer review</a></div>
+    </div>
+
+    <div class="agent-row clickable" data-agent="Orbis Core" onclick="setAgent('Orbis Core', this)">
+      <div class="name">Orbis Core</div>
+      <div><svg viewBox="0 0 200 36" class="spark"><polyline fill="none" stroke="#7c3aed" stroke-width="2" points="4,16 50,22 100,14 150,20 196,12"/>
+        <circle cx="196" cy="12" r="3" fill="#7c3aed"><title>72.4%</title></circle></svg></div>
+      <div><svg viewBox="0 0 200 36" class="spark"><polyline fill="none" stroke="#dc2626" stroke-width="2" points="4,24 50,20 100,16 150,10 196,6"/>
+        <circle cx="196" cy="6" r="3" fill="#dc2626"><title>61s avg — slower</title></circle></svg></div>
+      <div><b>11</b></div>
+      <div><span class="badge down">Worsening</span></div>
+      <div><b>61s</b> <span class="badge down">Slower</span></div>
+      <div><a class="btn sec" href="ANSWER_REVIEW.html" onclick="event.stopPropagation()">Answer review</a></div>
+    </div>
+
+    <div class="agent-row clickable" data-agent="Procurement" onclick="setAgent('Procurement', this)">
+      <div class="name">Procurement</div>
+      <div><svg viewBox="0 0 200 36" class="spark"><polyline fill="none" stroke="#0891b2" stroke-width="2" points="10,24 70,20 130,18 190,12"/>
+        <circle cx="190" cy="12" r="3" fill="#0891b2"><title>81%</title></circle></svg></div>
+      <div><svg viewBox="0 0 200 36" class="spark"><polyline fill="none" stroke="#0891b2" stroke-width="2" points="10,14 70,16 130,15 190,14"/>
+        <circle cx="190" cy="14" r="3" fill="#0891b2"><title>38s</title></circle></svg></div>
+      <div><b>7</b></div>
+      <div><span class="badge up">Improving</span></div>
+      <div><b>38s</b> <span class="badge flat">Stable</span></div>
+      <div><a class="btn sec" href="ANSWER_REVIEW.html" onclick="event.stopPropagation()">Answer review</a></div>
+    </div>
+
+    <div class="agent-row clickable" data-agent="IOD" onclick="setAgent('IOD', this)">
+      <div class="name">IOD</div>
+      <div><svg viewBox="0 0 200 36" class="spark"><polyline fill="none" stroke="#d97706" stroke-width="2" points="20,20 100,16 180,12"/>
+        <circle cx="180" cy="12" r="3" fill="#d97706"><title>84.5%</title></circle></svg></div>
+      <div><svg viewBox="0 0 200 36" class="spark"><polyline fill="none" stroke="#d97706" stroke-width="2" points="20,16 100,15 180,14"/>
+        <circle cx="180" cy="14" r="3" fill="#d97706"><title>35s</title></circle></svg></div>
+      <div><b>5</b></div>
+      <div><span class="badge flat">Stable</span></div>
+      <div><b>35s</b> <span class="badge up">Faster</span></div>
+      <div><a class="btn sec" href="ANSWER_REVIEW.html" onclick="event.stopPropagation()">Answer review</a></div>
+    </div>
+  </div>
+
+  <div class="panel wide" id="golden">
+    <h2>Golden set — cases behind the drift</h2>
+    <p class="subh">Click category or agent above. Expected vs agent here; Answer Review for full run.</p>
+    <div class="filters">
+      <button type="button" class="chip on" data-f="all" onclick="setFilter('all', this)">All open fails</button>
+      <button type="button" class="chip" data-f="new" onclick="setFilter('new', this)">New regressions</button>
+      <button type="button" class="chip" data-f="chronic" onclick="setFilter('chronic', this)">Chronic fails</button>
+      <button type="button" class="chip" data-f="flaky" onclick="setFilter('flaky', this)">Flaky (retry flipped)</button>
+      <span class="hint" id="filterLabel">Showing: all · any agent</span>
+    </div>
+    <div id="caseList"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Reasons</h2>
+    <p class="subh">From suite drift + latency.</p>
+    <div class="attn">
+      <h3 class="bad">1. Orbis Core — priority</h3>
+      <p>Wrong-answer trend rising and avg latency up (~61s). Fix quality + speed before expanding coverage.</p>
+    </div>
+    <div class="attn">
+      <h3 class="warn">2. Client Contract — flaky questions</h3>
+      <p>Quality improving; latency stable (~42s). Watch retainer / ambiguous golden cases.</p>
+    </div>
+    <div class="attn ok">
+      <h3 class="good">3. Procurement &amp; IOD — OK for now</h3>
+      <p>Quality stable/up; latency flat or slightly faster.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>How to read (30 seconds)</h2>
+    <table>
+      <thead><tr><th>Signal</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><b>Drift-type trend (right)</b></td><td>Rising count = that failure mode getting worse</td></tr>
+        <tr><td><b>Latency trend</b></td><td>Avg seconds/question per agent — rising = slower</td></tr>
+        <tr><td><b>New regression</b></td><td>Passed recently, failing now</td></tr>
+        <tr><td><b>Worse / Better / Flat</b></td><td>Direction vs prior suite runs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel wide">
+    <h2>Refresh rule (same as suite)</h2>
+    <p class="subh" style="margin-bottom:0">
+      Sheet or full agent run → suite updates (incl. avg response time) → this drift board regenerates from suite.
+    </p>
+  </div>
+</section>
+</main>
+
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script>
+const CASES = [
+  {id:'TC_38', agent:'Client Contract', sheet:'R1_Non_stats', cat:'missing', kind:'flaky',
+   q:'What is the retainer amount for this contract?',
+   exp:'Retainer is $X as stated in schedule…', got:'Mentions fees but omits retainer figure.',
+   reason:'Missing facts — retainer amount not in answer', review:'ANSWER_REVIEW.html#TC_38'},
+  {id:'TC_16', agent:'Client Contract', sheet:'R1_Non_stats', cat:'missing', kind:'new',
+   q:'List all clients covered under the agreement.',
+   exp:'Client A, Client B, Client C', got:'Client A and Client B only.',
+   reason:'Missing facts — incomplete client list', review:'ANSWER_REVIEW.html#TC_16'},
+  {id:'TC_07', agent:'Client Contract', sheet:'R1_Non_stats', cat:'context', kind:'chronic',
+   q:'Summarize termination notice period.',
+   exp:'30 days written notice (Clause 12)', got:'Answers a different MSA notice period.',
+   reason:'Wrong context — wrong contract referenced', review:'ANSWER_REVIEW.html#TC_07'},
+  {id:'WEB_12', agent:'Orbis Core', sheet:'Web', cat:'wrong', kind:'new',
+   q:'What is the published filing deadline?',
+   exp:'15 March (official calendar)', got:'Claims 1 April with wrong source.',
+   reason:'Wrong answers / facts', review:'ANSWER_REVIEW.html#WEB_12'},
+  {id:'WEB_04', agent:'Orbis Core', sheet:'Web', cat:'wrong', kind:'chronic',
+   q:'Name the regulatory body for this product.',
+   exp:'FCA', got:'Names a related but incorrect body.',
+   reason:'Wrong answers / facts', review:'ANSWER_REVIEW.html#WEB_04'},
+  {id:'CORE_19', agent:'Orbis Core', sheet:'Core_stats', cat:'wrong', kind:'new',
+   q:'What is the YoY growth %?',
+   exp:'12.4%', got:'14.1% (misread table)',
+   reason:'Wrong answers / facts', review:'ANSWER_REVIEW.html#CORE_19'},
+  {id:'PR_03', agent:'Procurement', sheet:'Proc_main', cat:'missing', kind:'chronic',
+   q:'Which vendors are on the preferred list?',
+   exp:'Vendor A, B, C', got:'Vendor A only.',
+   reason:'Missing expected vendors', review:'ANSWER_REVIEW.html#PR_03'},
+  {id:'PR_11', agent:'Procurement', sheet:'Proc_main', cat:'wording', kind:'flaky',
+   q:'Describe the RFP timeline.',
+   exp:'Kickoff → submit → award (dates…)', got:'Same facts, different phrasing — usually pass.',
+   reason:'Wording only', review:'ANSWER_REVIEW.html#PR_11'},
+  {id:'IOD_02', agent:'IOD', sheet:'IOD_q', cat:'missing', kind:'new',
+   q:'What data fields are required for onboarding?',
+   exp:'Name, LEI, jurisdiction', got:'Name and LEI only.',
+   reason:'Missing facts', review:'ANSWER_REVIEW.html#IOD_02'}
+];
+let state = {cat:null, agent:null, filter:'all'};
+function setCat(cat, el){
+  document.querySelectorAll('.catrow').forEach(b => b.classList.remove('active'));
+  if (state.cat === cat) { state.cat = null; }
+  else { state.cat = cat; el.classList.add('active'); }
+  render(); document.getElementById('golden').scrollIntoView({behavior:'smooth', block:'start'});
+}
+function setAgent(agent, el){
+  document.querySelectorAll('.agent-row.clickable').forEach(r => r.classList.remove('active'));
+  if (state.agent === agent) { state.agent = null; }
+  else { state.agent = agent; el.classList.add('active'); }
+  render(); document.getElementById('golden').scrollIntoView({behavior:'smooth', block:'start'});
+}
+function setFilter(f, el){
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+  el.classList.add('on'); state.filter = f; render();
+}
+function render(){
+  const list = document.getElementById('caseList');
+  let rows = CASES.slice();
+  if (state.cat && state.cat !== 'stable') rows = rows.filter(c => c.cat === state.cat);
+  if (state.agent) rows = rows.filter(c => c.agent === state.agent);
+  if (state.filter === 'new') rows = rows.filter(c => c.kind === 'new');
+  if (state.filter === 'chronic') rows = rows.filter(c => c.kind === 'chronic');
+  if (state.filter === 'flaky') rows = rows.filter(c => c.kind === 'flaky');
+  document.getElementById('filterLabel').textContent = 'Showing: ' + [state.filter, state.agent||'any agent', state.cat?('cat='+state.cat):'any category'].join(' · ');
+  if (!rows.length) { list.innerHTML = '<div class="empty">No golden fails for this filter.</div>'; return; }
+  list.innerHTML = rows.map(c => `
+    <div class="case">
+      <div class="top">
+        <span class="pill fail">${c.id}</span>
+        <span class="pill agent">${c.agent} · ${c.sheet}</span>
+        <span class="pill ${c.kind}">${c.kind === 'new' ? 'New regression' : c.kind === 'chronic' ? 'Chronic' : 'Flaky'}</span>
+      </div>
+      <p class="q">${c.q}</p>
+      <div class="cmp">
+        <div class="box exp"><div class="k">Golden / expected</div>${c.exp}</div>
+        <div class="box got"><div class="k">Agent answer (drifted)</div>${c.got}</div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="${c.review}">Open in Answer Review</a>
+        <a class="btn sec" href="SUITE_DASHBOARD.html">Back to suite</a>
+      </div>
+    </div>`).join('');
+}
+render();
+
+const cfg = {displayModeBar:false, responsive:true};
+const runs = [1,2,3,4,5,6];
+Plotly.newPlot('multi', [
+  {x:runs, y:[85,80,88.5,88.1,86.7,86.2], name:'Client Contract', mode:'lines+markers',
+   text:['Stats 85%','Edge 80%','Stats 88.5%','Non-stats 88.1%','86.7%','86.2%'],
+   hovertemplate:'%{text}<extra>Client Contract</extra>', line:{color:'#2563eb',width:3}, marker:{size:8}},
+  {x:[1,2,3,4,5], y:[70,68.5,71,69.2,72.4], name:'Orbis Core', mode:'lines+markers',
+   text:['70%','68.5%','71%','69.2%','72.4%'], hovertemplate:'%{text}<extra>Orbis Core</extra>',
+   line:{color:'#7c3aed',width:3}, marker:{size:8}},
+  {x:[1,2,3,4], y:[78,79.5,80,81], name:'Procurement', mode:'lines+markers',
+   hovertemplate:'%{y}%<extra>Procurement</extra>', line:{color:'#0891b2',width:3}, marker:{size:8}},
+  {x:[1,2,3], y:[82,83,84.5], name:'IOD', mode:'lines+markers',
+   hovertemplate:'%{y}%<extra>IOD</extra>', line:{color:'#d97706',width:3}, marker:{size:8}}
+], {margin:{t:10,r:20,b:40,l:45}, legend:{orientation:'h'}, yaxis:{title:'Stability %', range:[65,95]}, xaxis:{title:'Recent suite-fed runs'}}, cfg);
+
+/* Drift-type TREND — rising = worse */
+Plotly.newPlot('catTrend', [
+  {x:runs, y:[42,45,48,52,55,58], name:'Wrong answers', mode:'lines+markers',
+   text:['42','45','48','52','55','58 — worse'], hovertemplate:'Wrong facts: %{y}<extra></extra>',
+   line:{color:'#dc2626',width:3}, marker:{size:7}},
+  {x:runs, y:[30,28,26,24,23,22], name:'Missing facts', mode:'lines+markers',
+   hovertemplate:'Missing: %{y}<extra></extra>', line:{color:'#d97706',width:3}, marker:{size:7}},
+  {x:runs, y:[11,12,12,11,12,12], name:'Wrong context', mode:'lines+markers',
+   hovertemplate:'Context: %{y}<extra></extra>', line:{color:'#7c3aed',width:3}, marker:{size:7}},
+  {x:runs, y:[15,14,14,13,14,14], name:'Wording only', mode:'lines+markers',
+   hovertemplate:'Wording: %{y}<extra></extra>', line:{color:'#64748b',width:2,dash:'dot'}, marker:{size:6}}
+], {margin:{t:10,r:10,b:36,l:40}, legend:{orientation:'h', y:1.15}, yaxis:{title:'Fail count'}, xaxis:{title:'Recent suite runs'}}, cfg);
+
+/* Latency per agent */
+Plotly.newPlot('latency', [
+  {x:runs, y:[44,45,41,40,43,42], name:'Client Contract', mode:'lines+markers',
+   text:['44s','45s','41s','40s','43s','42s'], hovertemplate:'%{text}<extra>Client Contract</extra>',
+   line:{color:'#2563eb',width:3}, marker:{size:8}},
+  {x:[1,2,3,4,5], y:[48,50,54,58,61], name:'Orbis Core', mode:'lines+markers',
+   text:['48s','50s','54s','58s','61s slower'], hovertemplate:'%{text}<extra>Orbis Core</extra>',
+   line:{color:'#7c3aed',width:3}, marker:{size:8}},
+  {x:[1,2,3,4], y:[40,39,38,38], name:'Procurement', mode:'lines+markers',
+   hovertemplate:'%{y}s<extra>Procurement</extra>', line:{color:'#0891b2',width:3}, marker:{size:8}},
+  {x:[1,2,3], y:[38,36,35], name:'IOD', mode:'lines+markers',
+   hovertemplate:'%{y}s<extra>IOD</extra>', line:{color:'#d97706',width:3}, marker:{size:8}}
+], {margin:{t:10,r:20,b:40,l:45}, legend:{orientation:'h'}, yaxis:{title:'Avg response time (sec / question)', range:[30,70]}, xaxis:{title:'Recent suite-fed runs'}}, cfg);
+</script>
+</body></html>
