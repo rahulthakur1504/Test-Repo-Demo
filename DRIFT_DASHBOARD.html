@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer Quality Drift — All Agents</title>
+<style>
+:root{--ink:#172033;--muted:#64748b;--card:#fff;--line:#dbe4ef;--bg:#f4f7fb;--accent:#1b4f72}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Segoe UI,Arial,sans-serif}
+.page{max-width:1200px;margin:0 auto;padding:24px}
+.hero{background:linear-gradient(90deg,#e8fbf7,#eef6ff);border:1px solid #b7d9ff;border-radius:10px;padding:22px 24px;margin-bottom:16px}
+.hero h1{margin:0 0 6px;font-size:28px}
+.tag{display:inline-block;background:#7c2d12;color:#fff;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;margin-left:8px}
+.meta{color:var(--muted);font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:16px}
+@media(max-width:980px){.cards{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-height:88px}
+.label{color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:700}
+.value{font-size:26px;font-weight:800;margin-top:8px}
+.value.warn{color:#d97706}
+.small{color:var(--muted);font-size:12px;margin-top:6px}
+.note{margin-top:14px;background:#fff8e7;border:1px solid #efd59a;border-radius:8px;padding:12px 14px;color:#5c4300;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.wide,.panel.wide{grid-column:1/-1}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.panel h2{margin:0 0 6px;font-size:18px}
+.subh,.empty,.hint{color:var(--muted);font-size:13px;margin:0 0 12px}
+.chart{background:#fff;border:1px solid var(--line);border-radius:8px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;font-size:12px;color:var(--muted)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px}
+.catrow{display:grid;grid-template-columns:1fr 72px 40px 80px;gap:8px;align-items:center;margin:6px 0;font-size:13px}
+.spark{display:block}
+.badge{display:inline-block;border-radius:999px;padding:2px 8px;font-size:11px;font-weight:700}
+.badge.up{background:#dcfce7;color:#166534}
+.badge.down{background:#fee2e2;color:#991b1b}
+.badge.flat{background:#e2e8f0;color:#334155}
+.agent-row{display:grid;grid-template-columns:1.1fr 0.6fr 0.6fr 0.5fr 0.7fr 0.9fr 110px;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:center}
+.agent-row.head{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.agent-row.clickable{cursor:pointer;border-radius:8px;margin:0 -8px;padding-left:8px;padding-right:8px}
+.agent-row.clickable:hover,.agent-row.clickable.active{background:#f1f5f9}
+.name{font-weight:700}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;color:#334155}
+.chip:hover,.chip.on{background:#1e293b;color:#fff;border-color:#1e293b}
+.case{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fafcff}
+.case:hover{border-color:#93c5fd}
+.top{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.pill{font-size:11px;font-weight:700;border-radius:999px;padding:2px 8px}
+.pill.fail{background:#fee2e2;color:#991b1b}
+.pill.agent{background:#e0e7ff;color:#3730a3}
+.pill.chron{background:#e2e8f0;color:#334155}
+.pill.new{background:#ffedd5;color:#9a3412}
+.pill.chronic{background:#e2e8f0;color:#334155}
+.pill.flaky{background:#f3e8ff;color:#6b21a8}
+.q{font-weight:600;margin:0 0 8px;font-size:14px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:700px){.cmp{grid-template-columns:1fr}}
+.box{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px}
+.box .k{color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.box.exp{border-left:3px solid #16a34a}
+.box.got{border-left:3px solid #dc2626}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+
+.trend-wrap { position:relative; }
+.hover-card {
+  position:absolute; z-index:20; min-width:200px; max-width:320px;
+  background:#0f172a; color:#f8fafc; border-radius:10px;
+  padding:10px 12px; font-size:12px; line-height:1.5;
+  box-shadow:0 8px 24px rgba(15,23,42,.35); pointer-events:none;
+  display:none;
+}
+.hover-card.show { display:block; }
+.hover-card .hk { color:#94a3b8; font-size:10px; text-transform:uppercase; font-weight:700; }
+.hover-card .hv { margin:0 0 6px; font-weight:600; }
+.pt, .pt-hit { cursor:crosshair; }
+.btn {
+  display:inline-block; text-decoration:none; background:#1e293b; color:#fff;
+  border-radius:8px; padding:7px 12px; font-size:12px; font-weight:700;
+}
+.btn.sec { background:#fff; color:#1e293b; border:1px solid #dbe4ef; }
+.btn:hover { opacity:.92; }
+a.tc-link { color:#1d4ed8; font-weight:700; text-decoration:none; }
+a.tc-link:hover { text-decoration:underline; }
+</style>
+</head><body>
+<main class="page">
+<section class="hero">
+  <h1>Answer quality drift <span class="tag">ALL AGENTS</span></h1>
+  <div class="meta">Product view · Fed from every agent golden run (sheet or agent suite) · Last refresh: <b>23 Jul 2026 · 14:11</b></div>
+  <div class="cards">
+    <div class="card"><div class="label">Suite health</div><div class="value warn">Watch</div>
+      <div class="small">1 of 1 agents worsening</div></div>
+    <div class="card"><div class="label">Pass rate (latest)</div><div class="value">44.4%</div>
+      <div class="small">Across agents last run each</div></div>
+    <div class="card"><div class="label">Runs in last 15 days</div><div class="value">14</div>
+      <div class="small">14 history rows kept</div></div>
+    <div class="card"><div class="label">Biggest risk</div><div class="value" style="font-size:16px;margin-top:14px;color:#dc2626">Client Contract</div>
+      <div class="small">79.9% · Worsening</div></div>
+    <div class="card"><div class="label">Avg latency</div><div class="value" style="font-size:22px">40.4s</div>
+      <div class="small">Per-question avg where stored</div></div>
+    <div class="card"><div class="label">Golden fails open</div><div class="value">10</div>
+      <div class="small">Click cards below → Answer Review</div></div>
+  </div>
+  <div class="note"><b>Hover</b> chart dots for sheet / run / pass / latency.
+  <b>Open in Answer Review</b> jumps to that run’s <code>ANSWER_REVIEW.html#TC_xx</code>.
+  Per-agent boards: <code>artifacts/drift/&lt;Agent&gt;/</code>.</div>
+</section>
+
+<section class="grid">
+  <div class="panel">
+    <h2>Are agents getting better or worse?</h2>
+    <p class="subh">Stability % over recent runs. Hover dots for detail.</p>
+    
+<div class="trend-wrap">
+<svg viewBox="0 0 560 260" class="chart" width="100%" height="260">
+  <line x1="48" y1="20" x2="48" y2="220" stroke="#c9d5e2"/>
+  <line x1="48" y1="220" x2="540" y2="220" stroke="#c9d5e2"/>
+  <text x="8" y="28" font-size="11" fill="#64748b">90%</text>
+  <text x="8" y="220" font-size="11" fill="#64748b">24%</text>
+  <polyline fill="none" stroke="#2563eb" stroke-width="2.8" points="48.0,34.3 92.7,26.9 137.5,31.1 182.2,32.6 226.9,29.6 271.6,21.2 316.4,28.4 361.1,20.0 405.8,25.7 450.5,47.8 495.3,220.0 540.0,51.4"/><circle class='pt-hit' cx='48.0' cy='34.3' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1532||When:2026-07-22 15:43:51||Value:85.6%||Pass:7/11||Latency:-"/><circle class='pt' cx='48.0' cy='34.3' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1532||When:2026-07-22 15:43:51||Value:85.6%||Pass:7/11||Latency:-"/><circle class='pt-hit' cx='92.7' cy='26.9' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1612||When:2026-07-22 16:23:55||Value:88.1%||Pass:7/11||Latency:-"/><circle class='pt' cx='92.7' cy='26.9' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1612||When:2026-07-22 16:23:55||Value:88.1%||Pass:7/11||Latency:-"/><circle class='pt-hit' cx='137.5' cy='31.1' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1756||When:2026-07-22 18:06:29||Value:86.7%||Pass:9/11||Latency:-"/><circle class='pt' cx='137.5' cy='31.1' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1756||When:2026-07-22 18:06:29||Value:86.7%||Pass:9/11||Latency:-"/><circle class='pt-hit' cx='182.2' cy='32.6' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1830||When:2026-07-22 18:45:32||Value:86.2%||Pass:10/11||Latency:-"/><circle class='pt' cx='182.2' cy='32.6' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1830||When:2026-07-22 18:45:32||Value:86.2%||Pass:10/11||Latency:-"/><circle class='pt-hit' cx='226.9' cy='29.6' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2156||When:2026-07-22 22:09:54||Value:87.2%||Pass:9/11||Latency:36.94s"/><circle class='pt' cx='226.9' cy='29.6' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2156||When:2026-07-22 22:09:54||Value:87.2%||Pass:9/11||Latency:36.94s"/><circle class='pt-hit' cx='271.6' cy='21.2' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2309||When:2026-07-22 23:18:10||Value:90.0%||Pass:11/11||Latency:33.86s"/><circle class='pt' cx='271.6' cy='21.2' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2309||When:2026-07-22 23:18:10||Value:90.0%||Pass:11/11||Latency:33.86s"/><circle class='pt-hit' cx='316.4' cy='28.4' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2340||When:2026-07-22 23:50:51||Value:87.6%||Pass:10/11||Latency:36.34s"/><circle class='pt' cx='316.4' cy='28.4' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2340||When:2026-07-22 23:50:51||Value:87.6%||Pass:10/11||Latency:36.34s"/><circle class='pt-hit' cx='361.1' cy='20.0' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/0021||When:2026-07-23 00:33:02||Value:90.4%||Pass:10/11||Latency:32.78s"/><circle class='pt' cx='361.1' cy='20.0' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/0021||When:2026-07-23 00:33:02||Value:90.4%||Pass:10/11||Latency:32.78s"/><circle class='pt-hit' cx='405.8' cy='25.7' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/1209||When:2026-07-23 12:38:19||Value:88.5%||Pass:11/11||Latency:33.23s"/><circle class='pt' cx='405.8' cy='25.7' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/1209||When:2026-07-23 12:38:19||Value:88.5%||Pass:11/11||Latency:33.23s"/><circle class='pt-hit' cx='450.5' cy='47.8' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1238||When:2026-07-23 13:19:17||Value:81.1%||Pass:8/18||Latency:38.35s"/><circle class='pt' cx='450.5' cy='47.8' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1238||When:2026-07-23 13:19:17||Value:81.1%||Pass:8/18||Latency:38.35s"/><circle class='pt-hit' cx='495.3' cy='220.0' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R3_Edge_Cases||Run:23Jul2026/Client_Contract/R3_Edge_Cases/1319||When:2026-07-23 13:40:31||Value:23.5%||Pass:5/18||Latency:27.21s"/><circle class='pt' cx='495.3' cy='220.0' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R3_Edge_Cases||Run:23Jul2026/Client_Contract/R3_Edge_Cases/1319||When:2026-07-23 13:40:31||Value:23.5%||Pass:5/18||Latency:27.21s"/><circle class='pt-hit' cx='540.0' cy='51.4' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1345||When:2026-07-23 14:11:56||Value:79.9%||Pass:8/18||Latency:40.37s"/><circle class='pt' cx='540.0' cy='51.4' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1345||When:2026-07-23 14:11:56||Value:79.9%||Pass:8/18||Latency:40.37s"/>
+</svg>
+<div class="hover-card"></div>
+<div class="legend"><span><i class="dot" style="background:#2563eb"></i>Client Contract</span></div>
+</div>
+
+  </div>
+  <div class="panel">
+    <h2>What kind of drift?</h2>
+    <p class="subh">One row per type · spark = suite trend · Better/Worse/Flat.</p>
+    <div class="catrow"><span><i class="dot" style="background:#d97706"></i>Missing facts</span><svg class="spark" viewBox="0 0 64 20" width="64" height="20"><polyline fill="none" stroke="#d97706" stroke-width="1.8" points="2.0,14.0 10.6,2.0 19.1,6.0 27.7,2.0 36.3,10.0 44.9,14.0 53.4,10.0 62.0,18.0"/></svg><b>36</b><span class="badge up">Better</span></div><div class="catrow"><span><i class="dot" style="background:#dc2626"></i>Wrong facts / contradiction</span><svg class="spark" viewBox="0 0 64 20" width="64" height="20"><polyline fill="none" stroke="#dc2626" stroke-width="1.8" points="2.0,18.0 10.6,18.0 19.1,10.0 27.7,2.0 36.3,10.0 44.9,18.0 53.4,18.0 62.0,18.0"/></svg><b>7</b><span class="badge flat">Flat</span></div><div class="catrow"><span><i class="dot" style="background:#dc2626"></i>Fact mismatch</span><svg class="spark" viewBox="0 0 64 20" width="64" height="20"><polyline fill="none" stroke="#dc2626" stroke-width="1.8" points="2.0,2.0 10.6,18.0 19.1,18.0 27.7,18.0 36.3,18.0 44.9,18.0 53.4,18.0 62.0,18.0"/></svg><b>15</b><span class="badge flat">Flat</span></div><div class="catrow"><span><i class="dot" style="background:#7c3aed"></i>Counts changed</span><svg class="spark" viewBox="0 0 64 20" width="64" height="20"><polyline fill="none" stroke="#7c3aed" stroke-width="1.8" points="2.0,10.0 10.6,2.0 19.1,2.0 27.7,10.0 36.3,2.0 44.9,10.0 53.4,2.0 62.0,18.0"/></svg><b>29</b><span class="badge flat">Flat</span></div><div class="catrow"><span><i class="dot" style="background:#7c3aed"></i>Numbers changed</span><svg class="spark" viewBox="0 0 64 20" width="64" height="20"><polyline fill="none" stroke="#7c3aed" stroke-width="1.8" points="2.0,18.0 10.6,2.0 19.1,2.0 27.7,2.0 36.3,2.0 44.9,2.0 53.4,2.0 62.0,2.0"/></svg><b>21</b><span class="badge flat">Flat</span></div><div class="catrow"><span><i class="dot" style="background:#64748b"></i>Wording only</span><svg class="spark" viewBox="0 0 64 20" width="64" height="20"><polyline fill="none" stroke="#64748b" stroke-width="1.8" points="2.0,10.0 10.6,10.0 19.1,18.0 27.7,18.0 36.3,10.0 44.9,2.0 53.4,18.0 62.0,10.0"/></svg><b>14</b><span class="badge flat">Flat</span></div>
+  </div>
+  <div class="panel wide">
+    <h2>Agent avg response time (latency trend)</h2>
+    <p class="subh">Seconds / question · rising = slower. Hover dots.</p>
+    
+<div class="trend-wrap">
+<svg viewBox="0 0 560 240" class="chart" width="100%" height="240">
+  <line x1="48" y1="20" x2="48" y2="204" stroke="#c9d5e2"/>
+  <line x1="48" y1="204" x2="540" y2="204" stroke="#c9d5e2"/>
+  <text x="8" y="28" font-size="11" fill="#64748b">40s</text>
+  <text x="8" y="204" font-size="11" fill="#64748b">27s</text>
+  <polyline fill="none" stroke="#2563eb" stroke-width="2.8" points="48.0,68.0 118.3,111.0 188.6,76.3 258.9,126.1 329.1,119.8 399.4,48.2 469.7,204.0 540.0,20.0"/><circle class='pt-hit' cx='48.0' cy='68.0' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2156||When:2026-07-22 22:09:54||Value:36.94s||Pass:9/11||Latency:36.94s"/><circle class='pt' cx='48.0' cy='68.0' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2156||When:2026-07-22 22:09:54||Value:36.94s||Pass:9/11||Latency:36.94s"/><circle class='pt-hit' cx='118.3' cy='111.0' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2309||When:2026-07-22 23:18:10||Value:33.86s||Pass:11/11||Latency:33.86s"/><circle class='pt' cx='118.3' cy='111.0' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2309||When:2026-07-22 23:18:10||Value:33.86s||Pass:11/11||Latency:33.86s"/><circle class='pt-hit' cx='188.6' cy='76.3' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2340||When:2026-07-22 23:50:51||Value:36.34s||Pass:10/11||Latency:36.34s"/><circle class='pt' cx='188.6' cy='76.3' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2340||When:2026-07-22 23:50:51||Value:36.34s||Pass:10/11||Latency:36.34s"/><circle class='pt-hit' cx='258.9' cy='126.1' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/0021||When:2026-07-23 00:33:02||Value:32.78s||Pass:10/11||Latency:32.78s"/><circle class='pt' cx='258.9' cy='126.1' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/0021||When:2026-07-23 00:33:02||Value:32.78s||Pass:10/11||Latency:32.78s"/><circle class='pt-hit' cx='329.1' cy='119.8' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/1209||When:2026-07-23 12:38:19||Value:33.23s||Pass:11/11||Latency:33.23s"/><circle class='pt' cx='329.1' cy='119.8' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/1209||When:2026-07-23 12:38:19||Value:33.23s||Pass:11/11||Latency:33.23s"/><circle class='pt-hit' cx='399.4' cy='48.2' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1238||When:2026-07-23 13:19:17||Value:38.35s||Pass:8/18||Latency:38.35s"/><circle class='pt' cx='399.4' cy='48.2' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1238||When:2026-07-23 13:19:17||Value:38.35s||Pass:8/18||Latency:38.35s"/><circle class='pt-hit' cx='469.7' cy='204.0' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R3_Edge_Cases||Run:23Jul2026/Client_Contract/R3_Edge_Cases/1319||When:2026-07-23 13:40:31||Value:27.21s||Pass:5/18||Latency:27.21s"/><circle class='pt' cx='469.7' cy='204.0' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R3_Edge_Cases||Run:23Jul2026/Client_Contract/R3_Edge_Cases/1319||When:2026-07-23 13:40:31||Value:27.21s||Pass:5/18||Latency:27.21s"/><circle class='pt-hit' cx='540.0' cy='20.0' r='12' fill='transparent' data-tip="Agent:Client Contract||Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1345||When:2026-07-23 14:11:56||Value:40.37s||Pass:8/18||Latency:40.37s"/><circle class='pt' cx='540.0' cy='20.0' r='5' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Agent:Client Contract||Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1345||When:2026-07-23 14:11:56||Value:40.37s||Pass:8/18||Latency:40.37s"/>
+</svg>
+<div class="hover-card"></div>
+<div class="legend"><span><i class="dot" style="background:#2563eb"></i>Client Contract · ~40.37s</span></div>
+</div>
+
+  </div>
+  <div class="panel wide">
+    <h2>Per agent — quality + time snapshot</h2>
+    <p class="subh">Click agent row to filter golden fails · Answer review opens latest run.</p>
+    <div class="agent-row head"><div>Agent</div><div>Quality</div><div>Latency</div><div>15d runs</div><div>Direction</div><div>Latest sheet</div><div></div></div><div class="agent-row clickable" data-agent="Client Contract" onclick="setAgent('Client Contract', this)"><div class="name">Client Contract</div><div><b>79.9%</b></div><div><b>40.37s</b></div><div><b>14</b></div><div><span class="badge down">Worsening</span></div><div>R1_Stats</div><div><a class="btn sec" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html" onclick="event.stopPropagation()">Answer review</a></div></div>
+  </div>
+  <div class="panel wide" id="golden">
+    <h2>Golden set — cases behind the drift</h2>
+    <p class="subh">From each agent’s latest run. Filters like preview.</p>
+    <div class="filters">
+      <button type="button" class="chip on" data-f="all" onclick="setFilter('all', this)">All open fails</button>
+      <button type="button" class="chip" data-f="new" onclick="setFilter('new', this)">New regressions</button>
+      <button type="button" class="chip" data-f="chronic" onclick="setFilter('chronic', this)">Chronic fails</button>
+      <button type="button" class="chip" data-f="flaky" onclick="setFilter('flaky', this)">Flaky</button>
+      <span class="hint" id="filterLabel">Showing: all · any agent</span>
+    </div>
+    <div id="caseList">
+<div class="case" data-kind="flaky" data-agent="Client Contract" data-cat="available_to_not_available">
+  <div class="top">
+    <span class="pill fail">TC_16</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">available_to_not_available</span>
+    <span class="pill flaky">Flaky</span>
+  </div>
+  <p class="q">Can you tell me for all MSAs under Bristol has Cap on Liability as Yes?</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>Summary of findings:
+3 MSAs complete
+Tell me if you want source links or a narrower filter.</div>
+    <div class="box got"><div class="k">Agent answer</div>I found information about MSAs under Bristol that have a Cap on Liability (Limitation of Liability, Limitation Clause, Liability Cap) marked as &quot;Yes.&quot; Here are the details:
+MSA Name	Parent Name	Cap on Liability	MSA Document Link
+Bristol Myers Squibb Company: MSA - Oct 21 - SYMPHONY	Bristol Myers Squibb Company	Yes	Download Document
+Bristol Myers Squibb: MSA - Jun 26	Bristol Myers Squibb	Yes	Document not available
+Bristol Myers Squibb: Site Specific MSA - IEB CRUs - March 2026	Bristol Myers Squib</div>
+  </div>
+  <p class="hint">LLM FAIL — no variant passed (checked 3 templates). Actual answer lists 5 MSAs with Cap on Liability as Yes, but expected answer states only 3 MSAs complete without details.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_16">Open Answer Review (this run)</a></div>
+</div>
+<div class="case" data-kind="new" data-agent="Client Contract" data-cat="link_changed">
+  <div class="top">
+    <span class="pill fail">TC_23</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">Document link changed</span>
+    <span class="pill new">New regression</span>
+  </div>
+  <p class="q">How many Active MSAs under Ascendis Pharma A/S?</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>I found 2 matching record(s) for Ascendis Pharma A/S.
+Supporting detail:
+## Master Service Agreements (MSAs) for Argenx BV
+
+There are **2 Master Service Agreements (MSAs)** associated with Argenx BV.
+
+### Source:
+- Process Unity Legal Contract Management System: 
+ [https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow](https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F29628</div>
+    <div class="box got"><div class="k">Agent answer</div>I found that there are 2 active MSAs under Ascendis Pharma A/S. Here are the details with links to their respective MSA documents:
+Parent Name	MSA Status	MSA Document Link
+Ascendis Pharma A/S	Active	MSA Document 1
+Ascendis Pharma A/S	Active	MSA Document 2
+If you need more details about these MSAs or anything else, just let me know!</div>
+  </div>
+  <p class="hint">LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer correctly states there are 2 active MSAs under Ascendis Pharma A/S, matching the expected count and context.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_23">Open Answer Review (this run)</a></div>
+</div>
+<div class="case" data-kind="chronic" data-agent="Client Contract" data-cat="fact_removed">
+  <div class="top">
+    <span class="pill fail">TC_03</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">Missing facts</span>
+    <span class="pill chronic">Chronic</span>
+  </div>
+  <p class="q">How many MSAs under Abbott Laboratories actually mention about day credit terms</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>Count for Abbott Laboratories: 7.
+Based on the retrieved legal statistics data, there are **7 Master Service Agreements (MSAs)** under Abbott Laboratories that actually mention day credit terms.
+Let me know if you want document links or a filtered breakdown.</div>
+    <div class="box got"><div class="k">Agent answer</div>Summary of MSAs under Abbott Laboratories mentioning Credit Terms, Payment Terms, Compensation Terms, and Commercial Terms:
+Abbott Laboratories: MSA - Aug 21
+Credit Terms: 60 days (Receipt of Invoice)
+Active, expiring 2031
+Includes liability caps, indemnification, rate cards
+Abbvie Corp: MSA - Feb-17
+Credit Terms: Unknown
+Expired 2022
+Abbvie Corp: MSA - Dec-14
+Credit Terms: 45 days (90 calendar days after client receipt)
+Volume discounts and rebate arrangements included
+Abbvie Corp: MSA - Apr-13</div>
+  </div>
+  <p class="hint">LLM FAIL — no variant passed (checked 3 templates). Actual answer lists specific MSAs with credit terms but does not provide a clear count of how many MSAs under Abbott Laboratories mention day credit terms as requested.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_03">Open Answer Review (this run)</a></div>
+</div>
+<div class="case" data-kind="new" data-agent="Client Contract" data-cat="link_removed">
+  <div class="top">
+    <span class="pill fail">TC_39</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">Document link missing</span>
+    <span class="pill new">New regression</span>
+  </div>
+  <p class="q">Can you find the MSA in place with Harmony Biosciences</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>I found the following for Harmony Biosciences:
+## MSA with Harmony Biosciences
+
+There is one Master Service Agreement (MSA) in place with Harmony Biosciences. The MSA is titled **&quot;Harmony MSA L-PRA.&quot;**
+
+You can access the fully executed MSA document here: 
+[Harmony MSA L-PRA Document](https://app.processunity.net/icon-cm/download.aspx?name=Harmony_MSA_2019.12.5%20_Fully%20executed_.pdf&amp;path=70a8d68d-b9ae-4205-aa3d-d06c30400991)
+
+---
+
+This information is based on the retrieved contract statistics</div>
+    <div class="box got"><div class="k">Agent answer</div>I found two MSAs in place with Harmony Biosciences:
+Harmony Biosciences: MSA - May 18 -SYMPHONY
+You can download the MSA document here:
+Download MSA Document
+Harmony MSA L-PRA
+You can download the MSA document here:
+Download MSA Document_
+If you need details about amendments or specific terms within these MSAs, feel free to ask!</div>
+  </div>
+  <p class="hint">LLM FAIL — no variant passed (checked 3 templates). The actual answer mentions two MSAs instead of one and does not provide the specific link or confirm the exact title &#x27;Harmony MSA L-PRA&#x27; as the sole MSA.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_39">Open Answer Review (this run)</a></div>
+</div>
+<div class="case" data-kind="chronic" data-agent="Client Contract" data-cat="fact_removed">
+  <div class="top">
+    <span class="pill fail">TC_38</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">Missing facts</span>
+    <span class="pill chronic">Chronic</span>
+  </div>
+  <p class="q">Novartis Pharma AG MSA with effective date of agreement 2 Jan 2023</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>Document / contract details for effective date of agreement 2 Jan 2023:
+## Novartis Pharma AG MSA with Effective Date 2 January 2023 - Summary
+
+Based on the retrieved statistical data, there is one Master Service Agreement (MSA) with Novartis Pharma AG that has an effective date of **2 January 2023**.
+
+### Key Details:
+- **MSA Name:** Novartis Pharma AG: MSA - Jan 2023
+- **Effective Date:** 2 January 2023
+- **Executed Date:** 3 January 2023
+- **Expiration Date:** 2 January 2028
+
+This MSA is acti</div>
+    <div class="box got"><div class="k">Agent answer</div>I wanted to help with the details of the Novartis Pharma AG MSA effective 2 Jan 2023, but it looks like one of the documents related to this MSA/Amendment set is missing. Please check Process Unity directly to review the information manually.</div>
+  </div>
+  <p class="hint">LLM FAIL — no variant passed (checked 3 templates). The actual answer fails to provide any of the critical contract details present in the expected answer and instead indicates missing documents.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_38">Open Answer Review (this run)</a></div>
+</div>
+<div class="case" data-kind="flaky" data-agent="Client Contract" data-cat="link_changed">
+  <div class="top">
+    <span class="pill fail">TC_17</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">Document link changed</span>
+    <span class="pill flaky">Flaky</span>
+  </div>
+  <p class="q">How many MSAs with Novartis Pharma AG have 90 days credit terms?</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>I found 90 matching record(s) for Novartis Pharma AG have 90 days credit terms.
+Supporting detail:
+## Number of MSAs with Novartis Pharma AG Having 90 Days Credit Terms
+
+Based on the aggregated contract data, there are **2 distinct Master Service Agreements (MSAs)** with Novartis Pharma AG that have credit terms or payment terms set to 90 days.
+
+### Source
+
+This information is sourced from the legal contract management system, Process Unity: 
+[Process Unity Contract Management System](https://ap</div>
+    <div class="box got"><div class="k">Agent answer</div>MSAs with Novartis Pharma AG and 90 Days Credit Terms
+I found one MSA with Novartis Pharma AG that explicitly mentions 90 days credit terms:
+Novartis Pharma AG: Master Service Agreement (Imaging) - Apr22
+Payment due within 90 days after invoice receipt
+Invoices must be submitted within 90 days after completion of services or may be rejected
+MSA status: Expired
+Includes 3 amendments
+Covers Imaging services
+Document link available
+Other MSAs mostly mention 120 days credit terms or do not specify 9</div>
+  </div>
+  <p class="hint">LLM FAIL — no variant passed (checked 3 templates). Actual answer reports only 1 MSA with 90 days credit terms, whereas expected answer states there are 2 MSAs.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_17">Open Answer Review (this run)</a></div>
+</div>
+<div class="case" data-kind="new" data-agent="Client Contract" data-cat="link_added">
+  <div class="top">
+    <span class="pill fail">TC_05</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">Document link added</span>
+    <span class="pill new">New regression</span>
+  </div>
+  <p class="q">Could you tell me how may MSAs under AbbVie have expired and on what dates did they expired</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>Summary of findings:
+There are multiple MSAs under AbbVie that have expired on the following dates:
+
+One MSA expired on 2022-02-16
+One MSA expired on 2022-12-08
+One MSA expired on 2023-11-01
+One MSA expired on 2023-12-31
+One MSA expired on 2024-12-31
+
+In total, there are 5 expired MSAs under AbbVie.
+
+Thank you for your question. If you need more detailed information or documents related to these MSAs, please let me know.
+Tell me if you want source links or a narrower filter.</div>
+    <div class="box got"><div class="k">Agent answer</div>I found that there are 6 MSAs under AbbVie that have expired, with the expiration dates as follows:
+December 31, 2020
+February 16, 2022
+December 8, 2022
+November 1, 2023
+December 31, 2023
+December 31, 2024
+Each of these dates corresponds to one expired MSA under AbbVie.
+If you need more details about any specific MSA or further assistance, just let me know!
+Source: Process Unity (https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fs</div>
+  </div>
+  <p class="hint">LLM FAIL — no variant passed (checked 3 templates). The actual answer lists 6 expired MSAs including one from 2020 which is missing in the expected answer, and the expected answer lists only 5 MSAs with different dates; critical discrepancy in count and dates.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_05">Open Answer Review (this run)</a></div>
+</div>
+<div class="case" data-kind="new" data-agent="Client Contract" data-cat="available_to_not_available">
+  <div class="top">
+    <span class="pill fail">TC_08</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">available_to_not_available</span>
+    <span class="pill new">New regression</span>
+  </div>
+  <p class="q">Could you list me MSAs expiration dates for all MSAs under Bayer</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>Based on available MSA/contract data:
+Here is a summary of the expiration dates for all Master Service Agreements (MSAs) under Bayer based on the available data:
+
+MSA Name MSA Expiration Date
+Bayer - ICON MSA - Early Clinical Services (including CMC) (effective 15 July 2024) Not specified
+Bayer AG - Pharma Research Associates (UK) Limited 2026-04-30
+Bayer AG ICON FSP/ISS MSA - March 2022 2028-06-30
+Bayer AG: MSA - Sep-09 Not specified
+Bayer AG: MSA 2 (Functional Management) March 2022 2025-12-31</div>
+    <div class="box got"><div class="k">Agent answer</div>I found the expiration dates for MSAs under Bayer and related entities as follows:
+MSA Name	Parent Name	Expiration Date	MSA Document Link
+Bayer MSA 25 Feb 2013	Bayer AG	February 25, 2018	MSA Document
+Bayer AG - Pharma Research Associates (UK) Limited	Bayer AG	April 30, 2026__	MSA Document
+Bayer AG ICON FSP/ISS MSA - March 2022	Bayer AG	June 30, 2028	MSA Document
+Bayer HealthCare Pharmaceuticals: MSA - Jul 21 - SYMPHONY	Bayer HealthCare Pharmaceuticals	December 31, 2028_	MSA Document
+Bayer MSA - </div>
+  </div>
+  <p class="hint">LLM FAIL — no variant passed (checked 3 templates). Actual answer misses or contradicts critical expiration dates for some MSAs and omits the 2025-12-31 expiration for Bayer AG: MSA 2 and Bayer HealthCare Pharmaceuticals SYMPHONY MSA.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_08">Open Answer Review (this run)</a></div>
+</div>
+<div class="case" data-kind="chronic" data-agent="Client Contract" data-cat="link_added">
+  <div class="top">
+    <span class="pill fail">TC_06</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">Document link added</span>
+    <span class="pill chronic">Chronic</span>
+  </div>
+  <p class="q">Bayer AG, does it have any recently created MSAs? 2020 and later?</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>Based on available MSA/contract data:
+Recently Created MSAs for Bayer AG (2020 and Later)Based on the retrieved legal statistics data, Bayer AG has 7 Master Service Agreements (MSAs) created in 2020 or later. These MSAs cover various services and were created between May 2020 and July 2024. The details are as follows:
+MSA NameParent NameCreated DateBayer - ICON_MSA - Early Clinical Services (including CMC) (effective 15 July 2024)Bayer AG2024-07-29Bayer AG - Pharma Research Associates (UK) Limit</div>
+    <div class="box got"><div class="k">Agent answer</div>I found several recently created MSAs for Bayer AG from 2020 and later. Here are the details:
+MSA Name	Created Date	Document Link
+Bayer - ICON_MSA - Early Clinical Services (including CMC) (effective 15 July 2024)	July 29, 2024	MSA Document for Bayer AG
+Bayer AG - Pharma Research Associates (UK) Limited	November 10, 2023	MSA Document for Bayer AG
+Bayer AG ICON FSP/ISS MSA - March 2022	June 4, 2026	MSA Document for Bayer AG
+Bayer AG: MSA - Sep-09	May 7, 2020	MSA Document for Bayer AG
+Bayer AG: MS</div>
+  </div>
+  <p class="hint">LLM FAIL — no variant passed (checked 3 templates). Actual answer contains incorrect creation dates for some MSAs and includes MSAs dated before 2020, contradicting the expected answer.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_06">Open Answer Review (this run)</a></div>
+</div>
+<div class="case" data-kind="flaky" data-agent="Client Contract" data-cat="fact_removed">
+  <div class="top">
+    <span class="pill fail">TC_09</span>
+    <span class="pill now">Failed in latest</span>
+    <span class="pill agent">Client Contract · R1_Stats</span>
+    <span class="pill chron">Missing facts</span>
+    <span class="pill flaky">Flaky</span>
+  </div>
+  <p class="q">Could you tell me how many amedment does Abbvie Corp: MSA - Apr-13 have?</p>
+  <div class="cmp">
+    <div class="box exp"><div class="k">Golden / expected</div>Count for MSA - Apr-13 have: see key facts.
+The Master Service Agreement (MSA) titled &quot;Abbvie Corp: MSA - Apr-13&quot; has a total of 11 amendments.
+
+If you need more details about any specific amendment or further assistance, please let me know!
+
+I found that the Abbvie Corp MSA from April 2013 has 11 amendments. If you want details on any specific amendment or have other questions, feel free to ask!
+Let me know if you want document links or a filtered breakdown.</div>
+    <div class="box got"><div class="k">Agent answer</div>I couldn&#x27;t find the number of amendments for &quot;Abbvie Corp: MSA - Apr-13&quot; in the current data.
+Could you please confirm if you want the count of all amendments related specifically to this MSA, or are you interested in details about particular amendments?</div>
+  </div>
+  <p class="hint">LLM FAIL — no variant passed (checked 3 templates). The actual answer fails to provide the critical information that the MSA has 11 amendments, which is the key fact in the expected answer.</p>
+  <div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_09">Open Answer Review (this run)</a></div>
+</div></div>
+  </div>
+</section>
+</main>
+
+<script>
+(function () {
+  function showCard(wrap, pt, evt) {
+    var card = wrap.querySelector('.hover-card');
+    if (!card) return;
+    var raw = pt.getAttribute('data-tip') || '';
+    var parts = raw.split('||');
+    var html = '';
+    for (var i = 0; i < parts.length; i++) {
+      var bit = parts[i];
+      var idx = bit.indexOf(':');
+      if (idx > 0) {
+        html += '<div class="hk">' + bit.slice(0, idx) + '</div>';
+        html += '<div class="hv">' + bit.slice(idx + 1).trim() + '</div>';
+      } else if (bit) {
+        html += '<div class="hv">' + bit + '</div>';
+      }
+    }
+    card.innerHTML = html || raw;
+    card.classList.add('show');
+    var rect = wrap.getBoundingClientRect();
+    var left = evt.clientX - rect.left + 12;
+    var top = evt.clientY - rect.top - 10;
+    if (left > rect.width - 230) left = rect.width - 230;
+    if (top < 8) top = 8;
+    card.style.left = left + 'px';
+    card.style.top = top + 'px';
+  }
+  document.querySelectorAll('.trend-wrap').forEach(function (wrap) {
+    wrap.addEventListener('mousemove', function (evt) {
+      var pt = evt.target.closest('.pt, .pt-hit');
+      if (!pt || !wrap.contains(pt)) {
+        var card = wrap.querySelector('.hover-card');
+        if (card) card.classList.remove('show');
+        return;
+      }
+      showCard(wrap, pt, evt);
+    });
+    wrap.addEventListener('mouseleave', function () {
+      var card = wrap.querySelector('.hover-card');
+      if (card) card.classList.remove('show');
+    });
+  });
+})();
+</script>
+
+
+<script>
+(function () {
+  var filter = 'all';
+  var agent = '';
+  function apply() {
+    var shown = 0;
+    document.querySelectorAll('#caseList .case').forEach(function (el) {
+      var okF = filter === 'all' || el.getAttribute('data-kind') === filter;
+      var okA = !agent || el.getAttribute('data-agent') === agent;
+      var show = okF && okA;
+      el.style.display = show ? '' : 'none';
+      if (show) shown += 1;
+    });
+    var lab = document.getElementById('filterLabel');
+    if (lab) {
+      lab.textContent = 'Showing: ' + filter + (agent ? ' · ' + agent : ' · any agent') + ' · ' + shown + ' case(s)';
+    }
+  }
+  window.setFilter = function (f, btn) {
+    filter = f;
+    document.querySelectorAll('.filters .chip').forEach(function (c) { c.classList.remove('on'); });
+    if (btn) btn.classList.add('on');
+    apply();
+  };
+  window.setAgent = function (name, row) {
+    agent = (agent === name) ? '' : name;
+    document.querySelectorAll('.agent-row.clickable').forEach(function (r) { r.classList.remove('active'); });
+    if (agent && row) row.classList.add('active');
+    apply();
+  };
+  apply();
+})();
+</script>
+
+</body></html>

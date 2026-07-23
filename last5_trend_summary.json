@@ -1,0 +1,91 @@
+{
+  "sheet_name": "Client_Contract/R1_Stats",
+  "date_folder": "23Jul2026",
+  "scope": "last_n_runs_across_days",
+  "runs_included": [
+    "23Jul2026/1238",
+    "23Jul2026/1345"
+  ],
+  "latest_run": "23Jul2026/1345",
+  "total_tests_tracked": 41,
+  "suite_pass_rate_last5": [
+    76,
+    44
+  ],
+  "agent_response_avg_seconds_last_n": [
+    38.35,
+    40.37
+  ],
+  "agent_response_p95_seconds_last_n": [
+    72.79,
+    75.15
+  ],
+  "agent_response_avg_minutes_last_n": [
+    0.6,
+    0.7
+  ],
+  "agent_response_p95_minutes_last_n": [
+    1.2,
+    1.3
+  ],
+  "stable_pass": [
+    "TC_07",
+    "TC_11",
+    "TC_26",
+    "TC_34",
+    "TC_35",
+    "TC_41"
+  ],
+  "stable_fail": [
+    "TC_03",
+    "TC_05",
+    "TC_06",
+    "TC_08",
+    "TC_16",
+    "TC_23",
+    "TC_38",
+    "TC_39"
+  ],
+  "flaky": [
+    "TC_09",
+    "TC_10",
+    "TC_12",
+    "TC_17"
+  ],
+  "improving": [],
+  "degrading": [],
+  "insufficient_data": [
+    "TC_01",
+    "TC_02",
+    "TC_04",
+    "TC_13",
+    "TC_14",
+    "TC_15",
+    "TC_18",
+    "TC_19",
+    "TC_20",
+    "TC_21",
+    "TC_22",
+    "TC_24",
+    "TC_25",
+    "TC_27",
+    "TC_28",
+    "TC_29",
+    "TC_30",
+    "TC_31",
+    "TC_32",
+    "TC_33",
+    "TC_36",
+    "TC_37",
+    "TC_40"
+  ],
+  "generated_at": "2026-07-23 14:11:57",
+  "validation_mode": "golden_v1",
+  "golden_stability_note": "Golden runs: use artifacts/drift/<sheet>/stability_history.json for answer stability over time. trend/ pass rates use final status (golden when enabled).",
+  "golden_stability_last_run": 79.9,
+  "golden_drift_last_run": 0.2005,
+  "golden_stability_last_n": [
+    81.1,
+    79.9
+  ]
+}

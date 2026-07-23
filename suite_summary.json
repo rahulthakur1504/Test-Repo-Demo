@@ -1,0 +1,414 @@
+{
+  "run_id": "1345",
+  "build_id": "23Jul2026/Client_Contract/R1_Stats/1345",
+  "date_folder": "23Jul2026",
+  "sheet_name": "R1_Stats",
+  "run_time": "1345",
+  "run_type": "full_with_retry",
+  "orbis_chat": "ClientContract_Stats_23Jul26_1345",
+  "business_agent": "Client_Contract_Agent",
+  "results_folder": "Client_Contract/R1_Stats",
+  "finished_at": "2026-07-23 14:11:56",
+  "total": 18,
+  "passed": 8,
+  "failed": 10,
+  "review": 0,
+  "error": 0,
+  "retry": {
+    "questions_retried": 11,
+    "retried_ids": [
+      "TC_03",
+      "TC_05",
+      "TC_06",
+      "TC_08",
+      "TC_09",
+      "TC_16",
+      "TC_17",
+      "TC_23",
+      "TC_38",
+      "TC_39",
+      "TC_41"
+    ],
+    "flipped_to_pass": [
+      "TC_41"
+    ],
+    "still_failed_after_retry": [
+      "TC_03",
+      "TC_05",
+      "TC_06",
+      "TC_08",
+      "TC_09",
+      "TC_16",
+      "TC_17",
+      "TC_23",
+      "TC_38",
+      "TC_39"
+    ],
+    "skipped_retry_route": []
+  },
+  "failed_ids": [
+    "TC_03",
+    "TC_05",
+    "TC_06",
+    "TC_08",
+    "TC_09",
+    "TC_16",
+    "TC_17",
+    "TC_23",
+    "TC_38",
+    "TC_39"
+  ],
+  "failure_buckets": {
+    "GOLDEN_DRIFT": 10
+  },
+  "timing": {
+    "total_minutes": 26.6,
+    "main_run_minutes": 18.1,
+    "retry_minutes": 8.5,
+    "total_seconds": 1594.6,
+    "retry_seconds": 510.0,
+    "agent_response_avg_seconds": 40.37,
+    "agent_response_p95_seconds": 75.15,
+    "agent_response_avg_minutes": 0.67,
+    "agent_response_p95_minutes": 1.25,
+    "agent_response_samples": 18
+  },
+  "results_file": "suite_results.json",
+  "validation_mode": "golden_v1",
+  "golden": {
+    "questions_with_golden": 18,
+    "passed_vs_golden": 8,
+    "failed_vs_golden": 10,
+    "passed_vs_golden_llm": 9,
+    "failed_vs_golden_llm": 9,
+    "llm_not_run_count": 0,
+    "run_drift": 0.2005,
+    "run_stability": 79.9,
+    "questions_high_drift": 2,
+    "drift_type_counts": {
+      "fact_removed": 9,
+      "fact_added": 6,
+      "link_added": 5,
+      "available_to_not_available": 3,
+      "contradiction": 2,
+      "wording_drift": 2,
+      "stable": 3,
+      "link_changed": 3,
+      "number_changed": 1,
+      "link_removed": 1
+    },
+    "per_test_drift": [
+      {
+        "test_case_id": "TC_16",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.6264,
+        "drift_type": "available_to_not_available",
+        "drift_types": [
+          "available_to_not_available",
+          "link_added",
+          "contradiction",
+          "fact_added",
+          "fact_removed"
+        ],
+        "semantic_score": 0.3736,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_23",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.3546,
+        "drift_type": "link_changed",
+        "drift_types": [
+          "link_changed"
+        ],
+        "semantic_score": 0.6454,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_03",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.3425,
+        "drift_type": "fact_removed",
+        "drift_types": [
+          "fact_removed",
+          "fact_added"
+        ],
+        "semantic_score": 0.6575,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_39",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.2393,
+        "drift_type": "link_removed",
+        "drift_types": [
+          "link_removed",
+          "fact_removed"
+        ],
+        "semantic_score": 0.7607,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_07",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.2361,
+        "drift_type": "available_to_not_available",
+        "drift_types": [
+          "available_to_not_available"
+        ],
+        "semantic_score": 0.7639,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_35",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.218,
+        "drift_type": "link_changed",
+        "drift_types": [
+          "link_changed"
+        ],
+        "semantic_score": 0.782,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_10",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.2132,
+        "drift_type": "wording_drift",
+        "drift_types": [
+          "wording_drift"
+        ],
+        "semantic_score": 0.7868,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_38",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.2014,
+        "drift_type": "fact_removed",
+        "drift_types": [
+          "fact_removed"
+        ],
+        "semantic_score": 0.7986,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_17",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.1885,
+        "drift_type": "link_changed",
+        "drift_types": [
+          "link_changed",
+          "number_changed",
+          "fact_removed",
+          "fact_added"
+        ],
+        "semantic_score": 0.8115,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_26",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1717,
+        "drift_type": "wording_drift",
+        "drift_types": [
+          "wording_drift"
+        ],
+        "semantic_score": 0.8283,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_41",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1469,
+        "drift_type": "link_added",
+        "drift_types": [
+          "link_added"
+        ],
+        "semantic_score": 0.8531,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_34",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.1389,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "semantic_score": 0.8611,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_05",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.1325,
+        "drift_type": "link_added",
+        "drift_types": [
+          "link_added",
+          "fact_removed",
+          "fact_added"
+        ],
+        "semantic_score": 0.8675,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_08",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.1026,
+        "drift_type": "available_to_not_available",
+        "drift_types": [
+          "available_to_not_available",
+          "link_added",
+          "contradiction",
+          "fact_added",
+          "fact_removed"
+        ],
+        "semantic_score": 0.8974,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_06",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.0961,
+        "drift_type": "link_added",
+        "drift_types": [
+          "link_added",
+          "fact_removed",
+          "fact_added"
+        ],
+        "semantic_score": 0.9039,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_09",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.0791,
+        "drift_type": "fact_removed",
+        "drift_types": [
+          "fact_removed"
+        ],
+        "semantic_score": 0.9209,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_12",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0616,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "semantic_score": 0.9384,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_11",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.0598,
+        "drift_type": "stable",
+        "drift_types": [
+          "stable"
+        ],
+        "semantic_score": 0.9402,
+        "llm_status": "PASS"
+      }
+    ],
+    "top_drift_tests": [
+      {
+        "test_case_id": "TC_16",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.6264,
+        "drift_type": "available_to_not_available",
+        "drift_types": [
+          "available_to_not_available",
+          "link_added",
+          "contradiction",
+          "fact_added",
+          "fact_removed"
+        ],
+        "semantic_score": 0.3736,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_23",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.3546,
+        "drift_type": "link_changed",
+        "drift_types": [
+          "link_changed"
+        ],
+        "semantic_score": 0.6454,
+        "llm_status": "PASS"
+      },
+      {
+        "test_case_id": "TC_03",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.3425,
+        "drift_type": "fact_removed",
+        "drift_types": [
+          "fact_removed",
+          "fact_added"
+        ],
+        "semantic_score": 0.6575,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_39",
+        "status_vs_golden": "FAIL",
+        "drift_score": 0.2393,
+        "drift_type": "link_removed",
+        "drift_types": [
+          "link_removed",
+          "fact_removed"
+        ],
+        "semantic_score": 0.7607,
+        "llm_status": "FAIL"
+      },
+      {
+        "test_case_id": "TC_07",
+        "status_vs_golden": "PASS",
+        "drift_score": 0.2361,
+        "drift_type": "available_to_not_available",
+        "drift_types": [
+          "available_to_not_available"
+        ],
+        "semantic_score": 0.7639,
+        "llm_status": "PASS"
+      }
+    ],
+    "golden_version": "v1",
+    "golden_id": "R1_Stats_failed_golden_v1",
+    "golden_path": "golden\\client_contract\\R1_Stats\\golden_v1.json",
+    "sme_approved": false,
+    "build_id": "23Jul2026/Client_Contract/R1_Stats/1345",
+    "retried_vs_golden": [
+      "TC_03",
+      "TC_05",
+      "TC_06",
+      "TC_08",
+      "TC_09",
+      "TC_16",
+      "TC_17",
+      "TC_23",
+      "TC_38",
+      "TC_39",
+      "TC_41"
+    ],
+    "flipped_to_pass_vs_golden": [
+      "TC_41"
+    ]
+  },
+  "golden_path": "golden\\client_contract\\R1_Stats\\golden_v1.json",
+  "review_paths": {
+    "suite_results": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\23Jul2026\\Client_Contract\\R1_Stats\\1345\\suite_results.json",
+    "suite_summary": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\23Jul2026\\Client_Contract\\R1_Stats\\1345\\suite_summary.json",
+    "run_summary_txt": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\23Jul2026\\Client_Contract\\R1_Stats\\1345\\RUN_SUMMARY.txt",
+    "answer_review_html": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\results\\23Jul2026\\Client_Contract\\R1_Stats\\1345\\ANSWER_REVIEW.html",
+    "agent_drift_dashboard_html": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\drift\\Client_Contract\\DRIFT_DASHBOARD.html",
+    "suite_drift_dashboard_html": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\suite\\DRIFT_DASHBOARD.html",
+    "suite_dashboard_html": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\suite\\SUITE_DASHBOARD.html",
+    "drift_history": "C:\\Users\\ThakurR\\Documents\\orbis-UI-automation\\artifacts\\drift\\Client_Contract\\stability_history.json",
+    "trend_note": "Agent Drift: artifacts/drift/Client_Contract/DRIFT_DASHBOARD.html · All-agents Drift: artifacts/suite/DRIFT_DASHBOARD.html · Suite board: artifacts/suite/SUITE_DASHBOARD.html"
+  }
+}

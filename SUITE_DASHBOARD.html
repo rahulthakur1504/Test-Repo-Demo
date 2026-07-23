@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbis Suite — All Agents</title>
+<style>
+:root { --ink:#12233a; --muted:#5b6b7c; --card:#fff; --line:#d9e2ec; --bg:#eef3f8; --accent:#1b4f72; --warn:#9a3412; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); font-family:"Segoe UI",system-ui,sans-serif; background:linear-gradient(180deg,#e8eef5,var(--bg)); }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 24px 48px; }
+.eyebrow { text-transform:uppercase; letter-spacing:.08em; font-size:12px; font-weight:700; color:var(--accent); }
+h1 { margin:6px 0 4px; font-size:28px; }
+.sub, .subh, .muted { color:var(--muted); font-size:13px; }
+.kpis { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0; }
+.kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; min-width:110px; }
+.kpi-val { display:block; font-size:22px; font-weight:700; }
+.kpi-label { color:var(--muted); font-size:12px; }
+.attn-bar { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px; }
+@media(max-width:900px){ .attn-bar{grid-template-columns:1fr;} .grid{grid-template-columns:1fr;} }
+.attn-card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px; }
+.attn-card.watch { border-color:#fca5a5; background:#fff5f5; }
+.attn-card.ok { border-color:#86efac; background:#f0fdf4; }
+.attn-card h3 { margin:0 0 4px; font-size:14px; }
+.attn-card p { margin:0; font-size:13px; }
+.links { margin-bottom:12px; }
+.grid { display:grid; grid-template-columns:1.4fr 1fr; gap:14px; }
+.panel { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 16px; }
+.panel.wide { grid-column:1 / -1; }
+.agent-block { border:1px solid var(--line); border-radius:12px; padding:12px; margin-bottom:12px; background:#fbfdff; }
+.agent-head { display:flex; justify-content:space-between; gap:10px; }
+.agent-head h3 { margin:0 0 4px; }
+.runs-badge { background:#e8f1fa; border-radius:10px; padding:8px 10px; text-align:center; }
+.runs-badge b { display:block; font-size:20px; color:var(--accent); }
+.agent-kpis { display:flex; flex-wrap:wrap; gap:14px; margin:10px 0; }
+.big { display:block; font-size:18px; font-weight:700; }
+.failc { color:var(--warn); }
+.trend-block { background:#fff; border:1px solid var(--line); border-radius:10px; padding:8px; margin-bottom:8px; }
+.spark { width:100%; height:auto; }
+.type-runs { display:flex; flex-wrap:wrap; gap:6px; }
+.pill { background:#eef4fa; color:var(--accent); border-radius:999px; padding:3px 10px; font-size:12px; }
+.badge { display:inline-block; border-radius:999px; padding:2px 8px; font-size:11px; font-weight:700; }
+.badge.up { background:#dcfce7; color:#166534; }
+.badge.down { background:#fee2e2; color:#991b1b; }
+.badge.flat { background:#e2e8f0; color:#334155; }
+.barrow { display:grid; grid-template-columns:150px 1fr 40px; gap:8px; align-items:center; margin:6px 0; font-size:13px; }
+.bar { background:#e8eef5; border-radius:6px; height:14px; }
+.bar i { display:block; height:14px; background:#2d6a9f; border-radius:6px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { text-align:left; padding:8px; border-bottom:1px solid var(--line); }
+.case { border:1px solid var(--line); border-radius:10px; padding:10px; margin:8px 0; }
+.top { display:flex; flex-wrap:wrap; gap:6px; }
+.pill.fail { background:#fee2e2; color:#991b1b; }
+.pill.agent { background:#e0e7ff; color:#3730a3; }
+.pill.chron { background:#e2e8f0; color:#334155; }
+.hint { font-size:12px; color:var(--muted); margin:6px 0 0; }
+.actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.trend-wrap { position:relative; }
+.st { display:inline-block; border-radius:999px; padding:2px 8px; font-size:11px; font-weight:700; }
+.st.fail { background:#fee2e2; color:#991b1b; }
+.st.pass { background:#dcfce7; color:#166534; }
+ol { margin:0; padding-left:18px; font-size:14px; }
+
+.trend-wrap { position:relative; }
+.hover-card {
+  position:absolute; z-index:20; min-width:200px; max-width:320px;
+  background:#0f172a; color:#f8fafc; border-radius:10px;
+  padding:10px 12px; font-size:12px; line-height:1.5;
+  box-shadow:0 8px 24px rgba(15,23,42,.35); pointer-events:none;
+  display:none;
+}
+.hover-card.show { display:block; }
+.hover-card .hk { color:#94a3b8; font-size:10px; text-transform:uppercase; font-weight:700; }
+.hover-card .hv { margin:0 0 6px; font-weight:600; }
+.pt, .pt-hit { cursor:crosshair; }
+.btn {
+  display:inline-block; text-decoration:none; background:#1e293b; color:#fff;
+  border-radius:8px; padding:7px 12px; font-size:12px; font-weight:700;
+}
+.btn.sec { background:#fff; color:#1e293b; border:1px solid #dbe4ef; }
+.btn:hover { opacity:.92; }
+a.tc-link { color:#1d4ed8; font-weight:700; text-decoration:none; }
+a.tc-link:hover { text-decoration:underline; }
+</style>
+</head><body>
+<div class="wrap">
+  <p class="eyebrow">Suite dashboard · QA + managers</p>
+  <h1>Orbis Suite — All Agents</h1>
+  <p class="sub">Built from existing golden drift histories under <code>artifacts/drift/</code>.
+  Last refresh: <b>23 Jul 2026 · 14:11</b> · Result folders kept <b>15 days</b>.</p>
+
+  <div class="kpis">
+    <div class="kpi"><span class="kpi-val">1</span><span class="kpi-label">Agents with history</span></div>
+    <div class="kpi"><span class="kpi-val">1</span><span class="kpi-label">Sheets tracked</span></div>
+    <div class="kpi"><span class="kpi-val">14</span><span class="kpi-label">History rows (all sheets)</span></div>
+    <div class="kpi"><span class="kpi-val">15d</span><span class="kpi-label">Result retention</span></div>
+  </div>
+
+  <div class="attn-bar"><div class="attn-card watch"><h3>Needs attention</h3><p>Client_Contract · Client_Contract latest stability 79.9%.</p></div><div class="attn-card"><h3>Manager snapshot</h3><p>1 agent group(s) with golden history. Use Drift for product story; this board for ops triage.</p></div><div class="attn-card ok"><h3>Data source</h3><p>Existing reports: stability_history.json + latest run envelopes when available.</p></div></div>
+
+  <div class="links">
+    <span class="muted">Product Drift: <code>artifacts/suite/DRIFT_DASHBOARD.html</code> · Per-run: click TC / Open Answer Review</span>
+  </div>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>Per-agent health (from suite-fed drift history)</h2>
+      <p class="subh">Each block = business agent. Hover trend points for sheet / run / pass / latency.</p>
+      
+<div class="agent-block">
+  <div class="agent-head">
+    <div>
+      <h3>Client Contract</h3>
+      <div class="muted">1 sheet(s) · primary trend: Client_Contract</div>
+    </div>
+    <div class="runs-badge"><b>14</b><span>history rows</span></div>
+  </div>
+  <div class="agent-kpis">
+    <div><span class="big">79.9%</span>
+      <span class="muted">latest stability</span></div>
+    <div><span class="big">8/
+      18</span>
+      <span class="muted">latest pass</span></div>
+    <div><a class="big failc tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html">10</a><span class="muted">fails</span></div>
+    <div><span class="big">40.37s</span>
+      <span class="muted">avg response / Q</span></div>
+    <div><span class="badge down">Worsening</span>
+      <span class="muted">direction</span></div>
+    <div><a class="btn sec" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html">Answer review</a></div>
+  </div>
+  <div class="trend-block">
+    <div class="muted" style="margin-bottom:6px;font-weight:600">Stability trend</div>
+    <div class="trend-wrap"><svg viewBox='0 0 420 90' class='spark'><polyline fill="none" stroke="#2563eb" stroke-width="2.5" points="10.0,29.9 40.8,12.4 71.5,15.0 102.3,12.4 133.1,13.9 163.8,14.4 194.6,13.3 225.4,10.4 256.2,12.9 286.9,10.0 317.7,12.0 348.5,19.7 379.2,80.0 410.0,21.0"/><circle class='pt-hit' cx='10.0' cy='29.9' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1147||When:2026-07-22 12:01:42||Value:71.4||Pass:8/11||Latency:-"/><circle class='pt' cx='10.0' cy='29.9' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1147||When:2026-07-22 12:01:42||Value:71.4||Pass:8/11||Latency:-"/><circle class='pt-hit' cx='40.8' cy='12.4' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1338||When:2026-07-22 13:48:32||Value:88.1||Pass:7/11||Latency:-"/><circle class='pt' cx='40.8' cy='12.4' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1338||When:2026-07-22 13:48:32||Value:88.1||Pass:7/11||Latency:-"/><circle class='pt-hit' cx='71.5' cy='15.0' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1532||When:2026-07-22 15:43:51||Value:85.6||Pass:7/11||Latency:-"/><circle class='pt' cx='71.5' cy='15.0' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1532||When:2026-07-22 15:43:51||Value:85.6||Pass:7/11||Latency:-"/><circle class='pt-hit' cx='102.3' cy='12.4' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1612||When:2026-07-22 16:23:55||Value:88.1||Pass:7/11||Latency:-"/><circle class='pt' cx='102.3' cy='12.4' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1612||When:2026-07-22 16:23:55||Value:88.1||Pass:7/11||Latency:-"/><circle class='pt-hit' cx='133.1' cy='13.9' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1756||When:2026-07-22 18:06:29||Value:86.7||Pass:9/11||Latency:-"/><circle class='pt' cx='133.1' cy='13.9' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1756||When:2026-07-22 18:06:29||Value:86.7||Pass:9/11||Latency:-"/><circle class='pt-hit' cx='163.8' cy='14.4' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1830||When:2026-07-22 18:45:32||Value:86.2||Pass:10/11||Latency:-"/><circle class='pt' cx='163.8' cy='14.4' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/1830||When:2026-07-22 18:45:32||Value:86.2||Pass:10/11||Latency:-"/><circle class='pt-hit' cx='194.6' cy='13.3' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2156||When:2026-07-22 22:09:54||Value:87.2||Pass:9/11||Latency:36.94s"/><circle class='pt' cx='194.6' cy='13.3' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2156||When:2026-07-22 22:09:54||Value:87.2||Pass:9/11||Latency:36.94s"/><circle class='pt-hit' cx='225.4' cy='10.4' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2309||When:2026-07-22 23:18:10||Value:90.0||Pass:11/11||Latency:33.86s"/><circle class='pt' cx='225.4' cy='10.4' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2309||When:2026-07-22 23:18:10||Value:90.0||Pass:11/11||Latency:33.86s"/><circle class='pt-hit' cx='256.2' cy='12.9' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2340||When:2026-07-22 23:50:51||Value:87.6||Pass:10/11||Latency:36.34s"/><circle class='pt' cx='256.2' cy='12.9' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2340||When:2026-07-22 23:50:51||Value:87.6||Pass:10/11||Latency:36.34s"/><circle class='pt-hit' cx='286.9' cy='10.0' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/0021||When:2026-07-23 00:33:02||Value:90.4||Pass:10/11||Latency:32.78s"/><circle class='pt' cx='286.9' cy='10.0' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/0021||When:2026-07-23 00:33:02||Value:90.4||Pass:10/11||Latency:32.78s"/><circle class='pt-hit' cx='317.7' cy='12.0' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/1209||When:2026-07-23 12:38:19||Value:88.5||Pass:11/11||Latency:33.23s"/><circle class='pt' cx='317.7' cy='12.0' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/1209||When:2026-07-23 12:38:19||Value:88.5||Pass:11/11||Latency:33.23s"/><circle class='pt-hit' cx='348.5' cy='19.7' r='12' fill='transparent' data-tip="Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1238||When:2026-07-23 13:19:17||Value:81.1||Pass:8/18||Latency:38.35s"/><circle class='pt' cx='348.5' cy='19.7' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1238||When:2026-07-23 13:19:17||Value:81.1||Pass:8/18||Latency:38.35s"/><circle class='pt-hit' cx='379.2' cy='80.0' r='12' fill='transparent' data-tip="Sheet:R3_Edge_Cases||Run:23Jul2026/Client_Contract/R3_Edge_Cases/1319||When:2026-07-23 13:40:31||Value:23.5||Pass:5/18||Latency:27.21s"/><circle class='pt' cx='379.2' cy='80.0' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R3_Edge_Cases||Run:23Jul2026/Client_Contract/R3_Edge_Cases/1319||When:2026-07-23 13:40:31||Value:23.5||Pass:5/18||Latency:27.21s"/><circle class='pt-hit' cx='410.0' cy='21.0' r='12' fill='transparent' data-tip="Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1345||When:2026-07-23 14:11:56||Value:79.9||Pass:8/18||Latency:40.37s"/><circle class='pt' cx='410.0' cy='21.0' r='4' fill='#2563eb' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1345||When:2026-07-23 14:11:56||Value:79.9||Pass:8/18||Latency:40.37s"/></svg><div class="hover-card"></div></div>
+  </div>
+  <div class="trend-block">
+    <div class="muted" style="margin-bottom:6px;font-weight:600">Latency trend (s / Q)</div>
+    <div class="trend-wrap"><svg viewBox='0 0 420 90' class='spark'><polyline fill="none" stroke="#dc2626" stroke-width="2.5" points="10.0,28.2 67.1,44.6 124.3,31.4 181.4,50.4 238.6,48.0 295.7,20.7 352.9,80.0 410.0,10.0"/><circle class='pt-hit' cx='10.0' cy='28.2' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2156||When:2026-07-22 22:09:54||Value:36.94||Pass:9/11||Latency:36.94s"/><circle class='pt' cx='10.0' cy='28.2' r='4' fill='#dc2626' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2156||When:2026-07-22 22:09:54||Value:36.94||Pass:9/11||Latency:36.94s"/><circle class='pt-hit' cx='67.1' cy='44.6' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2309||When:2026-07-22 23:18:10||Value:33.86||Pass:11/11||Latency:33.86s"/><circle class='pt' cx='67.1' cy='44.6' r='4' fill='#dc2626' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2309||When:2026-07-22 23:18:10||Value:33.86||Pass:11/11||Latency:33.86s"/><circle class='pt-hit' cx='124.3' cy='31.4' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2340||When:2026-07-22 23:50:51||Value:36.34||Pass:10/11||Latency:36.34s"/><circle class='pt' cx='124.3' cy='31.4' r='4' fill='#dc2626' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:22Jul2026/Client_Contract/R1_Non_stats/2340||When:2026-07-22 23:50:51||Value:36.34||Pass:10/11||Latency:36.34s"/><circle class='pt-hit' cx='181.4' cy='50.4' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/0021||When:2026-07-23 00:33:02||Value:32.78||Pass:10/11||Latency:32.78s"/><circle class='pt' cx='181.4' cy='50.4' r='4' fill='#dc2626' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/0021||When:2026-07-23 00:33:02||Value:32.78||Pass:10/11||Latency:32.78s"/><circle class='pt-hit' cx='238.6' cy='48.0' r='12' fill='transparent' data-tip="Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/1209||When:2026-07-23 12:38:19||Value:33.23||Pass:11/11||Latency:33.23s"/><circle class='pt' cx='238.6' cy='48.0' r='4' fill='#dc2626' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Non_stats||Run:23Jul2026/Client_Contract/R1_Non_stats/1209||When:2026-07-23 12:38:19||Value:33.23||Pass:11/11||Latency:33.23s"/><circle class='pt-hit' cx='295.7' cy='20.7' r='12' fill='transparent' data-tip="Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1238||When:2026-07-23 13:19:17||Value:38.35||Pass:8/18||Latency:38.35s"/><circle class='pt' cx='295.7' cy='20.7' r='4' fill='#dc2626' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1238||When:2026-07-23 13:19:17||Value:38.35||Pass:8/18||Latency:38.35s"/><circle class='pt-hit' cx='352.9' cy='80.0' r='12' fill='transparent' data-tip="Sheet:R3_Edge_Cases||Run:23Jul2026/Client_Contract/R3_Edge_Cases/1319||When:2026-07-23 13:40:31||Value:27.21||Pass:5/18||Latency:27.21s"/><circle class='pt' cx='352.9' cy='80.0' r='4' fill='#dc2626' stroke='#fff' stroke-width='2' data-tip="Sheet:R3_Edge_Cases||Run:23Jul2026/Client_Contract/R3_Edge_Cases/1319||When:2026-07-23 13:40:31||Value:27.21||Pass:5/18||Latency:27.21s"/><circle class='pt-hit' cx='410.0' cy='10.0' r='12' fill='transparent' data-tip="Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1345||When:2026-07-23 14:11:56||Value:40.37||Pass:8/18||Latency:40.37s"/><circle class='pt' cx='410.0' cy='10.0' r='4' fill='#dc2626' stroke='#fff' stroke-width='2' data-tip="Sheet:R1_Stats||Run:23Jul2026/Client_Contract/R1_Stats/1345||When:2026-07-23 14:11:56||Value:40.37||Pass:8/18||Latency:40.37s"/></svg><div class="hover-card"></div></div>
+  </div>
+  <div class="type-runs"><span class="pill">Client_Contract: <b>14</b></span></div>
+</div>
+
+    </section>
+    <section class="panel">
+      <h2>Fail signals across suite</h2>
+      <p class="subh">Aggregated drift categories from all tracked sheets.</p>
+      <div class='barrow'><span>Stable</span><div class='bar'><i style='width:100%'></i></div><b>45</b></div><div class='barrow'><span>Missing facts</span><div class='bar'><i style='width:80%'></i></div><b>36</b></div><div class='barrow'><span>Counts / quantities changed</span><div class='bar'><i style='width:64%'></i></div><b>29</b></div><div class='barrow'><span>Numbers changed</span><div class='bar'><i style='width:46%'></i></div><b>21</b></div><div class='barrow'><span>Document link added</span><div class='bar'><i style='width:37%'></i></div><b>17</b></div><div class='barrow'><span>Document link missing</span><div class='bar'><i style='width:37%'></i></div><b>17</b></div><div class='barrow'><span>Fact mismatch</span><div class='bar'><i style='width:33%'></i></div><b>15</b></div><div class='barrow'><span>Extra facts</span><div class='bar'><i style='width:31%'></i></div><b>14</b></div>
+      <h2 style="margin-top:18px">Top flaky (across histories)</h2>
+      <table><thead><tr><th>Case</th><th>Sheet</th><th>Fail count</th><th>Latest</th><th>Open</th></tr></thead><tbody><tr><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_03">TC_03</a></td><td>Client_Contract</td><td>3</td><td><span class="st fail">FAIL</span></td><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_03">latest</a></td></tr><tr><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_17">TC_17</a></td><td>Client_Contract</td><td>3</td><td><span class="st fail">FAIL</span></td><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_17">latest</a></td></tr><tr><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_06">TC_06</a></td><td>Client_Contract</td><td>3</td><td><span class="st fail">FAIL</span></td><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_06">latest</a></td></tr><tr><td><a class="tc-link" href="../results/22Jul2026/Client_Contract/R1_Non_stats/1756/ANSWER_REVIEW.html#TC_35">TC_35</a></td><td>Client_Contract</td><td>3</td><td><span class="st pass">PASS</span></td><td><a class="tc-link" href="../results/22Jul2026/Client_Contract/R1_Non_stats/1756/ANSWER_REVIEW.html#TC_35">older fail run</a></td></tr><tr><td><a class="tc-link" href="../results/22Jul2026/Client_Contract/R1_Non_stats/1612/ANSWER_REVIEW.html#TC_41">TC_41</a></td><td>Client_Contract</td><td>3</td><td><span class="st pass">PASS</span></td><td><a class="tc-link" href="../results/22Jul2026/Client_Contract/R1_Non_stats/1612/ANSWER_REVIEW.html#TC_41">older fail run</a></td></tr><tr><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_23">TC_23</a></td><td>Client_Contract</td><td>2</td><td><span class="st fail">FAIL</span></td><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_23">latest</a></td></tr><tr><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_39">TC_39</a></td><td>Client_Contract</td><td>2</td><td><span class="st fail">FAIL</span></td><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_39">latest</a></td></tr><tr><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_05">TC_05</a></td><td>Client_Contract</td><td>2</td><td><span class="st fail">FAIL</span></td><td><a class="tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_05">latest</a></td></tr></tbody></table>
+    </section>
+    <section class="panel wide" id="golden">
+      <h2>Golden set — latest open fails (by sheet)</h2>
+      <p class="subh">Click TC or Open Answer Review → that run’s ANSWER_REVIEW.html#TC_xx.</p>
+      <div class='case'><div class='top'><a class="pill fail tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_16">TC_16</a><span class='pill agent'>Client_Contract</span><span class='pill chron'>available_to_not_available</span></div><p class='hint'>C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\23Jul2026\Client_Contract\R1_Stats\1345</p><div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_16">Open Answer Review</a></div></div><div class='case'><div class='top'><a class="pill fail tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_23">TC_23</a><span class='pill agent'>Client_Contract</span><span class='pill chron'>Document link changed</span></div><p class='hint'>C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\23Jul2026\Client_Contract\R1_Stats\1345</p><div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_23">Open Answer Review</a></div></div><div class='case'><div class='top'><a class="pill fail tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_03">TC_03</a><span class='pill agent'>Client_Contract</span><span class='pill chron'>Missing facts</span></div><p class='hint'>C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\23Jul2026\Client_Contract\R1_Stats\1345</p><div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_03">Open Answer Review</a></div></div><div class='case'><div class='top'><a class="pill fail tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_39">TC_39</a><span class='pill agent'>Client_Contract</span><span class='pill chron'>Document link missing</span></div><p class='hint'>C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\23Jul2026\Client_Contract\R1_Stats\1345</p><div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_39">Open Answer Review</a></div></div><div class='case'><div class='top'><a class="pill fail tc-link" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_38">TC_38</a><span class='pill agent'>Client_Contract</span><span class='pill chron'>Missing facts</span></div><p class='hint'>C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\23Jul2026\Client_Contract\R1_Stats\1345</p><div class="actions"><a class="btn" href="../results/23Jul2026/Client_Contract/R1_Stats/1345/ANSWER_REVIEW.html#TC_38">Open Answer Review</a></div></div>
+    </section>
+    <section class="panel wide">
+      <h2>How this updates</h2>
+      <ol>
+        <li>Any golden sheet run appends drift history and regenerates that agent’s DRIFT_DASHBOARD.html.</li>
+        <li>The same run regenerates this SUITE_DASHBOARD.html and all-agents Drift from histories.</li>
+        <li>Result date folders older than 15 days are cleaned; keep running sheets so trends stay populated.</li>
+      </ol>
+    </section>
+  </div>
+</div>
+
+<script>
+(function () {
+  function showCard(wrap, pt, evt) {
+    var card = wrap.querySelector('.hover-card');
+    if (!card) return;
+    var raw = pt.getAttribute('data-tip') || '';
+    var parts = raw.split('||');
+    var html = '';
+    for (var i = 0; i < parts.length; i++) {
+      var bit = parts[i];
+      var idx = bit.indexOf(':');
+      if (idx > 0) {
+        html += '<div class="hk">' + bit.slice(0, idx) + '</div>';
+        html += '<div class="hv">' + bit.slice(idx + 1).trim() + '</div>';
+      } else if (bit) {
+        html += '<div class="hv">' + bit + '</div>';
+      }
+    }
+    card.innerHTML = html || raw;
+    card.classList.add('show');
+    var rect = wrap.getBoundingClientRect();
+    var left = evt.clientX - rect.left + 12;
+    var top = evt.clientY - rect.top - 10;
+    if (left > rect.width - 230) left = rect.width - 230;
+    if (top < 8) top = 8;
+    card.style.left = left + 'px';
+    card.style.top = top + 'px';
+  }
+  document.querySelectorAll('.trend-wrap').forEach(function (wrap) {
+    wrap.addEventListener('mousemove', function (evt) {
+      var pt = evt.target.closest('.pt, .pt-hit');
+      if (!pt || !wrap.contains(pt)) {
+        var card = wrap.querySelector('.hover-card');
+        if (card) card.classList.remove('show');
+        return;
+      }
+      showCard(wrap, pt, evt);
+    });
+    wrap.addEventListener('mouseleave', function () {
+      var card = wrap.querySelector('.hover-card');
+      if (card) card.classList.remove('show');
+    });
+  });
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset='utf-8'>
+<title>Answer Review — 23Jul2026/Client_Contract/R1_Stats/1345</title>
+<style>
+
+:root {
+  --ink:#14213d; --muted:#5c6b7a; --bg:#f3f6f9; --card:#fff;
+  --pass:#0f7a3a; --fail:#b42318; --line:#d7dee7; --accent:#1b4f72;
+}
+* { box-sizing: border-box; }
+body {
+  margin:0; padding:28px 24px 48px;
+  font-family:"Segoe UI",system-ui,sans-serif;
+  color:var(--ink); background:
+    radial-gradient(1200px 400px at 10% -10%, #dceaf7 0%, transparent 60%),
+    linear-gradient(180deg, #eef3f8, var(--bg));
+  line-height:1.45;
+}
+.hero { max-width:1100px; margin:0 auto 20px; }
+.eyebrow { text-transform:uppercase; letter-spacing:.08em; color:var(--accent); font-size:12px; margin:0 0 6px; font-weight:700; }
+h1 { margin:0 0 4px; font-size:30px; }
+.sub { margin:0 0 16px; color:var(--muted); }
+.kpis { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:12px; }
+.kpi {
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:12px 14px; min-width:110px; box-shadow:0 1px 0 rgba(20,33,61,.04);
+}
+.kpi-val { display:block; font-size:22px; font-weight:700; }
+.kpi-label { color:var(--muted); font-size:12px; }
+.fail-kpi .kpi-val { color:var(--fail); }
+.howto {
+  background:#fff8e8; border:1px solid #f0d9a0; border-radius:10px;
+  padding:10px 12px; color:#5a4300; max-width:1100px;
+}
+.section { max-width:1100px; margin:28px auto 10px; font-size:18px; }
+.fail-h { color:var(--fail); }
+.all-pass {
+  max-width:1100px; margin:16px auto; padding:16px; border-radius:12px;
+  background:#e8f7ee; color:var(--pass); font-weight:600;
+}
+.case {
+  max-width:1100px; margin:0 auto 12px; background:var(--card);
+  border:1px solid var(--line); border-radius:14px; overflow:hidden;
+}
+.fail-case { border-color:#f0b4ae; box-shadow:0 0 0 1px rgba(180,35,24,.06); }
+.pass-case { opacity:.96; }
+summary {
+  cursor:pointer; list-style:none; padding:14px 16px; display:flex; flex-wrap:wrap;
+  gap:8px 12px; align-items:center; background:#fafcfe;
+}
+summary::-webkit-details-marker { display:none; }
+.id { font-weight:700; font-size:15px; }
+.pass { color:var(--pass); font-weight:700; }
+.fail { color:var(--fail); font-weight:700; }
+.chip {
+  background:#eef4fa; color:var(--accent); border-radius:999px;
+  padding:2px 10px; font-size:12px; font-weight:600;
+}
+.meta-inline { color:var(--muted); font-size:12px; }
+.body { padding:4px 16px 16px; border-top:1px solid var(--line); }
+.label { font-weight:700; margin:12px 0 6px; color:#334155; font-size:13px; }
+.q { margin:0; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+pre {
+  white-space:pre-wrap; background:#f8fafc; border:1px solid var(--line);
+  padding:12px; border-radius:10px; margin:0; font-size:13px; max-height:320px; overflow:auto;
+}
+.reason { background:#fff5f4; border-color:#f0c2bc; }
+.facts { margin:0; padding-left:18px; }
+.eng-note { margin-top:12px; font-size:11px; color:var(--muted); }
+
+</style></head><body>
+<header class='hero'>
+<p class='eyebrow'>QA analysis board</p>
+<h1>Answer Review</h1>
+<p class='sub'>23Jul2026/Client_Contract/R1_Stats/1345 · Client_Contract_Agent</p>
+<div class='kpis'>
+<div class='kpi'><span class='kpi-val'>8/18</span><span class='kpi-label'>Pass vs golden</span></div>
+<div class='kpi'><span class='kpi-val'>79.9%</span><span class='kpi-label'>Stability</span></div>
+<div class='kpi fail-kpi'><span class='kpi-val'>10</span><span class='kpi-label'>Failed</span></div>
+<div class='kpi'><span class='kpi-val'>11</span><span class='kpi-label'>Retried</span></div>
+<div class='kpi'><span class='kpi-val'>1</span><span class='kpi-label'>Flipped to pass</span></div>
+<div class='kpi'><span class='kpi-val'>40.37s</span><span class='kpi-label'>Avg agent response</span></div>
+<div class='kpi'><span class='kpi-val'>26.6m</span><span class='kpi-label'>Total execution</span></div>
+</div>
+<p class='howto'><b>How to analyse:</b> Start with FAILED below. Compare agent vs golden, read Why failed + drift category + agent. Retry flip = flake; same fail twice = real issue.</p>
+</header>
+<h2 class='section fail-h'>Failed — analyse these first</h2>
+
+<details class='case fail-case' id='TC_03' open>
+  <summary>
+    <span class='id'>TC_03</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>Missing facts, Extra facts</span>
+    <span class='meta-inline'>agent: search_legal_database_tool_sponsor · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>How many MSAs under Abbott Laboratories actually mention about day credit terms</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>Summary of MSAs under Abbott Laboratories mentioning Credit Terms, Payment Terms, Compensation Terms, and Commercial Terms:
+Abbott Laboratories: MSA - Aug 21
+Credit Terms: 60 days (Receipt of Invoice)
+Active, expiring 2031
+Includes liability caps, indemnification, rate cards
+Abbvie Corp: MSA - Feb-17
+Credit Terms: Unknown
+Expired 2022
+Abbvie Corp: MSA - Dec-14
+Credit Terms: 45 days (90 calendar days after client receipt)
+Volume discounts and rebate arrangements included
+Abbvie Corp: MSA - Apr-13
+Credit Terms: 45 days
+Volume discount and credit terms detailed
+Expired 2019
+Abbott Laboratories: MSA - Dec 09 - SYMPHONY
+Credit Terms: 30 days (Receipt of Invoice)
+Active, expiring 2027
+Discount rates and service scope detailed
+Abbott Diabetes Care Sales Corporation: MSA - May 20
+Credit Terms: 90 days
+Payment dispute and expense reimbursement policies
+Expired 2022
+Abbott Diabetes Care Sales Corporation: MSA - Aug 20
+Credit Terms: 90 days
+Detailed payment and reimbursement terms
+If you want detailed excerpts or document links for any specific MSA, just let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Count for Abbott Laboratories: 7.
+Based on the retrieved legal statistics data, there are **7 Master Service Agreements (MSAs)** under Abbott Laboratories that actually mention day credit terms.
+Let me know if you want document links or a filtered breakdown.</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). Actual answer lists specific MSAs with credit terms but does not provide a clear count of how many MSAs under Abbott Laboratories mention day credit terms as requested.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>Explicit count of MSAs under Abbott Laboratories mentioning day credit terms (expected: 7)</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.3425
+    · semantic=0.6575</div>
+  </div>
+</details>
+
+
+<details class='case fail-case' id='TC_05' open>
+  <summary>
+    <span class='id'>TC_05</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>Document link added, Missing facts, Extra facts</span>
+    <span class='meta-inline'>agent: - · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Could you tell me how may MSAs under AbbVie have expired and on what dates did they expired</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found that there are 6 MSAs under AbbVie that have expired, with the expiration dates as follows:
+December 31, 2020
+February 16, 2022
+December 8, 2022
+November 1, 2023
+December 31, 2023
+December 31, 2024
+Each of these dates corresponds to one expired MSA under AbbVie.
+If you need more details about any specific MSA or further assistance, just let me know!
+Source: Process Unity (https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow)</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Summary of findings:
+There are multiple MSAs under AbbVie that have expired on the following dates:
+
+One MSA expired on 2022-02-16
+One MSA expired on 2022-12-08
+One MSA expired on 2023-11-01
+One MSA expired on 2023-12-31
+One MSA expired on 2024-12-31
+
+In total, there are 5 expired MSAs under AbbVie.
+
+Thank you for your question. If you need more detailed information or documents related to these MSAs, please let me know.
+Tell me if you want source links or a narrower filter.</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). The actual answer lists 6 expired MSAs including one from 2020 which is missing in the expected answer, and the expected answer lists only 5 MSAs with different dates; critical discrepancy in count and dates.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>One MSA expired on 2020-12-31</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.1325
+    · semantic=0.8675</div>
+  </div>
+</details>
+
+
+<details class='case fail-case' id='TC_06' open>
+  <summary>
+    <span class='id'>TC_06</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>Document link added, Missing facts, Extra facts</span>
+    <span class='meta-inline'>agent: - · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Bayer AG, does it have any recently created MSAs? 2020 and later?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found several recently created MSAs for Bayer AG from 2020 and later. Here are the details:
+MSA Name	Created Date	Document Link
+Bayer - ICON_MSA - Early Clinical Services (including CMC) (effective 15 July 2024)	July 29, 2024	MSA Document for Bayer AG
+Bayer AG - Pharma Research Associates (UK) Limited	November 10, 2023	MSA Document for Bayer AG
+Bayer AG ICON FSP/ISS MSA - March 2022	June 4, 2026	MSA Document for Bayer AG
+Bayer AG: MSA - Sep-09	May 7, 2020	MSA Document for Bayer AG
+Bayer AG: MSA 2 (Functional Management) March 2022	July 16, 2026	MSA Document for Bayer AG
+Bayer MSA - Clinical Trial services - 24 June 2024	June 27, 2024	MSA Document for Bayer AG
+Bayer MSA 25 Feb 2013	August 28, 2020	MSA Document for Bayer AG
+These MSAs are all signed with Bayer AG and have creation dates from 2020 onwards, including some with effective dates in 2024 and even 2026.
+If you want details on any specific MSA or further assistance, just let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Based on available MSA/contract data:
+Recently Created MSAs for Bayer AG (2020 and Later)Based on the retrieved legal statistics data, Bayer AG has 7 Master Service Agreements (MSAs) created in 2020 or later. These MSAs cover various services and were created between May 2020 and July 2024. The details are as follows:
+MSA NameParent NameCreated DateBayer - ICON_MSA - Early Clinical Services (including CMC) (effective 15 July 2024)Bayer AG2024-07-29Bayer AG - Pharma Research Associates (UK) LimitedBayer AG2023-11-10Bayer AG ICON FSP/ISS MSA - March 2022Bayer AG2023-11-10Bayer AG: MSA - Sep-09Bayer AG2020-05-07Bayer AG: MSA 2 (Functional Management) March 2022Bayer AG2022-10-26Bayer MSA - Clinical Trial Services - 24 June 2024Bayer AG2024-06-27Bayer MSA 25 Feb 2013Bayer…</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). Actual answer contains incorrect creation dates for some MSAs and includes MSAs dated before 2020, contradicting the expected answer.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>Correct creation dates for &#x27;Bayer AG ICON FSP/ISS MSA - March 2022&#x27; (expected 2023-11-10, actual 2026-06-04)</li><li>Correct creation dates for &#x27;Bayer AG: MSA 2 (Functional Management) March 2022&#x27; (expected 2022-10-26, actual 2026-07-16)</li><li>Exclusion of MSAs created before 2020 such as &#x27;Bayer MSA 25 Feb 2013&#x27; which is dated 2013 in expected but 2020 in actual</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.0961
+    · semantic=0.9039</div>
+  </div>
+</details>
+
+
+<details class='case fail-case' id='TC_08' open>
+  <summary>
+    <span class='id'>TC_08</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>available_to_not_available, Document link added, Wrong facts / contradiction, Extra facts, Missing facts</span>
+    <span class='meta-inline'>agent: - · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Could you list me MSAs expiration dates for all MSAs under Bayer</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found the expiration dates for MSAs under Bayer and related entities as follows:
+MSA Name	Parent Name	Expiration Date	MSA Document Link
+Bayer MSA 25 Feb 2013	Bayer AG	February 25, 2018	MSA Document
+Bayer AG - Pharma Research Associates (UK) Limited	Bayer AG	April 30, 2026__	MSA Document
+Bayer AG ICON FSP/ISS MSA - March 2022	Bayer AG	June 30, 2028	MSA Document
+Bayer HealthCare Pharmaceuticals: MSA - Jul 21 - SYMPHONY	Bayer HealthCare Pharmaceuticals	December 31, 2028_	MSA Document
+Bayer MSA - Clinical Trial services - 24 June 2024	Bayer AG	June 23, 2029	MSA Document
+Bayer - ICON_MSA - Early Clinical Services (including CMC) (effective 15 July 2024)	Bayer AG	Not available	MSA Document
+Bayer AG: MSA - Sep-09	Bayer AG	Not available	MSA Document
+Bayer AG: MSA 2 (Functional Management) March 2022	Bayer AG	Not available	MSA Document
+Bayer Pharma AG - ICON Clinical Research UK MSA 10 Sept 2009	Bayer Pharma AG	Not available	Not available
+If you want details on any specific MSA or further assistance, just let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Based on available MSA/contract data:
+Here is a summary of the expiration dates for all Master Service Agreements (MSAs) under Bayer based on the available data:
+
+MSA Name MSA Expiration Date
+Bayer - ICON MSA - Early Clinical Services (including CMC) (effective 15 July 2024) Not specified
+Bayer AG - Pharma Research Associates (UK) Limited 2026-04-30
+Bayer AG ICON FSP/ISS MSA - March 2022 2028-06-30
+Bayer AG: MSA - Sep-09 Not specified
+Bayer AG: MSA 2 (Functional Management) March 2022 2025-12-31
+Bayer HealthCare Pharmaceuticals: MSA - Jul 21 - SYMPHONY 2025-12-31
+Bayer MSA - Clinical Trial Services - 24 June 2024 2029-06-23
+Bayer MSA 25 Feb 2013 2018-02-25
+
+Some MSAs do not have specified expiration dates in the available data.
+
+If you need a visual line graph representation…</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). Actual answer misses or contradicts critical expiration dates for some MSAs and omits the 2025-12-31 expiration for Bayer AG: MSA 2 and Bayer HealthCare Pharmaceuticals SYMPHONY MSA.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>Bayer AG: MSA 2 (Functional Management) March 2022 expiration date 2025-12-31</li><li>Bayer HealthCare Pharmaceuticals: MSA - Jul 21 - SYMPHONY expiration date 2025-12-31</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.1026
+    · semantic=0.8974</div>
+  </div>
+</details>
+
+
+<details class='case fail-case' id='TC_09' open>
+  <summary>
+    <span class='id'>TC_09</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>Missing facts</span>
+    <span class='meta-inline'>agent: - · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Could you tell me how many amedment does Abbvie Corp: MSA - Apr-13 have?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I couldn&#x27;t find the number of amendments for &quot;Abbvie Corp: MSA - Apr-13&quot; in the current data.
+Could you please confirm if you want the count of all amendments related specifically to this MSA, or are you interested in details about particular amendments?</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Count for MSA - Apr-13 have: see key facts.
+The Master Service Agreement (MSA) titled &quot;Abbvie Corp: MSA - Apr-13&quot; has a total of 11 amendments.
+
+If you need more details about any specific amendment or further assistance, please let me know!
+
+I found that the Abbvie Corp MSA from April 2013 has 11 amendments. If you want details on any specific amendment or have other questions, feel free to ask!
+Let me know if you want document links or a filtered breakdown.</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). The actual answer fails to provide the critical information that the MSA has 11 amendments, which is the key fact in the expected answer.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>The Master Service Agreement (MSA) titled &#x27;Abbvie Corp: MSA - Apr-13&#x27; has a total of 11 amendments.</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.0791
+    · semantic=0.9209</div>
+  </div>
+</details>
+
+
+<details class='case fail-case' id='TC_16' open>
+  <summary>
+    <span class='id'>TC_16</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>available_to_not_available, Document link added, Wrong facts / contradiction, Extra facts, Missing facts</span>
+    <span class='meta-inline'>agent: - · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Can you tell me for all MSAs under Bristol has Cap on Liability as Yes?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found information about MSAs under Bristol that have a Cap on Liability (Limitation of Liability, Limitation Clause, Liability Cap) marked as &quot;Yes.&quot; Here are the details:
+MSA Name	Parent Name	Cap on Liability	MSA Document Link
+Bristol Myers Squibb Company: MSA - Oct 21 - SYMPHONY	Bristol Myers Squibb Company	Yes	Download Document
+Bristol Myers Squibb: MSA - Jun 26	Bristol Myers Squibb	Yes	Document not available
+Bristol Myers Squibb: Site Specific MSA - IEB CRUs - March 2026	Bristol Myers Squibb	Yes	Document not available
+Bristol-Myers Squibb: MSA - Aug-16	Bristol Myers Squibb	Yes	Download Document
+Bristol-Myers Squibb: MSA - Jun 17	Bristol Myers Squibb	Yes	Download Document
+These MSAs under Bristol have a liability cap clause confirmed as &quot;Yes.&quot; Some documents are available for download via the links provided, while others are not available in the system.
+If you want more details on any specific MSA or further assistance, feel free to ask!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Summary of findings:
+3 MSAs complete
+Tell me if you want source links or a narrower filter.</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). Actual answer lists 5 MSAs with Cap on Liability as Yes, but expected answer states only 3 MSAs complete without details.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>Only 3 MSAs complete as per expected answer</li><li>Offer to provide more detail or related documents on request</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.6264
+    · semantic=0.3736</div>
+  </div>
+</details>
+
+
+<details class='case fail-case' id='TC_17' open>
+  <summary>
+    <span class='id'>TC_17</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>Document link changed, Numbers changed, Missing facts, Extra facts</span>
+    <span class='meta-inline'>agent: search_legal_database_tool_sponsor · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>How many MSAs with Novartis Pharma AG have 90 days credit terms?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>MSAs with Novartis Pharma AG and 90 Days Credit Terms
+I found one MSA with Novartis Pharma AG that explicitly mentions 90 days credit terms:
+Novartis Pharma AG: Master Service Agreement (Imaging) - Apr22
+Payment due within 90 days after invoice receipt
+Invoices must be submitted within 90 days after completion of services or may be rejected
+MSA status: Expired
+Includes 3 amendments
+Covers Imaging services
+Document link available
+Other MSAs mostly mention 120 days credit terms or do not specify 90 days terms.
+If you want details on compensation or commercial terms for this or other MSAs, just let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>I found 90 matching record(s) for Novartis Pharma AG have 90 days credit terms.
+Supporting detail:
+## Number of MSAs with Novartis Pharma AG Having 90 Days Credit Terms
+
+Based on the aggregated contract data, there are **2 distinct Master Service Agreements (MSAs)** with Novartis Pharma AG that have credit terms or payment terms set to 90 days.
+
+### Source
+
+This information is sourced from the legal contract management system, Process Unity: 
+[Process Unity Contract Management System](https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow)</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). Actual answer reports only 1 MSA with 90 days credit terms, whereas expected answer states there are 2 MSAs.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>There are 2 distinct MSAs with Novartis Pharma AG having 90 days credit terms</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.1885
+    · semantic=0.8115</div>
+  </div>
+</details>
+
+
+<details class='case fail-case' id='TC_23' open>
+  <summary>
+    <span class='id'>TC_23</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>Document link changed</span>
+    <span class='meta-inline'>agent: - · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>How many Active MSAs under Ascendis Pharma A/S?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found that there are 2 active MSAs under Ascendis Pharma A/S. Here are the details with links to their respective MSA documents:
+Parent Name	MSA Status	MSA Document Link
+Ascendis Pharma A/S	Active	MSA Document 1
+Ascendis Pharma A/S	Active	MSA Document 2
+If you need more details about these MSAs or anything else, just let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>I found 2 matching record(s) for Ascendis Pharma A/S.
+Supporting detail:
+## Master Service Agreements (MSAs) for Argenx BV
+
+There are **2 Master Service Agreements (MSAs)** associated with Argenx BV.
+
+### Source:
+- Process Unity Legal Contract Management System: 
+ [https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow](https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow)</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer correctly states there are 2 active MSAs under Ascendis Pharma A/S, matching the expected count and context.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.3546
+    · semantic=0.6454</div>
+  </div>
+</details>
+
+
+<details class='case fail-case' id='TC_38' open>
+  <summary>
+    <span class='id'>TC_38</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>Missing facts</span>
+    <span class='meta-inline'>agent: search_legal_database_tool_sponsor · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Novartis Pharma AG MSA with effective date of agreement 2 Jan 2023</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I wanted to help with the details of the Novartis Pharma AG MSA effective 2 Jan 2023, but it looks like one of the documents related to this MSA/Amendment set is missing. Please check Process Unity directly to review the information manually.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Document / contract details for effective date of agreement 2 Jan 2023:
+## Novartis Pharma AG MSA with Effective Date 2 January 2023 - Summary
+
+Based on the retrieved statistical data, there is one Master Service Agreement (MSA) with Novartis Pharma AG that has an effective date of **2 January 2023**.
+
+### Key Details:
+- **MSA Name:** Novartis Pharma AG: MSA - Jan 2023
+- **Effective Date:** 2 January 2023
+- **Executed Date:** 3 January 2023
+- **Expiration Date:** 2 January 2028
+
+This MSA is active and valid for a 5-year term from the effective date.
+
+### Source:
+The information is sourced from the Process Unity platform, where the official MSA document is available for review: 
+[Novartis Pharma AG MSA - Jan 2023…
+I can pull related amendments or change orders if needed.</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). The actual answer fails to provide any of the critical contract details present in the expected answer and instead indicates missing documents.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>Existence of the Novartis Pharma AG MSA with effective date 2 January 2023</li><li>MSA Name: Novartis Pharma AG: MSA - Jan 2023</li><li>Executed Date: 3 January 2023</li><li>Expiration Date: 2 January 2028</li><li>The MSA is active and valid for a 5-year term</li><li>Source: Process Unity platform</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.2014
+    · semantic=0.7986</div>
+  </div>
+</details>
+
+
+<details class='case fail-case' id='TC_39' open>
+  <summary>
+    <span class='id'>TC_39</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>Document link missing, Missing facts</span>
+    <span class='meta-inline'>agent: - · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Can you find the MSA in place with Harmony Biosciences</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found two MSAs in place with Harmony Biosciences:
+Harmony Biosciences: MSA - May 18 -SYMPHONY
+You can download the MSA document here:
+Download MSA Document
+Harmony MSA L-PRA
+You can download the MSA document here:
+Download MSA Document_
+If you need details about amendments or specific terms within these MSAs, feel free to ask!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>I found the following for Harmony Biosciences:
+## MSA with Harmony Biosciences
+
+There is one Master Service Agreement (MSA) in place with Harmony Biosciences. The MSA is titled **&quot;Harmony MSA L-PRA.&quot;**
+
+You can access the fully executed MSA document here: 
+[Harmony MSA L-PRA Document](https://app.processunity.net/icon-cm/download.aspx?name=Harmony_MSA_2019.12.5%20_Fully%20executed_.pdf&amp;path=70a8d68d-b9ae-4205-aa3d-d06c30400991)
+
+---
+
+This information is based on the retrieved contract statistics data from the legal contract database.</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). The actual answer mentions two MSAs instead of one and does not provide the specific link or confirm the exact title &#x27;Harmony MSA L-PRA&#x27; as the sole MSA.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>There is one Master Service Agreement (MSA) in place with Harmony Biosciences titled &#x27;Harmony MSA L-PRA&#x27;.</li><li>The exact link to the fully executed MSA document: https://app.processunity.net/icon-cm/download.aspx?name=Harmony_MSA_2019.12.5%20_Fully%20executed_.pdf&amp;path=70a8d68d-b9ae-4205-aa3d-d06c30400991</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.2393
+    · semantic=0.7607</div>
+  </div>
+</details>
+
+<h2 class='section'>Passed (8) — expand if needed</h2>
+
+<details class='case pass-case' id='TC_07'>
+  <summary>
+    <span class='id'>TC_07</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>available_to_not_available</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Bayer AG, does it have any old MSAs, i.e. created 2015 and earlier?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I checked for any MSAs under Bayer AG created in 2015 or earlier, but I couldn&#x27;t find any records matching that criteria in the available data.
+If you want, I can help look for MSAs from a different time range or provide details on other Bayer AG MSAs.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Summary of findings:
+Bayer AG has no Master Service Agreements (MSAs) created in 2015 or earlier:
+
+If you need more details about these MSAs or their amendments, please let me know!
+Tell me if you want source links or a narrower filter.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_2 (pass-if-any across 3 variants). Both answers clearly state no MSAs from 2015 or earlier exist for Bayer AG and offer further assistance.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.2361
+    · semantic=0.7639</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_10'>
+  <summary>
+    <span class='id'>TC_10</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Wording only</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Can you tell me which of ABIVax&#x27;s MSAs are GDPR compliant</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found that the documents related to ABIVax&#x27;s MSAs have missing or incomplete files, so I can&#x27;t confirm which MSAs are EU GDPR compliant. You might want to check Process Unity directly for the full details.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Based on available MSA/contract data:
+One of the documents related to ABIVax&#x27;s MSAs is missing.Please go to Process Unity to review the information manually.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves the expected meaning about missing documents and suggests checking Process Unity for details.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.2132
+    · semantic=0.7868</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_11'>
+  <summary>
+    <span class='id'>TC_11</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Stable</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Can you tell me all the fields in Acadia Pharmaceuticals: MSA - Jun-16 which are not set</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>One of the documents related to the MSA &quot;Acadia Pharmaceuticals: MSA - Jun-16&quot; is missing. Please go to Process Unity to review the information manually.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Regarding Acadia Pharmaceuticals:
+One of the documents related to the Acadia Pharmaceuticals: MSA (Master Services Agreement) - Jun-16 is missing.Please go to Process Unity to review the information manually.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_3 (pass-if-any across 3 variants). The actual answer preserves the expected meaning and provides the same critical information.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.0598
+    · semantic=0.9402</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_12'>
+  <summary>
+    <span class='id'>TC_12</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Stable</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Could you identify which of the MSAs for Pfizer do not have a legal checklist completed yet</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I checked the records for Pfizer MSAs regarding which do not have a legal checklist completed yet, but unfortunately, there is no specific data available in the system to identify those MSAs without a completed legal checklist.
+If you need, I can help you explore other related details or suggest checking Process Unity directly for the most up-to-date status on legal checklists.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Summary of findings:
+Based on the retrieved data from the legal statistics search tool, there are no MSAs for Pfizer that currently do not have a legal checklist completed. The MSAs associated with Pfizer entities all have their legal checklists completed, or the data does not indicate any missing or incomplete checklists.If you need a detailed manual review or confirmation, it is recommended to check the Process Unity system directly.
+Tell me if you want source links or a narrower filter.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_2 (pass-if-any across 3 variants). Both answers indicate no data is available to identify MSAs without completed legal checklists and suggest checking Process Unity for confirmation.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.0616
+    · semantic=0.9384</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_26'>
+  <summary>
+    <span class='id'>TC_26</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Wording only</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>How many MSAs under Regeneron Pharmaceuticals, Inc?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found that there are 3 Master Service Agreements (MSAs) under Regeneron Pharmaceuticals, Inc. Each MSA has its own document available for review:
+Regeneron Pharmaceuticals, Inc: MSA - Aug-15
+Regeneron Pharmaceuticals, Inc: MSA - Nov 1 2021
+Regeneron Pharmaceuticals, Inc: MSA - Nov-19
+You can review the documents here:
+MSA Document Aug-15
+MSA Document Nov 1 2021
+MSA Document Nov-19
+Let me know if you want more details about any of these MSAs!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Count for Regeneron Pharmaceuticals, Inc: 3.
+Based on the retrieved data, there is 3 Master Service Agreement (MSA) with an active status under Regeneron Pharmaceuticals, Inc.
+Let me know if you want document links or a filtered breakdown.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer confirms the count of 3 MSAs under Regeneron Pharmaceuticals, Inc and provides additional details without contradicting the expected answer.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.1717
+    · semantic=0.8283</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_34'>
+  <summary>
+    <span class='id'>TC_34</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Stable</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>can you give a list of active Pfizer MSAs from 2022 to 2026</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I looked into the active MSAs for Pfizer from 2022 to 2026, but I couldn&#x27;t find any active MSAs specifically within that date range in the available data.
+If you want, I can help you check for MSAs outside this range or provide details on other Pfizer agreements.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Summary of findings:
+**List of Active Pfizer MSAs from 2022 to 2026**
+
+Based on the search conducted in the legal database for Pfizer Master Service Agreements (MSAs), there are multiple MSAs associated with Pfizer entities. However, the specific data regarding which MSAs are active within the date range 2022 to 2026 was not found in the statistical summary retrieved.
+
+The retrieved data includes various Pfizer MSAs with their titles and amendment records, but it does not explicitly provide a filtered list of active MSAs for the requested period.
+
+**Summary:**
+- Multiple Pfizer MSAs exist, including those titled with dates ranging from early 2000s to recent years.
+- The system did not return explicit information on the active status or effective dates within…
+Tell me if you want source links or a narrower filter.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer conveys the key point that no active Pfizer MSAs were found for 2022-2026, matching the expected answer&#x27;s main conclusion.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.1389
+    · semantic=0.8611</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_35'>
+  <summary>
+    <span class='id'>TC_35</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Document link changed</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Can you tell me for all MSAs under Bristol has Cap on Liability (Limitation of Liability, Limitation Clause, Liability Cap) as Yes?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found that several MSAs under Bristol Myers Squibb have a Cap on Liability (Limitation of Liability, Limitation Clause, Liability Cap) marked as &quot;Yes.&quot; Here is the list of those MSAs:
+MSA Name	Parent Name	Cap on Liability	MSA Document Link
+Bristol Myers Squibb Company: MSA - Oct 21 - SYMPHONY	Bristol Myers Squibb Company	Yes	Contract Document
+Bristol Myers Squibb: MSA - Jun 26	Bristol Myers Squibb	Yes	Document link not available
+Bristol Myers Squibb: Site Specific MSA - IEB CRUs - March 2026	Bristol Myers Squibb	Yes	Document link not available
+Bristol-Myers Squibb: MSA - Aug-16	Bristol Myers Squibb	Yes	Contract Document
+Bristol-Myers Squibb: MSA - Jun 17	Bristol Myers Squibb	Yes	Contract Document
+If you want, I can provide more details about any of these MSAs or assist with other questions.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Based on available MSA/contract data:
+## MSAs under Bristol with Cap on Liability set to Yes
+
+Based on the retrieved statistical data for Master Service Agreements (MSAs) under the sponsor Bristol, there are a total of **4 MSAs** where the Cap on Liability (Limitation of Liability, Limitation Clause, Liability Cap) is set to Yes. These MSAs are associated with the parent entities &quot;Bristol Myers Squibb&quot; and &quot;Bristol-Myers Squibb Company.&quot;
+
+### Details:
+
+- **3 MSAs** are listed under &quot;Bristol Myers Squibb,&quot; with two of these having accessible document links:
+ 1. [BMS_MSA_FE_13SEP2016.pdf](https://app.processunity.net/icon-cm/download.aspx?name=BMS_MSA_FE_13SEP2016.pdf&amp;path=daaa5aca-c50f-409c-e024-d082301007d5)
+ 2. [PRA_BMS FULL MSA Draft (Effective 21 June…</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). Actual answer lists MSAs under Bristol with Cap on Liability as Yes, matching expected answer&#x27;s core information, with additional MSAs and details.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.218
+    · semantic=0.782</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_41'>
+  <summary>
+    <span class='id'>TC_41</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Document link added</span>
+    <span class='meta-inline'>agent: - · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>InflaRx GmbH - Find all MSA signed with InflaRx GmbH</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found that there is 1 Master Service Agreement (MSA) signed with InflaRx GmbH. The MSA is titled &quot;InflaRx MSA: July 2022&quot; and was executed on March 22, 2023. However, there is no direct document link available for this MSA in the current data.
+If you need more details or information about amendments or specific terms within this MSA, please let me know!
+Source: Process Unity (https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow)</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>I found the following for InflaRx GmbH:
+## Master Service Agreements (MSAs) Signed with InflaRx GmbH
+
+Based on the retrieved contract statistics data, there is **one Master Service Agreement (MSA)** signed with InflaRx GmbH:
+
+- **Title:** InflaRx MSA: July 2022
+
+No additional MSAs were found for InflaRx GmbH in the available records.
+
+### Additional Information
+
+- There are no document links available for this MSA.
+- The information is sourced from the Process Unity contract management system.
+
+---
+
+**Source:** Process Unity (https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow)</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves all critical information about the single MSA with InflaRx GmbH, including title, number of MSAs, lack of document link, and source. The added execution date and offer for further details are acceptable enhancements.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.1469
+    · semantic=0.8531</div>
+  </div>
+</details>
+
+
+<script>
+(function () {
+  var id = (location.hash || '').replace(/^#/, '');
+  if (!id) return;
+  var el = document.getElementById(id);
+  if (!el) return;
+  if (el.tagName === 'DETAILS') el.open = true;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+})();
+</script>
+</body></html>
