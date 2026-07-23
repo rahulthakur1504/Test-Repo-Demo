@@ -1,0 +1,410 @@
+{
+  "TC_01": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_02": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_03": {
+    "runs": [
+      "FAIL",
+      "FAIL"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_FAIL",
+    "action": "orbis_bug"
+  },
+  "TC_04": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_05": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_06": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_07": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_08": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_09": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_10": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_11": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_12": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_13": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_14": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_15": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_16": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_17": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_18": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_19": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_20": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_21": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_22": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_23": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_24": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_25": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_26": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_27": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_28": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_29": {
+    "runs": [
+      "PASS",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "STABLE_PASS",
+    "action": "none"
+  },
+  "TC_30": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_31": {
+    "runs": [
+      "PASS",
+      "-"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "INSUFFICIENT_DATA",
+    "action": "need_more_runs"
+  },
+  "TC_32": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_33": {
+    "runs": [
+      "FAIL",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  },
+  "TC_34": {
+    "runs": [
+      "ERROR",
+      "PASS"
+    ],
+    "run_folders": [
+      "23Jul2026/1319",
+      "23Jul2026/1835"
+    ],
+    "trend": "FLAKY",
+    "action": "monitor"
+  }
+}

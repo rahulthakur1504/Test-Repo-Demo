@@ -1,0 +1,53 @@
+============================================================
+ORBIS UI AUTOMATION — RUN SUMMARY
+============================================================
+Sheet       : R3_Edge_Cases
+Business    : Client_Contract_Agent
+Results path: Client_Contract/R3_Edge_Cases
+Run folder  : 1835
+Chat rename : -
+Finished    : 2026-07-23 18:51:02
+------------------------------------------------------------
+GOLDEN VALIDATION (baseline for PASS/FAIL)
+Mode        : golden_v1
+Golden ID   : R3_Edge_Cases_failed_golden_v1_1
+Version     : v1.1
+Golden file : golden\client_contract\R3_Edge_Cases\golden_v1.json
+SME approved: False
+Pass/Fail   : 17 PASS / 1 FAIL (of 18)
+Stability   : 79.0% | drift: 0.2101
+LLM vs gold : pass=17 fail=1 not_run=0
+Golden retry: asked=1  flipped_to_pass=-
+Excel expected_answer = NOT used for PASS/FAIL (questions only from Excel).
+Compare: final.actual_answer vs golden.golden_resolved_best_answer
+Drift history: artifacts/drift/<sheet>/stability_history.json
+Top drift tests:
+  TC_17: drift=0.5495 type=significant_drift semantic=0.4505
+  TC_26: drift=0.3109 type=link_added semantic=0.6891
+  TC_12: drift=0.2861 type=moderate_drift semantic=0.7139
+  TC_24: drift=0.2741 type=link_added semantic=0.7259
+  TC_29: drift=0.2599 type=moderate_drift semantic=0.7401
+------------------------------------------------------------
+TOTAL=24  PASS=23  FAIL=1  ERROR=0
+RETRY: asked=1  flipped_to_pass=-  still_failed=TC_03
+Failed IDs  : TC_03
+Buckets     : {'GOLDEN_DRIFT': 1}
+------------------------------------------------------------
+REVIEW FILES
+  Detail JSON : C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\23Jul2026\Client_Contract\R3_Edge_Cases\1835\suite_results.json
+  Summary JSON: C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\23Jul2026\Client_Contract\R3_Edge_Cases\1835\suite_summary.json
+  This file   : RUN_SUMMARY.txt
+  Answer review : C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\results\23Jul2026\Client_Contract\R3_Edge_Cases\1835\ANSWER_REVIEW.html
+  Agent Drift : C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\drift\Client_Contract\DRIFT_DASHBOARD.html
+  Suite Drift : C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\suite\DRIFT_DASHBOARD.html
+  Suite board : C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\suite\SUITE_DASHBOARD.html
+  Drift hist  : C:\Users\ThakurR\Documents\orbis-UI-automation\artifacts\drift\Client_Contract\stability_history.json
+  Trend note  : Agent Drift: artifacts/drift/Client_Contract/DRIFT_DASHBOARD.html · All-agents Drift: artifacts/suite/DRIFT_DASHBOARD.html · Suite board: artifacts/suite/SUITE_DASHBOARD.html
+------------------------------------------------------------
+TIME (minutes)
+  Total suite          : 15.1 min
+  Main run             : 14.6 min
+  Retry (fails)        : 0.5 min
+  Agent response avg   : 0.48 min (28.84s)
+  Agent response p95   : 0.85 min (50.83s)
+============================================================

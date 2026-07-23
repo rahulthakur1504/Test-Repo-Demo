@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset='utf-8'>
+<title>Answer Review — 23Jul2026/Client_Contract/R3_Edge_Cases/1835</title>
+<style>
+
+:root {
+  --ink:#14213d; --muted:#5c6b7a; --bg:#f3f6f9; --card:#fff;
+  --pass:#0f7a3a; --fail:#b42318; --line:#d7dee7; --accent:#1b4f72;
+}
+* { box-sizing: border-box; }
+body {
+  margin:0; padding:28px 24px 48px;
+  font-family:"Segoe UI",system-ui,sans-serif;
+  color:var(--ink); background:
+    radial-gradient(1200px 400px at 10% -10%, #dceaf7 0%, transparent 60%),
+    linear-gradient(180deg, #eef3f8, var(--bg));
+  line-height:1.45;
+}
+.hero { max-width:1100px; margin:0 auto 20px; }
+.eyebrow { text-transform:uppercase; letter-spacing:.08em; color:var(--accent); font-size:12px; margin:0 0 6px; font-weight:700; }
+h1 { margin:0 0 4px; font-size:30px; }
+.sub { margin:0 0 16px; color:var(--muted); }
+.kpis { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:12px; }
+.kpi {
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:12px 14px; min-width:110px; box-shadow:0 1px 0 rgba(20,33,61,.04);
+}
+.kpi-val { display:block; font-size:22px; font-weight:700; }
+.kpi-label { color:var(--muted); font-size:12px; }
+.fail-kpi .kpi-val { color:var(--fail); }
+.howto {
+  background:#fff8e8; border:1px solid #f0d9a0; border-radius:10px;
+  padding:10px 12px; color:#5a4300; max-width:1100px;
+}
+.section { max-width:1100px; margin:28px auto 10px; font-size:18px; }
+.fail-h { color:var(--fail); }
+.all-pass {
+  max-width:1100px; margin:16px auto; padding:16px; border-radius:12px;
+  background:#e8f7ee; color:var(--pass); font-weight:600;
+}
+.case {
+  max-width:1100px; margin:0 auto 12px; background:var(--card);
+  border:1px solid var(--line); border-radius:14px; overflow:hidden;
+}
+.fail-case { border-color:#f0b4ae; box-shadow:0 0 0 1px rgba(180,35,24,.06); }
+.pass-case { opacity:.96; }
+summary {
+  cursor:pointer; list-style:none; padding:14px 16px; display:flex; flex-wrap:wrap;
+  gap:8px 12px; align-items:center; background:#fafcfe;
+}
+summary::-webkit-details-marker { display:none; }
+.id { font-weight:700; font-size:15px; }
+.pass { color:var(--pass); font-weight:700; }
+.fail { color:var(--fail); font-weight:700; }
+.chip {
+  background:#eef4fa; color:var(--accent); border-radius:999px;
+  padding:2px 10px; font-size:12px; font-weight:600;
+}
+.meta-inline { color:var(--muted); font-size:12px; }
+.body { padding:4px 16px 16px; border-top:1px solid var(--line); }
+.label { font-weight:700; margin:12px 0 6px; color:#334155; font-size:13px; }
+.q { margin:0; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+pre {
+  white-space:pre-wrap; background:#f8fafc; border:1px solid var(--line);
+  padding:12px; border-radius:10px; margin:0; font-size:13px; max-height:320px; overflow:auto;
+}
+.reason { background:#fff5f4; border-color:#f0c2bc; }
+.facts { margin:0; padding-left:18px; }
+.eng-note { margin-top:12px; font-size:11px; color:var(--muted); }
+
+</style></head><body>
+<header class='hero'>
+<p class='eyebrow'>QA analysis board</p>
+<h1>Answer Review</h1>
+<p class='sub'>23Jul2026/Client_Contract/R3_Edge_Cases/1835 · Client_Contract_Agent</p>
+<div class='kpis'>
+<div class='kpi'><span class='kpi-val'>17/18</span><span class='kpi-label'>Pass vs golden</span></div>
+<div class='kpi'><span class='kpi-val'>79.0%</span><span class='kpi-label'>Stability</span></div>
+<div class='kpi fail-kpi'><span class='kpi-val'>1</span><span class='kpi-label'>Failed</span></div>
+<div class='kpi'><span class='kpi-val'>1</span><span class='kpi-label'>Retried</span></div>
+<div class='kpi'><span class='kpi-val'>0</span><span class='kpi-label'>Flipped to pass</span></div>
+<div class='kpi'><span class='kpi-val'>28.84s</span><span class='kpi-label'>Avg agent response</span></div>
+<div class='kpi'><span class='kpi-val'>15.1m</span><span class='kpi-label'>Total execution</span></div>
+</div>
+<p class='howto'><b>How to analyse:</b> Start with FAILED below. Compare agent vs golden, read Why failed + drift category + agent. Retry flip = flake; same fail twice = real issue.</p>
+</header>
+<h2 class='section fail-h'>Failed — analyse these first</h2>
+
+<details class='case fail-case' id='TC_03' open>
+  <summary>
+    <span class='id'>TC_03</span>
+    <span class='fail'>FAIL</span>
+    <span class='chip'>Missing facts</span>
+    <span class='meta-inline'>agent: - · attempt 2 (retried)</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Could you please give me both documents of SUA and contract for project 9002/0282?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found that there are both Contract and Start Up Agreement (SUA) documents related to project 9002/0282. However, I was unable to retrieve the detailed documents or data for these from the system at this time.
+To access the full Contract and SUA documents for project 9002/0282, I recommend checking directly in the Process Unity system, where these records are maintained and can be reviewed in detail.
+If you need help navigating Process Unity or have any other questions, please let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Both Contract and Start Up Agreement (SUA) records exist for project 9002/0282. Please clarify whether you want the Contract or the Start Up Agreement.</pre>
+      </div>
+    </div>
+    <div class='label'>Why failed</div><pre class='reason'>LLM FAIL — no variant passed (checked 3 templates). The actual answer fails to ask the user to clarify whether they want the Contract or the Start Up Agreement, which is critical to the expected response.</pre>
+    <div class='label'>Missing facts</div><ul class='facts'><li>Please clarify whether you want the Contract or the Start Up Agreement</li></ul>
+    <div class='eng-note'>QA detail: LLM=FAIL
+    · drift_score=0.2596
+    · semantic=0.7404</div>
+  </div>
+</details>
+
+<h2 class='section'>Passed (17) — expand if needed</h2>
+
+<details class='case pass-case' id='TC_02'>
+  <summary>
+    <span class='id'>TC_02</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Stable</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Please provide me the contract only for project number 0099/1243</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I couldn&#x27;t find any contract information for project number 0099/1243 in the available records.
+Could you please confirm if the project number is correct or if you are looking for a specific type of contract or document related to this project?</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>I could not find any contract for project number 0099/1243 in available records.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer conveys the same meaning about no contract data found and offers to verify the project number or related documents.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.125
+    · semantic=0.875</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_06'>
+  <summary>
+    <span class='id'>TC_06</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Wording only</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Is there any contract related to project number 9999/4529?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I checked the records and couldn&#x27;t find any contract related to the Project Order (contract) number 9999/4529. Could you please confirm if the project number is correct or if you&#x27;d like me to search using different criteria?</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>No contract related to Project Order / project number 9999/4529 was found in available records.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_3 (pass-if-any across 3 variants). Actual answer confirms no matching contract for 9999/4529 and preserves expected meaning.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.1737
+    · semantic=0.8263</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_09'>
+  <summary>
+    <span class='id'>TC_09</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Stable</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>How many contracts related to project 0001/0478?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>We have found both Contract and Start Up Agreement records for the project number 0001/0478. Could you please clarify which one you would like to proceed with: Contract or Start Up Agreement?</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Both Contract and Start Up Agreement records exist for project 0001/0478. Please clarify Contract vs Start Up Agreement.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves the expected meaning and politely requests clarification.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.0901
+    · semantic=0.9099</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_11'>
+  <summary>
+    <span class='id'>TC_11</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Stable</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Please provide contract details for project 9002/0282</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>We have found both Contract and Start Up Agreement records for the project number 9002/0282. Could you please clarify which one you would like to proceed with: Contract or Start Up Agreement?</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Both Contract and Start Up Agreement records exist for project 9002/0282. Please clarify which one you want details for.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves the expected meaning and politely asks for clarification.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.1265
+    · semantic=0.8735</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_12'>
+  <summary>
+    <span class='id'>TC_12</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Moderate wording drift</span>
+    <span class='meta-inline'>agent: search_legal_database_tool_sponsor</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Summurize contract document for project 9002/0278</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I couldn&#x27;t find any relevant contract documents to provide a detailed summary for project 9002/0278. It looks like the available records do not contain the specific contract details such as key terms, parties involved, effective dates, or scope for this project.
+If you have any other questions or need information on a different document or project, I&#x27;d be happy to help!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>I could not find a detailed contract summary for project 9002/0278 under Pfizer Alliance; documents may not be fully accessible here.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_2 (pass-if-any across 3 variants). Actual answer conveys the same meaning that contract summary is not available.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.2861
+    · semantic=0.7139</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_15'>
+  <summary>
+    <span class='id'>TC_15</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Wording only</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Please provide the number of contracts with status &quot;executed&quot; for project 8888/1047</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I checked the available contract records for project 8888/1047, but I couldn&#x27;t find any contracts with the status &quot;executed&quot; for this project.
+If you want, I can help you look into other projects or different contract statuses.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>No contracts with status &quot;executed&quot; were found for project 8888/1047.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer conveys the same information that no executed contracts were found for the project.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.1917
+    · semantic=0.8083</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_16'>
+  <summary>
+    <span class='id'>TC_16</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Wording only</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Please provide the number of contracts with status &quot;cancelled&quot; for project 5086/0001</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I checked the contract records for project 5086/0001, but I couldn&#x27;t find any contracts with the status &quot;cancelled&quot; for this project.
+If you want, I can help you look into other projects or different contract statuses.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>No contracts with status &quot;cancelled&quot; were found for project 5086/0001.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer confirms no cancelled contracts for the project, matching the expected meaning.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.1638
+    · semantic=0.8362</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_17'>
+  <summary>
+    <span class='id'>TC_17</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Significant drift</span>
+    <span class='meta-inline'>agent: search_legal_database_tool_sponsor</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Would you be able to summarise the contract PDF for project 4263/0008?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I looked into the contract documents for project 4263/0008, but unfortunately, I couldn&#x27;t find any detailed contract content or summary available in the system for this project.
+If you have a specific document name or additional details, I can try searching again. Otherwise, you might want to check the Process Unity system manually for the full contract details.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Contract PDF/content for project 4263/0008 (A.L.L Global Media Services) is not available in the records I can access.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_2 (pass-if-any across 3 variants). The actual answer conveys the inability to retrieve contract details or summary, matching the expected meaning.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.5495
+    · semantic=0.4505</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_18'>
+  <summary>
+    <span class='id'>TC_18</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Wording only</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>What are the payment terms for Novartis Pharma AG: MSA - Aug-14?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I looked for the payment terms including Credit Terms, Compensation Terms, and Commercial Terms for the contract &quot;Novartis Pharma AG: MSA - Aug-14,&quot; but it appears that some documents related to this MSA or its amendments are incomplete or missing in the system. Because of this, I couldn&#x27;t provide the detailed payment terms you requested.
+If you have a specific amendment or another contract you&#x27;d like me to check, or if you want to explore other details, please let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>For Novartis Pharma AG: MSA - Aug-14: credit/compensation/commercial terms not available due to missing documents.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer conveys that the documents are missing or incomplete, so detailed payment terms are not available, matching the expected answer&#x27;s meaning.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.212
+    · semantic=0.788</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_22'>
+  <summary>
+    <span class='id'>TC_22</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Document link added</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>How many MSAs do we have with Abbott Diabetes Care Inc.?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found that there is 1 Master Service Agreement (MSA) with Abbott Diabetes Care Inc.
+If you need more details about this MSA or related amendments, feel free to ask!
+Source: Process Unity (https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow)</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>There is 1 Master Service Agreement (MSA) with Abbott Diabetes Care Inc..</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer confirms the expected number of MSAs and adds helpful context without contradicting or omitting critical information.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.1187
+    · semantic=0.8813</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_24'>
+  <summary>
+    <span class='id'>TC_24</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Document link added</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Please provide contract link for project 8001/0839</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I checked for the contract link for project 8001/0839. There is one contract with the status &quot;Contract Executed,&quot; effective from August 7, 2018, to December 31, 2018. However, the contract document link is not available in the current data.
+If you need more details or assistance with another project, please let me know!
+Source: Process Unity (https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow)</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>For 8001/0839, executed contract (August 7, 2018 → December 31, 2018) but no downloadable link in system.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). Actual answer preserves all critical information and adds a source link and offer for further assistance.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.2741
+    · semantic=0.7259</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_25'>
+  <summary>
+    <span class='id'>TC_25</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Document link added</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Please list contract and change orders details related to project 8001/0711</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found information related to Project Order (contract) 8001/0711. There is one contract record with AbbVie, which has the status &quot;Contract Executed.&quot; The contract&#x27;s effective date is August 14, 2017, and it expired on December 31, 2017. There are no change orders associated with this contract. Unfortunately, no contract or change order document links are available in the current data.
+If you need more details or assistance with other projects or contracts, feel free to ask!
+Source: Process Unity (https://app.processunity.net/icon-cm/Default.aspx?nav=%2Farea%2F1%2Fgroup%2F328495%2Ftask%2F269%2Freport%2F296289%2Fshow)</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>For 8001/0711/AbbVie: executed contract August 14, 2017–December 31, 2017, no change orders.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer includes all critical details from the expected answer and adds source information without contradicting or omitting any facts.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.215
+    · semantic=0.785</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_26'>
+  <summary>
+    <span class='id'>TC_26</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Document link added</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Please provide contract related to project 0078/1969</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found both Contract and Start Up Agreement records for Project Order (contract) 0078/1969. Since you have previously clarified that you want information related to contracts, here are the details for the contract associated with this project:
+Contract Title: Bristol Myers Squibb Company: IM025-017-0078/1969 - Contract 02 Sep 20
+Project Number: 0078/1969
+Status: Contract Executed (implied from context)
+Change Orders associated with this contract:
+Change Order #1
+Change Order #2
+Change Order #3
+Change Order #4 (title not specified)
+Unfortunately, no direct contract document link is available in the current data.
+If you want details on any specific change order or further information, please let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Both Contract and Start Up Agreement records exist for Project Order 0078/1969. Please clarify Contract vs Start Up Agreement.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer confirms the existence of both Contract and Start Up Agreement records for the project and provides additional contract details, preserving the expected meaning.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.3109
+    · semantic=0.6891</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_28'>
+  <summary>
+    <span class='id'>TC_28</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Stable</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Which MSA related to the contract Bristol Myers Squibb: -0078/1874 - Contract 03 Jul 19</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I looked into the MSA related to the contract &quot;Bristol Myers Squibb: -0078/1874 - Contract 03 Jul 19&quot; but couldn&#x27;t find any specific MSA linked to this contract in the available data.
+If you want me to check for related documents or other details, please let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>No specific MSA information is linked to contract &quot;Bristol Myers Squibb: -0078/1874 - Contract 03 Jul 19&quot; in available data.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). Actual answer conveys the same meaning that no specific MSA is linked to the contract.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.0845
+    · semantic=0.9155</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_29'>
+  <summary>
+    <span class='id'>TC_29</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Moderate wording drift</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Does the project 0474/0002 have contracts and SUA?</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found that the project 0474/0002 has both contracts and Start Up Agreements (SUA). Specifically, there is a contract titled &quot;Cedars-Sinai Medical Center: PRO55135-0474/0002 - Contract 15 Feb 19&quot; which has three change orders:
+Change Order #1
+Change Order #2
+Change Order #3
+Additionally, there are two Start Up Agreements (SUA) associated with this project.
+If you want, I can provide more detailed information about either the contract or the Start Up Agreements.</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Yes — project 0474/0002 has Contract and SUA. Contract: Cedars-Sinai Medical Center: PRO55135-0474/0002 - Contract 15 Feb 19 with 3 change orders; SUA count: 2.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer confirms the presence of the contract with the correct title, date, and number of change orders, as well as the count of SUAs, preserving the expected meaning.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.2599
+    · semantic=0.7401</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_32'>
+  <summary>
+    <span class='id'>TC_32</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Stable</span>
+    <span class='meta-inline'>agent: -</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Please confirm a list of studies that are contracted with BioInvent International AB which have been completed and the contracts are no longer active</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found several contracts related to BioInvent International AB, but I encountered an issue retrieving the specific list of studies that have been completed and where the contracts are no longer active.
+Could you please confirm if you want me to focus only on contracts that are explicitly marked as completed and inactive? Or would you like a broader list of all contracts related to BioInvent International AB regardless of status?</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>Multiple contracts exist for BioInvent International AB, but the completed/inactive study list could not be retrieved cleanly. Please confirm you want only completed and inactive contracts.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer preserves the expected meaning and requests confirmation about focusing on completed and inactive contracts.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.1194
+    · semantic=0.8806</div>
+  </div>
+</details>
+
+
+<details class='case pass-case' id='TC_33'>
+  <summary>
+    <span class='id'>TC_33</span>
+    <span class='pass'>PASS</span>
+    <span class='chip'>Document link added</span>
+    <span class='meta-inline'>agent: search_legal_database_tool_sponsor</span>
+  </summary>
+  <div class='body'>
+    <div class='label'>Question</div>
+    <p class='q'>Show me the MSA between ICON and Beone Medicine that can be used for an ASR Accellacare Site Resourcing Work Order(contract)</p>
+    <div class='grid'>
+      <div>
+        <div class='label'>Agent answer</div>
+        <pre>I found the MSA between ICON and BeOne Medicine that can be used for an ASR Accellacare Site Resourcing Work Order. Here are the details:
+MSA Name: BeOne Medicines (fka BeiGene): MSA - Jul 25
+Effective Date: July 1, 2025
+Executed Date: March 12, 2026
+Expiration Date: July 1, 2028
+Status: Active
+Parties: BeOne Medicines I GmbH (Sponsor) and ICON Clinical Research Limited (Service Provider)
+Scope: Clinical Research including FSO and FSP services, with specific provisions for Statements of Work (SOWs) that must be executed referencing this MSA.
+Affiliates: Both BeOne and ICON affiliates can enter into SOWs under this MSA, which supports flexibility for site resourcing work orders like ASR Accellacare.
+Change Orders: The MSA includes change order provisions to accommodate modifications in SOWs, including budget and scope changes.
+Liability Cap: There is a liability cap clause with specific carve-outs for gross negligence, willful misconduct, confidentiality, and indemnification.
+Payment Terms: Credit terms are 45 days after receipt of invoice.
+Governing Law: New York law governs the agreement.
+Subcontracting: The MSA allows subcontracting with conditions and holds ICON responsible for subcontractors&#x27; performance.
+Data Protection: GDPR-compliant Data Processing Addendum (DPA) is in place.
+Rate Card: A rate card is included with an expiry date of December 31, 2025, which is relevant for pricing in SOWs.
+Suitability for ASR Accellacare Site Resourcing Work Order:
+The MSA explicitly supports execution of SOWs, which would include site resourcing work orders like ASR Accellacare.
+Affiliates of both parties can sign SOWs, providing flexibility for resource allocation.
+The detailed scope includes FSO and FSP services, which align with site resourcing activities.
+Change order provisions allow for adjustments in scope and budget, which is typical for site resourcing contracts.
+You can access the contract document via the internal system link titled &quot;BeOne_ICON_MSA_(Global)_01Jul2025_FE&quot; in your contract management system.
+If you need specific clauses or further details from the MSA document, please let me know!</pre>
+      </div>
+      <div>
+        <div class='label'>Golden expected</div>
+        <pre>ICON/BeOne Medicines (fka BeiGene) MSA Jul 25 supports ASR Accellacare Site Resourcing work orders.</pre>
+      </div>
+    </div>
+    <div class='label'>LLM note</div><pre class='reason'>LLM PASS via golden_answer_1 (pass-if-any across 3 variants). The actual answer includes all critical details from the expected answer and provides additional relevant information about the MSA.</pre>
+    
+    <div class='eng-note'>QA detail: LLM=PASS
+    · drift_score=0.2206
+    · semantic=0.7794</div>
+  </div>
+</details>
+
+
+<script>
+(function () {
+  var id = (location.hash || '').replace(/^#/, '');
+  if (!id) return;
+  var el = document.getElementById(id);
+  if (!el) return;
+  if (el.tagName === 'DETAILS') el.open = true;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+})();
+</script>
+</body></html>
